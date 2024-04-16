@@ -7,7 +7,7 @@ interface myProps{
 }
 const TopInfo: React.FC<myProps> = ({ job, date }) => {
     return (
-        <div className="inline-flex flex-row gap-[5vw] w-[35vw] flex items-baseline">
+        <div className="inline-flex flex-row gap-[6vw] w-[39vw] flex items-baseline">
             <TopLeftInfo
                 job={job}
                 date={date}
