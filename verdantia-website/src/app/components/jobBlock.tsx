@@ -13,7 +13,7 @@ interface Props {
     frameClassName: any;
     layerClassName: any;
 
-    style?: CSSProperties; // Add style property to Props interface
+    style?: CSSProperties;
 }
 
 export const JobBlock = ({
@@ -25,11 +25,11 @@ export const JobBlock = ({
     className,
     frameClassName,
     layerClassName,
-    style, // Use style prop
+    style,
 }: Props): JSX.Element => {
     return (
         <div
-            style={style} // Use style prop here
+            style={style}
             className={'flex flex-col w-[28vw] items-start justify-center gap-[1vw] p-[2vw] relative bg-white rounded-[1vw] border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040] $(className)'}
         >
             <div className="flex flex-col items-start justify-center relative self-stretch w-full flex-[0_0_auto">

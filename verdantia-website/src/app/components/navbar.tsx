@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
           <NavLink href="/jobs" text="Jobs" />
           <NavLink href="/portal" text="Portal" />
           <div>
-            <img src="/images/user.png" alt="Account" className="h-6 w-6" />
+            <img src="/images/user-nobg.png" alt="Account" className="h-6 w-6" />
           </div>
         </div>
       </div>
