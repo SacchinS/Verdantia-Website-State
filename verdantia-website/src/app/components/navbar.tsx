@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center space-x-4 mx-20" style={{ fontSize: '3vh' }}>
-          <NavLink href="/" text="Home" />
+          <NavLink href="/" text="Home" /> 
           <NavLink href="/benefits" text="Benefits" />
           <NavLink href="/jobs" text="Jobs" />
           <NavLink href="/portal" text="Portal" />

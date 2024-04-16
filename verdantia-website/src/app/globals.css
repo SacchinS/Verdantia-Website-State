@@ -26,6 +26,12 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.custom-text-wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  max-width: 15vw;
+}
 
 @layer utilities {
   .text-balance {
