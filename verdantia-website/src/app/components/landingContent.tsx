@@ -16,7 +16,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
     <div>
       <div className="absolute inset-0 w-screen h-screen bg-center bg-cover" style={{ backgroundImage: `url('/images/background-cropped.png')`, zIndex: -1, height: '85vh'}}></div>
       <Navbar />
-      <div className="container mx-auto py-3 px-6 text-white relative z-10 ml-20">
+      <div className="container py-3 text-white relative z-10 ml-[8vw]">
         <div className="text-3xl mb-4" style={{ fontFamily: 'Enriqueta', color: '#3E3E3E', fontSize: '7vw', lineHeight: '8vw' }}>
           {headingPart1 && <div>{headingPart1}</div>}
           {headingPart2 && <div>{headingPart2}</div>}
@@ -27,50 +27,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
             {buttonText}
           </button>
         )}
-      </div>
-
-      <div className="container mx-auto py-3 px-6 text-white relative z-10 ml-20 overflow-x-auto flex">
-        {/* Adjust the width of the job blocks and the gap between them as needed */}
-
-        <JobBlock
-          applicantCount="178 Applicants"
-          className="!h-[204px] !shadow-[unset] !w-[403px] !mr-[20px]" // Adjust width and margin as needed
-          data="3 Days ago"
-          frameClassName="!mr-[-9.22px]"
-          group="/images/location.png" // Update the image path
-          jobTitle="Environmental Scientist"
-          layer="/images/remote.png" // Update the image path
-          layerClassName="!h-[19px] !mt[[unset] !ml-[unset] !mb-[unset] !w-[17.56px]"
-          location="San Francisco, CA"
-          workMethod="Remote"
-        />
-        
-        <JobBlock
-          applicantCount="178 Applicants"
-          className="!h-[204px] !shadow-[unset] !w-[403px] !mr-[20px]" // Adjust width and margin as needed
-          data="3 Days ago"
-          frameClassName="!mr-[-9.22px]"
-          group="/images/location.png" // Update the image path
-          jobTitle="Environmental Scientist"
-          layer="/images/remote.png" // Update the image path
-          layerClassName="!h-[19px] !mt[[unset] !ml-[unset] !mb-[unset] !w-[17.56px]"
-          location="San Francisco, CA"
-          workMethod="Remote"
-        />
-
-        <JobBlock
-          applicantCount="178 Applicants"
-          className="!h-[204px] !shadow-[unset] !w-[403px] !mr-[20px]" // Adjust width and margin as needed
-          data="3 Days ago"
-          frameClassName="!mr-[-9.22px]"
-          group="/images/location.png" // Update the image path
-          jobTitle="Environmental Scientist"
-          layer="/images/remote.png" // Update the image path
-          layerClassName="!h-[19px] !mt[[unset] !ml-[unset] !mb-[unset] !w-[17.56px]"
-          location="San Francisco, CA"
-          workMethod="Remote"
-        />
-
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { CSSProperties } from "react";
-import Location from "../../../public/images/location.png";
-import Remote from "../../../public/images/remote.png";
+import LocationIcon from "../../../public/images/locationIcon.svg";
+import RemoteIcon from "../../../public/images/remoteIcon.svg";
 
 interface Props {
     data: string;
@@ -11,9 +11,8 @@ interface Props {
     jobTitle: string;
     className: any;
     frameClassName: any;
-    group: string;
     layerClassName: any;
-    layer: string;
+
     style?: CSSProperties; // Add style property to Props interface
 }
 
@@ -25,9 +24,7 @@ export const JobBlock = ({
     jobTitle = "Environmental Scientist",
     className,
     frameClassName,
-    group = "../../../public/images/location.png",
     layerClassName,
-    layer = "../../../public/images/remote.png",
     style, // Use style prop
 }: Props): JSX.Element => {
     return (
@@ -54,17 +51,13 @@ export const JobBlock = ({
                     <div
                         className={'inline-flex items-center gap-[1vw] relative flex-[0_0_auto] mr-[-3vw] ${frameClassName}'}
                     >
-                        <img className="relative w-[1vw] h-[1vw]" alt="Group" src={group} />
+                        <img src={LocationIcon.src} alt="Location Icon" className="w-[1vw] h-[1.5vw]" /> {/* Location Icon */}
                         <div className="relative w-fit [font-family:'Montserrat'] font-normal text-black text-[1vw] text-center tracking-[0] leading-[normal]">
                             {location}
                         </div>
                     </div>
                     <div className="inline-flex items-center gap-[1vw] relative flex-[0_0_auto]">
-                        <img 
-                            className={'relative w-[1vw] h-[1vw] mt-[-0.1vw] mb-[-0.1vw] ml-[-0.1vw] ${layerClassName}'}
-                            alt="Layer"
-                            src={layer}
-                        />
+                        <img src={RemoteIcon.src} alt="Remote Icon" className="w-[1.5vw] h-[1.5vw]" /> {/* Remote Icon */}
                         <div className="relative w-fit [font-family:'Montserrat'] font-normal text-black text-[1vw] text-center tracking-[0] leading-[normal]">
                             {workMethod}
                         </div>
