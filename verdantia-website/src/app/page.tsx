@@ -1,3 +1,13 @@
+import DetReqBlock from "./components/JDB/detReqBlock"
+import DetailsBlock from "./components/JDB/detailsBlock"
+import  InfoPanel  from "./components/JDB/infoPanel"
+import JobDetailBlock from "./components/jobDetailBlock"
+import { JobSubInfoBlock } from "./components/JDB/jobSubInfoBlock"
+import ReqsBlock from "./components/JDB/requirementsBlock"
+import TitleBlock from "./components/JDB/titleBlock"
+import TopInfo from "./components/JDB/topInfo"
+import TopLeftInfo from "./components/JDB/topLeftInfo"
+import TopRightInfo from "./components/JDB/topRightInfo"
 import LandingContent from "./components/landingContent";
 import JobBlock from "./components/jobBlock";
 import BodyHeading from "./components/bodyHeading";
@@ -46,6 +56,7 @@ const slides = [
     description: "Verdantia actively supports biodiversity conservation efforts by protecting endangered species and preserving vital habitats.",
   }
 ];
+
 
 
 export default function Home() {
