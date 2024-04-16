@@ -154,7 +154,7 @@ export default function Home() {
 
       <ImageDivider src={ForestDivider.src} marginTop="6vw"></ImageDivider>
 
-      <BodyHeading marginTop="5vw" marginBottom="2vw" centerAligned={true}>Our Impacts</BodyHeading>
+      <BodyHeading marginTop="6vw" marginBottom="3vw" centerAligned={true}>Our Impacts</BodyHeading>
 
       <Slideshow slides={slides} />
 
