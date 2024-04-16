@@ -1,6 +1,7 @@
 // components/LandingPage.tsx
 
 import Navbar from './navbar';
+import JobBlock from './jobBlock';
 
 interface LandingPageProps {
   heading: string;
@@ -26,6 +27,50 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
             {buttonText}
           </button>
         )}
+      </div>
+
+      <div className="container mx-auto py-3 px-6 text-white relative z-10 ml-20 overflow-x-auto flex">
+        {/* Adjust the width of the job blocks and the gap between them as needed */}
+
+        <JobBlock
+          applicantCount="178 Applicants"
+          className="!h-[204px] !shadow-[unset] !w-[403px] !mr-[20px]" // Adjust width and margin as needed
+          data="3 Days ago"
+          frameClassName="!mr-[-9.22px]"
+          group="/images/location.png" // Update the image path
+          jobTitle="Environmental Scientist"
+          layer="/images/remote.png" // Update the image path
+          layerClassName="!h-[19px] !mt[[unset] !ml-[unset] !mb-[unset] !w-[17.56px]"
+          location="San Francisco, CA"
+          workMethod="Remote"
+        />
+        
+        <JobBlock
+          applicantCount="178 Applicants"
+          className="!h-[204px] !shadow-[unset] !w-[403px] !mr-[20px]" // Adjust width and margin as needed
+          data="3 Days ago"
+          frameClassName="!mr-[-9.22px]"
+          group="/images/location.png" // Update the image path
+          jobTitle="Environmental Scientist"
+          layer="/images/remote.png" // Update the image path
+          layerClassName="!h-[19px] !mt[[unset] !ml-[unset] !mb-[unset] !w-[17.56px]"
+          location="San Francisco, CA"
+          workMethod="Remote"
+        />
+
+        <JobBlock
+          applicantCount="178 Applicants"
+          className="!h-[204px] !shadow-[unset] !w-[403px] !mr-[20px]" // Adjust width and margin as needed
+          data="3 Days ago"
+          frameClassName="!mr-[-9.22px]"
+          group="/images/location.png" // Update the image path
+          jobTitle="Environmental Scientist"
+          layer="/images/remote.png" // Update the image path
+          layerClassName="!h-[19px] !mt[[unset] !ml-[unset] !mb-[unset] !w-[17.56px]"
+          location="San Francisco, CA"
+          workMethod="Remote"
+        />
+
       </div>
     </div>
   );
