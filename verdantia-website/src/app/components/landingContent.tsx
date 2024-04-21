@@ -1,6 +1,7 @@
 // components/LandingPage.tsx
 
 import Navbar from './navbar';
+import signUpPopUp from "@/app/components/signUpPopUp";
 import JobBlock from './jobBlock';
 
 interface LandingPageProps {
@@ -16,6 +17,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
     <div>
       <div className="absolute inset-0 w-screen h-screen bg-center bg-cover" style={{ backgroundImage: `url('/images/background-cropped.png')`, zIndex: -1, height: '85vh'}}></div>
       <Navbar />
+
       <div className="container py-3 text-white relative z-10 ml-[8vw]">
         <div className="text-3xl mb-4" style={{ fontFamily: 'Enriqueta', color: '#3E3E3E', fontSize: '7vw', lineHeight: '8vw' }}>
           {headingPart1 && <div>{headingPart1}</div>}

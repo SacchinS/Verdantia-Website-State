@@ -24,6 +24,9 @@ import Slide3 from "../../public/images/Slide3.svg";
 import Slide4 from "../../public/images/Slide4.svg";
 import Slide5 from "../../public/images/Slide5.svg";
 
+import SignInPopUp from "@/app/components/signInPopUp";
+
+
 const slides = [
   {
     imageUrl: Slide1.src,
@@ -66,7 +69,7 @@ export default function Home() {
         buttonText="Join the Team"
       />
 
-      <JobDetailBlock
+        <JobDetailBlock
         job="Environmental Scientist"
         date="Posted 3 days ago"
         applicants="35 applicants"
@@ -78,6 +81,7 @@ export default function Home() {
         reqDesc="Lorem ipsum dolor sit amet consectetur. Tellus mattis in dictum placerat. Imperdiet mauris in ultrices metus adipiscing vitae. Massa ut dui arcu cursus facilisis. Sed eget sem vitae amet."
         imgSrc="./components/EnvScientist.png"
       />
+      <h1>Test</h1>
 
       <BodyHeading marginTop="8vw" marginBottom="2vw">Featured Jobs</BodyHeading>
 
