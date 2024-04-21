@@ -32,7 +32,7 @@ interface myProps{
     return(
         <div className="bg-white inline-flex flex-col rounded-[1vw] gap-[3vh] border border-[#b2b2b2] shadow-[0_0.3vh_0.3vh_0_rgba(0,0,0,0.25)] px-[3vw] py-[3vh]">
             
-            <img className="relative w-[1vw] h-[1vw]" alt="Group" src={"./EnvScientist.png"}/>
+            <img src={EnvScientist.src} alt="Hands Planting" className="w-[40vw] h-auto" />
             <TitleBlock
                       job={job}
                       date={date}

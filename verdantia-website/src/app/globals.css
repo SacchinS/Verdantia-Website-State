@@ -33,6 +33,13 @@ body {
   max-width: 15vw;
 }
 
+.custom-text-wrap2 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  max-width: 30vw;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

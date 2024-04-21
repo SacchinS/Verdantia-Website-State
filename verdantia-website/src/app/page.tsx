@@ -66,19 +66,6 @@ export default function Home() {
         buttonText="Join the Team"
       />
 
-      <JobDetailBlock
-        job="Environmental Scientist"
-        date="Posted 3 days ago"
-        applicants="35 applicants"
-        location = "San Francisco, CA"
-        workExperience="Entry Level"
-        workType="Remote"
-        salary="$70,000"
-        detDesc="Lorem ipsum dolor sit amet consectetur. Tellus mattis in dictum placerat. Imperdiet mauris in ultrices metus adipiscing vitae. Massa ut dui arcu cursus facilisis. Sed eget sem vitae amet."
-        reqDesc="Lorem ipsum dolor sit amet consectetur. Tellus mattis in dictum placerat. Imperdiet mauris in ultrices metus adipiscing vitae. Massa ut dui arcu cursus facilisis. Sed eget sem vitae amet."
-        imgSrc="./components/EnvScientist.png"
-      />
-
       <BodyHeading marginTop="8vw" marginBottom="2vw">Featured Jobs</BodyHeading>
 
       <div className="container mx-auto py-5 px-6 text-white relative z-10 overflow-x-auto flex gap-[5vw]">
