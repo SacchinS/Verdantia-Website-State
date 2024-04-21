@@ -66,36 +66,27 @@ export default function Home() {
         buttonText="Join the Team"
       />
 
-      <BodyHeading marginTop="8vw" marginBottom="2vw">Featured Jobs</BodyHeading>
+      <BodyHeading marginTop="6vw" marginBottom="2vw">Featured Jobs</BodyHeading>
 
       <div className="container mx-auto py-5 px-6 text-white relative z-10 overflow-x-auto flex gap-[5vw]">
         <JobBlock
           applicantCount="178 Applicants"
-          className="!h-[204px] !shadow-[unset] !w-[403px] !mr-[20px]" // Adjust width and margin as needed
           data="3 Days ago"
-          frameClassName="!mr-[-9.22px]"
           jobTitle="Environmental Scientist"
-          layerClassName="!h-[19px] !mt[[unset] !ml-[unset] !mb-[unset] !w-[17.56px]"
           location="San Francisco, CA"
           workMethod="Remote"
         />
         <JobBlock
           applicantCount="178 Applicants"
-          className="!h-[204px] !shadow-[unset] !w-[403px] !mr-[20px]" // Adjust width and margin as needed
           data="3 Days ago"
-          frameClassName="!mr-[-9.22px]"
           jobTitle="Environmental Scientist"
-          layerClassName="!h-[19px] !mt[[unset] !ml-[unset] !mb-[unset] !w-[17.56px]"
           location="San Francisco, CA"
           workMethod="Remote"
         />
         <JobBlock
           applicantCount="178 Applicants"
-          className="!h-[204px] !shadow-[unset] !w-[403px] !mr-[20px]" // Adjust width and margin as needed
           data="3 Days ago"
-          frameClassName="!mr-[-9.22px]"
           jobTitle="Environmental Scientist"
-          layerClassName="!h-[19px] !mt[[unset] !ml-[unset] !mb-[unset] !w-[17.56px]"
           location="San Francisco, CA"
           workMethod="Remote"
         />
@@ -141,7 +132,7 @@ export default function Home() {
 
       <ImageDivider src={ForestDivider.src} marginTop="6vw"></ImageDivider>
 
-      <BodyHeading marginTop="6vw" marginBottom="3vw" centerAligned={true}>Our Impacts</BodyHeading>
+      <BodyHeading marginTop="4vw" marginBottom="2vw" centerAligned={true}>Our Impacts</BodyHeading>
 
       <Slideshow slides={slides} />
 

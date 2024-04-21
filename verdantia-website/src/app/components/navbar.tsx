@@ -5,20 +5,20 @@ import Link from 'next/link';
 const Navbar: React.FC = () => {
   return (
     <div>
-      <div className="bg-custom-green py-3 mt-5"></div>
-      <div className="container mx-auto flex items-center justify-between py-4" style={{ fontFamily: 'Bellota Text' }}>
+      <div className="bg-custom-green py-[1vw] mt-[1vw]"></div>
+      <div className="container mx-auto flex items-center justify-between py-[1vw]" style={{ fontFamily: 'Bellota Text' }}>
         <div className="ml-[8vw]">
-          <div className="text-black" style={{ fontSize: '4vh' }}>
+          <div className="text-black" style={{ fontSize: '2vw' }}>
             VERDANTIA | Careers
           </div>
         </div>
-        <div className="flex items-center space-x-4 mx-[8vw]" style={{ fontSize: '3vh' }}>
+        <div className="flex items-center space-x-[1.5vw] mx-[8vw]" style={{ fontSize: '1.25vw' }}>
           <NavLink href="/" text="Home" /> 
           <NavLink href="/benefits" text="Benefits" />
           <NavLink href="/jobs" text="Jobs" />
           <NavLink href="/portal" text="Portal" />
           <div>
-            <img src="/images/user-nobg.png" alt="Account" className="h-6 w-6" />
+            <img src="/images/user-nobg.png" alt="Account" className="h-[1.5vw] w-[1.5vw]" />
           </div>
         </div>
       </div>

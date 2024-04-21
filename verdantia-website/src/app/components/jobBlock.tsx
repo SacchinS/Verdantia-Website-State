@@ -9,9 +9,6 @@ interface Props {
     workMethod: string;
     location: string;
     jobTitle: string;
-    className: any;
-    frameClassName: any;
-    layerClassName: any;
 
     style?: CSSProperties;
 }
@@ -22,18 +19,15 @@ export const JobBlock = ({
     workMethod = "Remote",
     location = "San Francisco, CA",
     jobTitle = "Environmental Scientist",
-    className,
-    frameClassName,
-    layerClassName,
     style,
 }: Props): JSX.Element => {
     return (
         <div
             style={style}
-            className={'flex flex-col w-[28vw] items-start justify-center gap-[1vw] p-[2vw] relative bg-white rounded-[1vw] border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040] $(className)'}
+            className={'flex flex-col w-[28vw] items-start justify-center gap-[1vw] p-[2vw] relative bg-white rounded-[1vw] border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040]'}
         >
             <div className="flex flex-col items-start justify-center relative self-stretch w-full flex-[0_0_auto">
-                <div className="relative self-stretch mt-[-1.00vw] [font-family:'Bellota_Text'] font-normal text-[#3e3e3e] text-[2.5vw] tracking-[0] leading-[41.4px]">
+                <div className="relative self-stretch mt-[-1.00vw] [font-family:'Bellota_Text'] font-normal text-[#3e3e3e] text-[2.5vw] tracking-[0] leading-[3vw]">
                     {jobTitle}
                 </div>
                 <div className="inline-flex items-center gap-[15px] relative flex-[0_0_auto]">
