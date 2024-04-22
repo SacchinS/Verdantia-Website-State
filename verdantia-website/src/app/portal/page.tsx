@@ -23,7 +23,10 @@ export default function Portal() {
         console.log('Sign Out')
         router.push('/signIn')
     }
-
+    const handleExploreCareers = () => {
+        console.log('redirect to jobs')
+        router.push('/jobs')
+    }
     const [isVisible, setIsVisible] = useState(false);
     const controlsFeaturedJobs = useAnimation();
     const controlsOurMission = useAnimation();
@@ -65,7 +68,7 @@ export default function Portal() {
             <LandingContent
                 heading="Welcome to \nYour Portal"
                 subheading=""
-                buttonText="Explore Careers"
+                buttonText="Explore Careers" 
             />
 
             <motion.div
@@ -77,7 +80,7 @@ export default function Portal() {
                 <div className="flex items-center justify-between relative mt-32">
                     <BodyHeading marginTop="" marginBottom="">My Jobs</BodyHeading>
 
-                        <button
+                        <button onClick={handleExploreCareers}
                             className="[font-family:'Montserrat-Bold',Helvetica] font-bold pr-32 underline">
                             View More
                         </button>
