@@ -1,3 +1,5 @@
+"use client"
+
 import DetReqBlock from "./components/JDB/detReqBlock"
 import DetailsBlock from "./components/JDB/detailsBlock"
 import  InfoPanel  from "./components/JDB/infoPanel"
