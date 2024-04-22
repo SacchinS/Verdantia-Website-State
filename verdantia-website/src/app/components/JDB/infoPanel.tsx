@@ -8,7 +8,7 @@ interface myProps{
 
  const InfoPanel: React.FC<myProps> = ({ workExperience, workType, salary }) => {
     return (
-        <div className="flex-row inline-flex gap-[0.5vh] w-[35vw] items-stretch">
+        <div className="w-full flex-row inline-flex gap-[0.5vh] w-[35vw] items-stretch">
             <JobSubInfoBlock
                 title = "Work Experience"
                 subtitle = {workExperience}
