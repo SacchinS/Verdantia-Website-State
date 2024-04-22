@@ -14,7 +14,7 @@ export default function Portal() {
 
     const [user] = useAuthState(auth)
     const router = useRouter()
-    console.log(user == null)
+    console.log(user)
     if (!user){
         router.push('/signIn')
     }
