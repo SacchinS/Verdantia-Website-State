@@ -1,6 +1,5 @@
-// components/Navbar.tsx
-
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   return (
@@ -34,7 +33,14 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ href, text }) => {
   return (
     <Link href={href}>
-      <span className="text-black cursor-pointer hover:text-gray-800 hover:underline">{text}</span>
+      <motion.span
+        className="text-black cursor-pointer hover:text-gray-800"
+        transition={{ duration: 1 }} // Smooth transition
+        style={{ fontSize: '1.25vw' }} // Default font size
+        whileHover={{ fontSize: '1.4vw' }} // Increase font size when hovered
+      >
+        {text}
+      </motion.span>
     </Link>
   );
 };

@@ -26,6 +26,10 @@ import Slide3 from "../../public/images/Slide3.svg";
 import Slide4 from "../../public/images/Slide4.svg";
 import Slide5 from "../../public/images/Slide5.svg";
 
+import { motion, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { useState } from "react";
+
 const slides = [
   {
     imageUrl: Slide1.src,
@@ -60,6 +64,41 @@ const slides = [
 ];
 
 export default function Home() {
+  const [isVisible, setIsVisible] = useState(false);
+  const controlsFeaturedJobs = useAnimation();
+  const controlsOurMission = useAnimation();
+  const controlsOurValues = useAnimation();
+  const controlsOurImpacts = useAnimation();
+
+  const refFeaturedJobs = useRef<HTMLDivElement | null>(null);
+  const refOurMission = useRef<HTMLDivElement | null>(null);
+  const refOurValues = useRef<HTMLDivElement | null>(null);
+  const refOurImpacts = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const checkVisibility = (ref: React.MutableRefObject<HTMLDivElement | null>, controls: any) => {
+        if (ref.current && ref.current.getBoundingClientRect().top < window.innerHeight) {
+          setIsVisible(true);
+          controls.start("visible");
+        }
+      };
+
+      checkVisibility(refFeaturedJobs, controlsFeaturedJobs);
+      checkVisibility(refOurMission, controlsOurMission);
+      checkVisibility(refOurValues, controlsOurValues);
+      checkVisibility(refOurImpacts, controlsOurImpacts);
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [controlsFeaturedJobs, controlsOurMission, controlsOurValues, controlsOurImpacts]);
+
+  const variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <main>
       <LandingContent
@@ -68,75 +107,104 @@ export default function Home() {
         buttonText="Join the Team"
       />
 
-      <BodyHeading marginTop="6vw" marginBottom="2vw">Featured Jobs</BodyHeading>
-
-      <div className="container mx-auto py-5 px-6 text-white relative z-10 overflow-x-auto flex gap-[5vw]">
-        <JobBlock
-          applicantCount="178 Applicants"
-          data="3 Days ago"
-          jobTitle="Environmental Scientist"
-          location="San Francisco, CA"
-          workMethod="Remote"
-        />
-        <JobBlock
-          applicantCount="178 Applicants"
-          data="3 Days ago"
-          jobTitle="Environmental Scientist"
-          location="San Francisco, CA"
-          workMethod="Remote"
-        />
-        <JobBlock
-          applicantCount="178 Applicants"
-          data="3 Days ago"
-          jobTitle="Environmental Scientist"
-          location="San Francisco, CA"
-          workMethod="Remote"
-        />
-      </div>
-
-      <BodyHeading marginTop="3vw">Our Mission</BodyHeading>
-
-      <div className="flex items-center ml-[8vw] mr-[8vw]" style={{ fontFamily: 'Montserrat', fontWeight: 300, color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2.25vw' }}>
-        <div className="mr-[10vw]">
-          At Verdantia, our mission is to revolutionize <strong>environmental sustainability</strong> by seamlessly integrating technology and human impact. We believe in a holistic approach, leveraging <strong>cutting-edge innovations</strong> alongside direct, hands-on efforts to create a more <strong>sustainable and resilient future</strong> for our planet.
+      <motion.div
+        ref={refFeaturedJobs}
+        initial="hidden"
+        animate={controlsFeaturedJobs}
+        variants={variants}
+      >
+        <BodyHeading marginTop="6vw" marginBottom="2vw">Featured Jobs</BodyHeading>
+        <div className="container mx-auto py-5 px-6 text-white relative z-10 overflow-x-auto flex gap-[5vw]">
+          <JobBlock
+            applicantCount="178 Applicants"
+            data="3 Days ago"
+            jobTitle="Environmental Scientist"
+            location="San Francisco, CA"
+            workMethod="Remote"
+          />
+          <JobBlock
+            applicantCount="178 Applicants"
+            data="3 Days ago"
+            jobTitle="Environmental Scientist"
+            location="San Francisco, CA"
+            workMethod="Remote"
+          />
+          <JobBlock
+            applicantCount="178 Applicants"
+            data="3 Days ago"
+            jobTitle="Environmental Scientist"
+            location="San Francisco, CA"
+            workMethod="Remote"
+          />
         </div>
-        <img src={HandsPlanting.src} alt="Hands Planting" className="w-[40vw] h-auto" />
-      </div>
+      </motion.div>
+
+      <motion.div
+        ref={refOurMission}
+        initial="hidden"
+        animate={controlsOurMission}
+        variants={variants}
+      >
+        <BodyHeading marginTop="3vw">Our Mission</BodyHeading>
+        <div className="flex items-center ml-[8vw] mr-[8vw]" style={{ fontFamily: 'Montserrat', fontWeight: 300, color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2.25vw' }}>
+          <div className="mr-[10vw]">
+            At Verdantia, our mission is to revolutionize <strong>environmental sustainability</strong> by seamlessly integrating technology and human impact. We believe in a holistic approach, leveraging <strong>cutting-edge innovations</strong> alongside direct, hands-on efforts to create a more <strong>sustainable and resilient future</strong> for our planet.
+          </div>
+          <img src={HandsPlanting.src} alt="Hands Planting" className="w-[40vw] h-auto" />
+        </div>
+      </motion.div>
 
       <ImageDivider src={PotDivider.src} marginTop="6vw"></ImageDivider>
 
-      <BodyHeading marginTop="4vw" marginBottom="3vw">Our Values</BodyHeading>
+      <motion.div
+        ref={refOurValues}
+        initial="hidden"
+        animate={controlsOurValues}
+        variants={variants}
+      >
+        <BodyHeading marginTop="4vw" marginBottom="3vw">Our Values</BodyHeading>
 
-      <ValuesLeftTab
-        title = "01 - Environmental Awareness"
-        subheading = "We inspire positive change through mindful environmental awareness and education."
-        iconSrc= "/images/Values1.svg"
-      />
+        <div>
+          <ValuesLeftTab
+            title = "01 - Environmental Awareness"
+            subheading = "We inspire positive change through mindful environmental awareness and education."
+            iconSrc= "/images/Values1.svg"
+          />
 
-      <ValuesRightTab
-        title = "02 - Collaboration"
-        subheading = "We thrive using collaboration, leveraging its power for meaningful change in sustainability."
-        iconSrc= "/images/Values2.svg"
-      />
+          <ValuesRightTab
+            title = "02 - Collaboration"
+            subheading = "We thrive using collaboration, leveraging its power for meaningful change in sustainability."
+            iconSrc= "/images/Values2.svg"
+          />
 
-      <ValuesLeftTab
-        title = "03 - Leadership"
-        subheading = "Guided by visionary leadership, we aim to inspire a sustainable future through innovation and determination."
-        iconSrc= "/images/Values3.svg"
-      />
+          <ValuesLeftTab
+            title = "03 - Leadership"
+            subheading = "Guided by visionary leadership, we aim to inspire a sustainable future through innovation and determination."
+            iconSrc= "/images/Values3.svg"
+          />
 
-      <ValuesRightTab
-        title = "04 - Responsibility"
-        subheading = "Responsibility is central to Verdantia, guiding decisions with integrity as well as transparency for sustainable initiatives."
-        iconSrc= "/images/Values4.svg"
-        showDivider={false}
-      />      
+          <ValuesRightTab
+            title = "04 - Responsibility"
+            subheading = "Responsibility is central to Verdantia, guiding decisions with integrity as well as transparency for sustainable initiatives."
+            iconSrc= "/images/Values4.svg"
+            showDivider={false}
+          />      
+        </div>
+
+      </motion.div>
 
       <ImageDivider src={ForestDivider.src} marginTop="6vw"></ImageDivider>
 
-      <BodyHeading marginTop="4vw" marginBottom="2vw" centerAligned={true}>Our Impacts</BodyHeading>
+      <motion.div
+        ref={refOurImpacts}
+        initial="hidden"
+        animate={controlsOurImpacts}
+        variants={variants}
+      >
+        <BodyHeading marginTop="4vw" marginBottom="2vw" centerAligned={true}>Our Impacts</BodyHeading>
 
-      <Slideshow slides={slides} />
+        <Slideshow slides={slides} />
+      </motion.div>
 
       {/* Extra margin so footer doesn't look weird */}
       <div style={{ marginBottom: '20vw' }}></div>
