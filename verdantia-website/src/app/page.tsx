@@ -1,3 +1,5 @@
+'use client'
+
 import DetReqBlock from "./components/JDB/detReqBlock"
 import DetailsBlock from "./components/JDB/detailsBlock"
 import  InfoPanel  from "./components/JDB/infoPanel"
@@ -23,6 +25,10 @@ import Slide2 from "../../public/images/Slide2.svg";
 import Slide3 from "../../public/images/Slide3.svg";
 import Slide4 from "../../public/images/Slide4.svg";
 import Slide5 from "../../public/images/Slide5.svg";
+import {getAuth} from "firebase/auth";
+import {auth} from "@/app/firebase/config";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {useRouter} from "next/navigation";
 
 const slides = [
   {
@@ -58,6 +64,8 @@ const slides = [
 ];
 
 export default function Home() {
+    const [user] = useAuthState(auth)
+    console.log(user)
   return (
     <main>
       <LandingContent
