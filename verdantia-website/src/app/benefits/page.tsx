@@ -22,7 +22,7 @@ import BenSlide2 from "../../../public/images/BenSlide2.svg";
 import BenSlide3 from "../../../public/images/BenSlide3.svg";
 import doctor from "../../../public/images/doctor.svg";
 import walkthrough from "../../../public/images/walkthrough.svg";
-
+import JobApplicationPopUp from "@/app/components/jobApplicationPopUp";
 const slides = [
   {
     imageUrl: BenSlide1.src,
@@ -63,6 +63,7 @@ export default function Jobs() {
 
         <Slideshow slides = {slides}/>
         <div style={{marginBottom : "20vh"}}></div>
+          <JobApplicationPopUp/>
       </main>
     )
   }

@@ -9,6 +9,7 @@ import {auth} from '@/app/firebase/config'
 import signInImage from "./signInImage.png"
 import {router} from "next/client";
 import {useRouter} from "next/navigation";
+import JobApplicationPopUp from "@/app/components/jobApplicationPopUp";
 
 
 const SignUpPopUp: React.FC = () => {
@@ -77,6 +78,8 @@ const SignUpPopUp: React.FC = () => {
 
             </div>
         </div>
+
+
     );
 };
 

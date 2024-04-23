@@ -10,6 +10,7 @@ import BodyHeading from "@/app/components/bodyHeading";
 import {motion, useAnimation} from "framer-motion";
 import {useEffect, useRef, useState} from "react";
 import JobDetailBlock from "@/app/components/jobDetailBlock";
+
 export default function Portal() {
 
     const [user] = useAuthState(auth)
@@ -127,7 +128,6 @@ export default function Portal() {
                 </div>
 
             </motion.div>
-            <button onClick={handleSignOut}>Sign out</button>
         </main>
 
 )
