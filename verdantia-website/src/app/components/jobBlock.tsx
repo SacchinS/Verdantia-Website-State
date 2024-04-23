@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 import React, { CSSProperties } from "react";
 import LocationIcon from "../../../public/images/locationIcon.svg";
 import RemoteIcon from "../../../public/images/remoteIcon.svg";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 interface Props {
     data: string;
@@ -13,19 +16,36 @@ interface Props {
     style?: CSSProperties;
 }
 
-export const JobBlock = ({
-    data = "3 Days ago",
-    applicantCount = "178 Applicants",
-    workMethod = "Remote",
-    location = "San Francisco, CA",
-    jobTitle = "Environmental Scientist",
-    style,
-}: Props): JSX.Element => {
+export const JobBlock = ({data, applicantCount, workMethod, location, jobTitle, style}: Props): JSX.Element => {
+    const [showOverlay, setShowOverlay] = useState(false);
+
     return (
-        <div
+        <motion.div
             style={style}
             className={'flex flex-col w-[28vw] items-start justify-center gap-[1vw] p-[2vw] relative bg-white rounded-[1vw] border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040]'}
+            onHoverStart={() => setShowOverlay(true)}
+            onHoverEnd={() => setShowOverlay(false)}
         >
+            <AnimatePresence>
+            {showOverlay && (
+                <motion.div 
+                    className="absolute inset-0 z-10 flex justify-center items-center"
+                    initial = {{opacity: 0}}
+                    animate = {{opacity: 1}}
+                    exit= {{opacity: 0}}
+                >
+                    <div className="absolute bg-black pointer-events-none opacity-50 h-full w-full"/>   
+                    <motion.h1 
+                        className="bg-white font-semibold text-sm z-10 px-3 py-2 rounded-full flex items-center gap-[0.5ch] hover:opacity-75"
+                        initial = {{y: 10}}
+                        animate = {{y: 0}}
+                        exit = {{y: 10}}
+                    >
+                        <span>Explore Now</span>
+                    </motion.h1>
+                </motion.div>
+            )}
+            </AnimatePresence>
             <div className="flex flex-col items-start justify-center relative self-stretch w-full flex-[0_0_auto">
                 <div className="relative self-stretch mt-[-1.00vw] [font-family:'Bellota_Text'] font-normal text-[#3e3e3e] text-[2.5vw] tracking-[0] leading-[3vw]">
                     {jobTitle}
@@ -63,7 +83,7 @@ export const JobBlock = ({
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

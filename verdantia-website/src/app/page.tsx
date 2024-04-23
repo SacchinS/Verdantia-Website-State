@@ -19,12 +19,14 @@ import ImageDivider from "./components/imageDivider";
 import ValuesLeftTab from "./components/valuesLeftTab";
 import ValuesRightTab from "./components/valuesRightTab";
 import ForestDivider from "../../public/images/forestDivider.png";
+
 import Slideshow from "./components/slideshow";
 import Slide1 from "../../public/images/Slide1.svg";
 import Slide2 from "../../public/images/Slide2.svg";
 import Slide3 from "../../public/images/Slide3.svg";
 import Slide4 from "../../public/images/Slide4.svg";
 import Slide5 from "../../public/images/Slide5.svg";
+
 import {getAuth} from "firebase/auth";
 import {auth} from "@/app/firebase/config";
 import {useAuthState} from "react-firebase-hooks/auth";

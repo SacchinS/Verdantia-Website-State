@@ -97,11 +97,14 @@ export default function Jobs() {
         //   <JobApplicationPopUp/>
       // </main>
       <div>
+
+      <LandingContent
+        heading="Career \nBenefits"
+        subheading="Explore our opportunities"
+      />        
+
       <div className="mx-auto max-w-6xl px-4">
-        <LandingContent
-          heading="Career \nBenefits"
-          subheading="Explore our opportunities"
-        />        
+        
         <BodyHeading marginTop="18vh" marginBottom="7vh"> </BodyHeading>
         
         <div className="flex w-full gap-20 items-start">

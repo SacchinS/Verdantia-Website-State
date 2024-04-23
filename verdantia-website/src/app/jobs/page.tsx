@@ -1,10 +1,11 @@
-
+'use client'
 
 import BodyHeading from '../components/bodyHeading';
 import LandingContent from '../components/landingContent';
 import RoleFilter from '../components/RoleFilter';
 import DurationFilter from '../components/DurationFilter';
 import LocationFilter from '../components/LocationFilter';
+import PlaceFilter from "../components/PlaceFilter"
 import {collection, doc, getDoc, getDocs, query} from "firebase/firestore";
 import {db} from "@/app/firebase/config";
 import ViewFilters from "@/app/components/viewFilters";
@@ -31,6 +32,7 @@ export default function Jobs() {
                   <div
                       className="md:col-span-2"> {/* This div spans both columns, applying styling for LocationFilter */}
                       <LocationFilter/>
+                      <PlaceFilter/>
                   </div>
               </div>
           </div>

@@ -8,6 +8,7 @@ const config: Config = {
         "primitives-green-800": "var(--primitives-green-800)",
         "primitives-white-900": "var(--primitives-white-900)",
         "custom-green": "var(--custom-green)",
+        "button-green": "var(--button-green)",
       }
     },
   },
