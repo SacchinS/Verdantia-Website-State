@@ -23,6 +23,8 @@ import BenSlide3 from "../../../public/images/BenSlide3.svg";
 import doctor from "../../../public/images/doctor.svg";
 import walkthrough from "../../../public/images/walkthrough.svg";
 import JobApplicationPopUp from "@/app/components/jobApplicationPopUp";
+import { FeatureTitle } from "../components/features/title"
+import { Community, Health, Hours, Path, Tech } from "../components/features/card"
 const slides = [
   {
     imageUrl: BenSlide1.src,
@@ -44,14 +46,83 @@ const slides = [
   },
 ];
 
+const features = [
+  {
+    title: "Be able to use cutting-edge technologies",
+    id : "tech",
+    card : Tech
+  },
+  {
+    title: "Define your own path",
+    id : "path",
+    card : Path
+  },
+  {
+    title: "We create a community",
+    id : "community",
+    card : Community
+  },
+  {
+    title: "Flexible work hours",
+    id : "hours",
+    card : Hours
+
+  },
+  {
+    title: "Exceptional healthcare insurance plans",
+    id : "health",
+    card : Health
+  },
+]
+
 export default function Jobs() {
     return (
-      <main>
+      // <main>
+        // <LandingContent
+        //   heading="Career \nBenefits"
+        //   subheading="Explore our opportunities"
+        // />
+        // <BodyHeading marginTop="18vh" marginBottom="7vh">Extensive Health Insurance Plans</BodyHeading>
+        // <div className="flex flex-row ml-[8vw] mr-[10vw]">
+        //   <div style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2vw', marginRight: '15vw' }}>
+        //   Join our team and enjoy the peace of mind that comes with our comprehensive insurance plan. Our coverage includes health, dental, and vision, with accessible premiums and flexible options tailored to your needs. With access to a vast network of healthcare providers and support services, your well-being is our priority. Explore the benefits of joining a company that values your health and happiness.
+        //   </div>
+        //   <img src={doctor.src} className="object-contain h-[50vh] w-[50vw]"></img>
+        // </div>
+
+        // <ImageDivider src={walkthrough.src} marginTop="18vh" marginBottom="20vh"></ImageDivider>
+
+        // <Slideshow slides = {slides}/>
+        // <div style={{marginBottom : "20vh"}}></div>
+        //   <JobApplicationPopUp/>
+      // </main>
+      <div>
+      <div className="mx-auto max-w-6xl px-4">
         <LandingContent
           heading="Career \nBenefits"
           subheading="Explore our opportunities"
-        />
-        <BodyHeading marginTop="18vh" marginBottom="7vh">Extensive Health Insurance Plans</BodyHeading>
+        />        
+        <BodyHeading marginTop="18vh" marginBottom="7vh"> </BodyHeading>
+        
+        <div className="flex w-full gap-20 items-start">
+          <div className="w-full py-[50vh]">
+            <ul>
+              {features.map((feature) => (
+                <li key={feature.id}>
+                  <FeatureTitle id={feature.id}>{feature.title}</FeatureTitle>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="sticky top-0 flex h-screen w-full items-center">
+            <div className="relative aspect-square w-full bg-gray-100 rounded-2xl">
+              {features.map(feature => (
+                <feature.card id ={feature.id} key ={feature.id}/>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="h-screen">
         <div className="flex flex-row ml-[8vw] mr-[10vw]">
           <div style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2vw', marginRight: '15vw' }}>
           Join our team and enjoy the peace of mind that comes with our comprehensive insurance plan. Our coverage includes health, dental, and vision, with accessible premiums and flexible options tailored to your needs. With access to a vast network of healthcare providers and support services, your well-being is our priority. Explore the benefits of joining a company that values your health and happiness.
@@ -59,11 +130,15 @@ export default function Jobs() {
           <img src={doctor.src} className="object-contain h-[50vh] w-[50vw]"></img>
         </div>
 
-        <ImageDivider src={walkthrough.src} marginTop="18vh" marginBottom="20vh"></ImageDivider>
 
-        <Slideshow slides = {slides}/>
+
+      </div>
+      </div>
+      <ImageDivider src={walkthrough.src} marginTop="18vh" marginBottom="20vh"></ImageDivider>
+
+      <Slideshow slides = {slides}/>
         <div style={{marginBottom : "20vh"}}></div>
-          <JobApplicationPopUp/>
-      </main>
+      </div>
+      
     )
   }
