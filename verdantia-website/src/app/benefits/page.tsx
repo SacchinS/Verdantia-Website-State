@@ -51,7 +51,7 @@ export default function Jobs() {
           heading="Career \nBenefits"
           subheading="Explore our opportunities"
         />
-        <BodyHeading marginTop="28vh" marginBottom="7vh">Extensive Health Insurance Plans</BodyHeading>
+        <BodyHeading marginTop="18vh" marginBottom="7vh">Extensive Health Insurance Plans</BodyHeading>
         <div className="flex flex-row ml-[8vw] mr-[10vw]">
           <div style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2vw', marginRight: '15vw' }}>
           Join our team and enjoy the peace of mind that comes with our comprehensive insurance plan. Our coverage includes health, dental, and vision, with accessible premiums and flexible options tailored to your needs. With access to a vast network of healthcare providers and support services, your well-being is our priority. Explore the benefits of joining a company that values your health and happiness.
