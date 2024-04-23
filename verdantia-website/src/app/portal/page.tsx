@@ -21,7 +21,7 @@ export default function Portal() {
     const handleSignOut = () => {
         signOut(auth);
         console.log('Sign Out')
-        router.push('/signIn')
+        router.push('/')
     }
     const handleExploreCareers = () => {
         console.log('redirect to jobs')

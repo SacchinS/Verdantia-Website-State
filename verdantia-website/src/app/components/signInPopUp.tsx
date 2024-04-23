@@ -36,43 +36,57 @@ const SignInPopUp: React.FC = () => {
 
     // @ts-ignore
     return (
-        <div className="flex  items-center relative bg-white w-1/2 h-full justify-self-center">
-            <div className="overflow-hidden rounded-[1vw] flex items-center flex-1 grow relative border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040]">
-                <div className="flex flex-col items-center justify-center px-24 py-24 relative flex-1 grow gap-[15px]">
-                    <div className="inline-flex flex-col items-center gap-[5px] relative flex-[0_0_auto]">
-                        <div className="relative w-fit mt-[-1.00px] [font-family:'Bellota_Text',Helvetica] font-bold text-[#3e3e3e] text-[40px] tracking-[0] leading-[46.0px] whitespace-nowrap">
+        <div className="flex  items-center relative bg-white h-1/2 justify-self-center w-3/4 m-[0.5vw]">
+            <div
+                className="overflow-hidden rounded-[1vw] flex items-center border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040]">
+                <div className="flex flex-col items-center justify-center px-[4vw]   gap-[1.5vw] w-full">
+                    <div className="inline-flex flex-col items-center relative flex-[0_0_auto]">
+                        <div
+                            className="relative w-fit [font-family:'Bellota_Text',Helvetica] font-bold text-[#3e3e3e] text-[2.2vw] ">
                             Welcome Back
                         </div>
                         <div className="inline-flex flex-col items-start gap-[10px] relative flex-[0_0_auto]">
-                            <p className="relative w-fit mt-[-1.00px] [font-family:'Bellota_Text',Helvetica] font-bold text-neutral-500 text-[18px] tracking-[0] leading-[20.7px] whitespace-nowrap">Please enter your details to sign in.</p>
+                            <p className="relative w-fit [font-family:'Bellota_Text',Helvetica] font-bold text-neutral-500 text-[1.2vw]">
+                                Please enter your details to sign in.
+                            </p>
                         </div>
                     </div>
-                    <div className="flex flex-col items-start justify-center gap-[50px] relative self-stretch w-full flex-[0_0_auto]">
-                        <div className="flex flex-col items-start justify-center gap-[15px] w-full flex-[0_0_auto] relative self-stretch">
-                            <div  className="flex flex-col items-start gap-[10px] relative self-stretch w-full flex-[0_0_auto]">
-                                <input type={"email"} placeholder={"email"} value={email} onChange={(e) => setEmail(e.target.value)} className="w-fit h-[72px] mb-[-2.00px] ml-[-2.00px] mr-[-2.00px] rounded-[7px] border-2 border-solid border-[#9c9c9c] relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#3e3e3e] text-[24px] tracking-[0] leading-[27.6px] whitespace-nowrap"></input>
-                            </div>
-                            <div  className="flex flex-col items-start gap-[10px] relative self-stretch w-full flex-[0_0_auto]">
-                                <input type={"password"} placeholder={"password"} value={password} onChange={(e) => setPassword(e.target.value)} className="w-fit h-[72px] mb-[-2.00px] ml-[-2.00px] mr-[-2.00px] rounded-[7px] border-2 border-solid border-[#9c9c9c] relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#3e3e3e] text-[24px] tracking-[0] leading-[27.6px] whitespace-nowrap"></input>
-                            </div>
+                    <div
+                        className="flex flex-col items-start justify-center gap-[1vw] relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="flex flex-col items-center gap-[1vw] w-full">
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full h-fit p-[0.8vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
+                            />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="rounded-[0.5vw] w-full h-fit p-[0.8vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
+                            />
                         </div>
-                        <div className="flex flex-col items-center gap-[10px] w-fit flex-[0_0_auto] relative self-stretch">
-                            <button onClick={handleSignIn} className="flex items-center justify-center gap-[10px] px-[167px] py-[20px] w-fit flex-[0_0_auto] bg-[#53975d] rounded-[7px] overflow-hidden relative self-stretch">
-                                <div className="relative w-fit mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-white text-[24px] tracking-[0] leading-[27.6px] whitespace-nowrap">
+                        <div className="flex flex-col items-center justify-center gap-4vw w-full">
+                            <button onClick={handleSignIn}
+                                    className="flex items-center justify-center gap-10 py-[1vw] w-full bg-[#53975d] rounded-[0.5vw] overflow-hidden">
+                                <div className="text-white text-[1.3vw] leading-27.6">
                                     Sign In
                                 </div>
                             </button>
-                            <p className="relative w-fit [font-family:'Inter-Regular',Helvetica] font-normal text-transparent text-[16px] tracking-[0] leading-[18.4px] whitespace-nowrap">
+                            <p className="relative w-fit [font-family:'Inter-Regular',Helvetica] font-normal text-transparent text-[1vw] mt-[0.25vw] whitespace-nowrap">
                                 <span className="text-neutral-500">Don’t have an account?</span>
                                 <span className="text-black">&nbsp;</span>
                                 <span>
-                                    <button onClick = {redirectToSignUp} className="text-[#3e3e3e] underline">Create account</button>
+                                    <button onClick={redirectToSignUp} className="text-[#3e3e3e] underline">Create account</button>
                                 </span>
                             </p>
                         </div>
                     </div>
                 </div>
-                <img className="relative w-1/2" alt="signInImage" src={signInImage.src} />
+                <img className="relative w-1/2" alt="signInImage" src={signInImage.src}/>
 
             </div>
         </div>
