@@ -1,6 +1,12 @@
+'use client'
+
+
 import { useState } from 'react'; // Import useState hook
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import {signOut} from "@firebase/auth";
+import {auth} from "@/app/firebase/config";
+import {useRouter} from "next/navigation";
 
 const Navbar: React.FC = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false); // State to manage dropdown visibility
@@ -9,6 +15,12 @@ const Navbar: React.FC = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+  const router = useRouter()
+  const handleSignOut = () => {
+    signOut(auth);
+    console.log('Sign Out')
+    router.push('/')
+  }
 
   return (
     <div>
@@ -29,8 +41,8 @@ const Navbar: React.FC = () => {
             <img src="/images/user-nobg.png" alt="Account" className="h-[1.5vw] w-[1.5vw] cursor-pointer" />
             {/* Dropdown menu */}
             {dropdownOpen && (
-              <div className="absolute bg-white shadow-md rounded-md flex flex-col">
-                <NavLink href="/logout" text="Sign Out" />
+              <div className="absolute bg-white rounded-md flex flex-col w-max px-[0.6vw] py-[0.4vh] mt-[0.4vw] right-0">
+                <button onClick={handleSignOut}>Sign Out</button>
               </div>
             )}
           </div>
