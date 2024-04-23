@@ -127,6 +127,7 @@ export default function Portal() {
                 </div>
 
             </motion.div>
+            <button onClick={handleSignOut}>Sign out</button>
         </main>
 
 )
