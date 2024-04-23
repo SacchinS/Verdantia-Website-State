@@ -1,7 +1,15 @@
+import { useState } from 'react'; // Import useState hook
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false); // State to manage dropdown visibility
+
+  // Function to toggle dropdown visibility
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
     <div>
       <div className="bg-custom-green py-[1vw] mt-[1vw]"></div>
@@ -16,8 +24,15 @@ const Navbar: React.FC = () => {
           <NavLink href="/benefits" text="Benefits" />
           <NavLink href="/jobs" text="Jobs" />
           <NavLink href="/portal" text="Portal" />
-          <div>
-            <img src="/images/user-nobg.png" alt="Account" className="h-[1.5vw] w-[1.5vw]" />
+          {/* Image as clickable button to open dropdown */}
+          <div onClick={toggleDropdown} className="relative">
+            <img src="/images/user-nobg.png" alt="Account" className="h-[1.5vw] w-[1.5vw] cursor-pointer" />
+            {/* Dropdown menu */}
+            {dropdownOpen && (
+              <div className="absolute bg-white shadow-md rounded-md flex flex-col">
+                <NavLink href="/logout" text="Sign Out" />
+              </div>
+            )}
           </div>
         </div>
       </div>
