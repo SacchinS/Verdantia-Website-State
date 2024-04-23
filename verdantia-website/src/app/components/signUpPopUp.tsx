@@ -31,7 +31,7 @@ const SignUpPopUp: React.FC = () => {
     }
 
     return (
-        <div className="flex  items-center relative bg-white h-1/2 justify-self-center w-3/4">
+        <div className="flex  items-center relative bg-white h-1/2 justify-self-center w-3/4 m-[0.5vw]">
             <div className="overflow-hidden rounded-[1vw] flex items-center border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040]">
                 <div className="flex flex-col items-center justify-center px-[4vw]   gap-[1.5vw] w-full">
                     <div className="inline-flex flex-col items-center relative flex-[0_0_auto]">
