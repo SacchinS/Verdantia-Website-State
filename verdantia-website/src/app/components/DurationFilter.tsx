@@ -1,6 +1,15 @@
-import React, { useState } from 'react';
-import {arrayUnion, doc, setDoc, updateDoc} from "firebase/firestore";
-import {db} from "@/app/firebase/config";
+'use client'
+import {
+    collection,
+    addDoc,
+    getDoc,
+    QuerySnapshot,
+    query,
+    onSnapshot,
+    deleteDoc,
+    doc, setDoc, updateDoc, arrayUnion, getDocFromCache,
+} from 'firebase/firestore';
+import {db} from '@/app/firebase/config'
 
 interface DurationFilterProps {
   onChange: (durations: string[]) => void;
@@ -27,9 +36,7 @@ const DurationFilter: React.FC  = async () => {
                   <button
                       style={{fontFamily: "Bellota Text", fontSize: '1.5vw', marginBottom: '1vw'}}
                       key={duration}
-                      className={`shadow-md w-[15vw] h-[5vw] py-2 border rounded self-start ${
-                          selectedDurations.includes(duration) ? 'bg-button-green text-black' : ''
-                      }`}
+                      className={"shadow-md w-[15vw] h-[5vw] py-2 border rounded self-start"}
                       onClick={() => addDurationFilter(duration)}
                   >
                       {duration}

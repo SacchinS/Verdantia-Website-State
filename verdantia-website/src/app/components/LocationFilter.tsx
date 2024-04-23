@@ -1,7 +1,16 @@
 // LocationFilter.tsx
-import React, { useState } from 'react';
-import {arrayUnion, doc, setDoc, updateDoc} from "firebase/firestore";
-import {db} from "@/app/firebase/config";
+'use client'
+import {
+  collection,
+  addDoc,
+  getDoc,
+  QuerySnapshot,
+  query,
+  onSnapshot,
+  deleteDoc,
+  doc, setDoc, updateDoc, arrayUnion, getDocFromCache,
+} from 'firebase/firestore';
+import {db} from '@/app/firebase/config'
 
 
 
@@ -29,7 +38,7 @@ const LocationFilter: React.FC = async () => {
           <select
               className="shadow-md w-full border border-gray-300 rounded p-3 text-lg"
               style={{fontFamily: "Bellota Text"}} // Adjust height and font size
-              value={selectedLocation || ''}
+              value={''}
               onChange={(e) => addLocationFilter(e.target.value)}
           >
             <option value="">Select Location</option>
@@ -41,27 +50,21 @@ const LocationFilter: React.FC = async () => {
         <div className="flex justify-center mt-4 gap-10 flex-grow">
           <button
               style={{fontFamily: "Bellota Text", fontSize: '1.5vw', width: '100%'}} // Set width to 100%
-              className={`shadow-md h-[4vw] px-4 py-2 border rounded ${
-                  selectedBlocks.includes('In Person') ? 'bg-button-green text-black' : ''
-              }`}
+              className={"shadow-md h-[4vw] px-4 py-2 border rounded"}
               onClick={() => addPlaceFilter('In Person')}
           >
             In Person
           </button>
           <button
               style={{fontFamily: "Bellota Text", fontSize: '1.5vw', width: '100%'}} // Set width to 100%
-              className={`shadow-md h-[4vw] px-4 py-2 border rounded ${
-                  selectedBlocks.includes('Hybrid') ? 'bg-button-green text-black' : ''
-              }`}
+              className={"shadow-md h-[4vw] px-4 py-2 border rounded"}
               onClick={() => addPlaceFilter('Hybrid')}
           >
             Hybrid
           </button>
           <button
               style={{fontFamily: "Bellota Text", fontSize: '1.5vw', width: '100%'}} // Set width to 100%
-              className={`shadow-md h-[4vw] px-4 py-2 border rounded ${
-                  selectedBlocks.includes('Remote') ? 'bg-button-green text-black' : ''
-              }`}
+              className={"shadow-md h-[4vw] px-4 py-2 border rounded"}
               onClick={() => addPlaceFilter('Remote')}
           >
             Remote

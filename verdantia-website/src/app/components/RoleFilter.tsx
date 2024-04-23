@@ -1,4 +1,4 @@
-
+'use client'
 import {
   collection,
   addDoc,
@@ -23,6 +23,7 @@ const RoleFilter: React.FC = async () => {
     await updateDoc(ref, {
       roles: arrayUnion(role)
     });
+    return null;
   }
 
   const getFilters = async () => {
