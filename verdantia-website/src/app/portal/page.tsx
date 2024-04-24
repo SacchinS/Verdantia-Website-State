@@ -10,7 +10,7 @@ import JobBlock from '@/app/components/jobBlock';
 import JobDetailBlock from '../components/jobDetailBlock';
 import LandingContent from '@/app/components/landingContent';
 import BodyHeading from '@/app/components/bodyHeading';
-import { collection, onSnapshot } from 'firebase/firestore';
+import {collection, doc, getDoc, onSnapshot} from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
 import Footer from '../components/Footer';
 
@@ -24,12 +24,36 @@ interface Job {
     date: string;
     role: string;
     duration: string;
+    experience: string;
+    requirements: string;
+    salary: string;
+    description: string;
 }
 
 export default function Portal() {
+
+
+
     const [user] = useAuthState(auth);
     const router = useRouter();
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+
+
+    useEffect(() => {
+        if (user){
+            const userRef = doc(db, 'users', user.uid)
+            const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
+                if (docSnapshot.exists()){
+                    const data = docSnapshot.data();
+                    if (data.admin === true){
+                        router.push('/adminPortal')
+                    }
+                }
+            })
+        }
+
+
+    }, []);
 
     const [allJobs, setJobListings] = useState<Job[]>([]); // Explicitly defining type as Job[]
 
@@ -100,6 +124,25 @@ export default function Portal() {
                         ))}
                     </div>
                 </div>
+
+                {selectedJob && (
+                    <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
+                        <JobDetailBlock
+                            job={selectedJob.name}
+                            date={selectedJob.date}
+                            applicants={selectedJob.applicants}
+                            location={selectedJob.location}
+                            workExperience={selectedJob.experience}
+                            workType={selectedJob.role}
+                            salary={selectedJob.salary}
+                            detDesc={selectedJob.description}
+                            reqDesc={selectedJob.requirements}
+                            imgSrc='test'
+                            onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
+
+                        />
+                    </div>
+                )}
 
             </motion.div>
             <Footer/>
