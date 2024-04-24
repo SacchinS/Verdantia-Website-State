@@ -48,10 +48,10 @@ const LocationFilter: React.FC = () => {
         <select
           className="shadow-md w-full border border-gray-300 rounded p-3 text-[1.5vw]"
           style={{fontFamily: "Bellota Text"}}
-          value={selectedLocation || ''}
+          value={selectedLocation}
           onChange={(e) => updateLocationFilter(e.target.value)}
         >
-          <option value="">Select Location</option>
+          <option value="">All</option>
           <option value="Seattle, WA">Seattle, WA</option>
           <option value="London, UK">London, UK</option>
           <option value="New York City, NY">New York City, NY</option>
