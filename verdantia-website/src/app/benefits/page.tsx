@@ -125,32 +125,16 @@ export default function Jobs() {
             </div>
           </div>
         </div>
-<<<<<<< Updated upstream
-        <div className="h-screen">
-=======
 
       </div>
         <ImageDivider src={walkthrough.src} marginTop="1vw" marginBottom="1vw"></ImageDivider>
 
->>>>>>> Stashed changes
         <div className="flex flex-row ml-[8vw] mr-[10vw]">
           <div style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2vw', marginRight: '15vw' }}>
           Join our team and enjoy the peace of mind that comes with our comprehensive insurance plan. Our coverage includes health, dental, and vision, with accessible premiums and flexible options tailored to your needs. With access to a vast network of healthcare providers and support services, your well-being is our priority. Explore the benefits of joining a company that values your health and happiness.
           </div>
           <img src={doctor.src} className="object-contain h-[50vh] w-[50vw]"></img>
         </div>
-<<<<<<< Updated upstream
-
-
-
-      </div>
-      </div>
-      <ImageDivider src={walkthrough.src} marginTop="18vh" marginBottom="20vh"></ImageDivider>
-
-      <Slideshow slides = {slides}/>
-        <div style={{marginBottom : "20vh"}}></div>
-=======
->>>>>>> Stashed changes
       </div>
       
     )
