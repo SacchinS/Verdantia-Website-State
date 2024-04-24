@@ -38,6 +38,11 @@ import { useState } from "react";
 
 import Carousel from "./components/Carousel";
 
+import React from 'react';
+import { signOut } from '@firebase/auth';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from '@/app/firebase/config';
+
 const slides = [
   {
     imageUrl: Slide1.src,
@@ -71,29 +76,17 @@ const slides = [
   }
 ];
 
-const blocks = [
-  {
-    data: '3 Days ago',
-    applicantCount: '178 Applicants',
-    workMethod: 'Remote',
-    location: 'San Francisco, CA',
-    jobTitle: 'Environmental Scientist',
-  },
-  {
-    data: '11 Days ago',
-    applicantCount: '67 Applicants',
-    workMethod: 'In Person',
-    location: 'Seattle, WA',
-    jobTitle: 'Renewable Energy Analyst',
-  },
-  {
-    data: '8 Days ago',
-    applicantCount: '63 Applicants',
-    workMethod: 'Remote',
-    location: 'London, UK',
-    jobTitle: 'Carbon Footprint Analyst',
-  },
-];
+// Define interface for job data
+interface Job {
+  id: string;
+  name: string;
+  location: string;
+  place: string;
+  applicants: string;
+  date: string;
+  role: string;
+  duration: string;
+}
 
 export default function Home() {
     const [user] = useAuthState(auth)
@@ -108,6 +101,23 @@ export default function Home() {
     const refOurMission = useRef<HTMLDivElement | null>(null);
     const refOurValues = useRef<HTMLDivElement | null>(null);
     const refOurImpacts = useRef<HTMLDivElement | null>(null);
+
+    const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+
+    const [allJobs, setJobListings] = useState<Job[]>([]); // Explicitly defining type as Job[]
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(db, 'allJobs'), (snapshot) => {
+            const jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Job)); // Cast each document to Job type
+            setJobListings(jobs);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    const handleJobBlockClick = (job: Job) => {
+      setSelectedJob(job); // Set the selected job when a JobBlock is clicked
+    };
 
   useEffect(() => {
     const onScroll = () => {
@@ -148,7 +158,14 @@ export default function Home() {
         variants={variants}
       >
         <BodyHeading marginTop="6vw" marginBottom="2vw">Featured Jobs</BodyHeading>
-        <Carousel blocks={blocks} />
+        <Carousel blocks={allJobs.map(job => ({
+          data: job.date,
+          applicantCount: job.applicants,
+          workMethod: job.place,
+          location: job.location,
+          jobTitle: job.name,
+          duration: job.duration,
+        }))} />
       </motion.div>
 
       <motion.div

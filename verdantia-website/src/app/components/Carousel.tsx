@@ -11,6 +11,7 @@ interface Block {
   workMethod: string;
   location: string;
   jobTitle: string;
+  duration: string;
 }
 
 interface CarouselProps {
@@ -75,6 +76,7 @@ const Carousel: React.FC<CarouselProps> = ({ blocks }) => {
           workMethod={item.workMethod}
           location={item.location}
           jobTitle={item.jobTitle}
+          duration={item.duration}
           key={idx}
         />
       ))}
