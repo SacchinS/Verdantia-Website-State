@@ -96,16 +96,16 @@ export default function Jobs() {
         // <div style={{marginBottom : "20vh"}}></div>
         //   <JobApplicationPopUp/>
       // </main>
-      <div>
-      <div className="mx-auto max-w-6xl px-4">
+      <div >
+      <div className="mx-auto max-w-6xl px-4 ">
         <LandingContent
           heading="Career \nBenefits"
           subheading="Explore our opportunities"
         />        
-        <BodyHeading marginTop="18vh" marginBottom="7vh"> </BodyHeading>
+        <BodyHeading marginTop="18vw" marginBottom="0vw"> </BodyHeading>
         
-        <div className="flex w-full gap-20 items-start">
-          <div className="w-full py-[50vh]">
+        <div className="flex w-full gap-[4vw] items-start">
+          <div className="w-full sm:py-[30vw] py-[75vw] ">
             <ul>
               {features.map((feature) => (
                 <li key={feature.id}>
@@ -123,21 +123,19 @@ export default function Jobs() {
           </div>
         </div>
         <div className="h-screen">
+{/* 
         <div className="flex flex-row ml-[8vw] mr-[10vw]">
           <div style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2vw', marginRight: '15vw' }}>
-          Join our team and enjoy the peace of mind that comes with our comprehensive insurance plan. Our coverage includes health, dental, and vision, with accessible premiums and flexible options tailored to your needs. With access to a vast network of healthcare providers and support services, your well-being is our priority. Explore the benefits of joining a company that values your health and happiness.
+            Join our team and enjoy the peace of mind that comes with our comprehensive insurance plan. Our coverage includes health, dental, and vision, with accessible premiums and flexible options tailored to your needs. With access to a vast network of healthcare providers and support services, your well-being is our priority. Explore the benefits of joining a company that values your health and happiness.
           </div>
           <img src={doctor.src} className="object-contain h-[50vh] w-[50vw]"></img>
         </div>
-
+      <ImageDivider src={walkthrough.src} marginTop="18vh" marginBottom="20vh"></ImageDivider> */}
 
 
       </div>
       </div>
-      <ImageDivider src={walkthrough.src} marginTop="18vh" marginBottom="20vh"></ImageDivider>
 
-      <Slideshow slides = {slides}/>
-        <div style={{marginBottom : "20vh"}}></div>
       </div>
       
     )
