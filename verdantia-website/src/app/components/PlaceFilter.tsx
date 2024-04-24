@@ -6,7 +6,7 @@ const PlaceFilter: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selectedPlace"), (doc) => {
+    const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selected"), (doc) => {
       const data = doc.data();
       if (data) {
         setSelectedFilters(data.places);
@@ -21,12 +21,12 @@ const PlaceFilter: React.FC = () => {
   }, []);
 
   const resetFiltersData = async () => {
-    const ref = doc(db, "selectedFilters", "selectedPlace");
+    const ref = doc(db, "selectedFilters", "selected");
     await updateDoc(ref, { places: [] });
   }
 
   const updatePlaceFilter = async (place: string) => {
-    const ref = doc(db, "selectedFilters", "selectedPlace");
+    const ref = doc(db, "selectedFilters", "selected");
     if (selectedFilters.includes(place)) {
       await updateDoc(ref, { places: arrayRemove(place) });
     } else {

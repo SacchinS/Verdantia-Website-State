@@ -15,7 +15,7 @@ const DurationFilter: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selectedDuration"), (doc) => {
+    const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selected"), (doc) => {
       const data = doc.data();
       if (data) {
         setSelectedFilters(data.durations);
@@ -30,12 +30,12 @@ const DurationFilter: React.FC = () => {
   }, []);
 
   const resetFiltersData = async () => {
-    const ref = doc(db, "selectedFilters", "selectedDuration");
+    const ref = doc(db, "selectedFilters", "selected");
     await updateDoc(ref, { durations: [] });
   }
 
   const updateDurationFilter = async (duration: string) => {
-    const ref = doc(db, "selectedFilters", "selectedDuration");
+    const ref = doc(db, "selectedFilters", "selected");
     if (selectedFilters.includes(duration)) {
       await updateDoc(ref, { durations: arrayRemove(duration) });
     } else {
