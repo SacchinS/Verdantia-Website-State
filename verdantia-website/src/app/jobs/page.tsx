@@ -15,6 +15,9 @@ import {list} from "postcss";
 import {List} from "postcss/lib/list";
 import placeFilter from "../components/PlaceFilter";
 import signUpPopUp from "@/app/components/signUpPopUp";
+import JobDetailBlock from '../components/jobDetailBlock';
+
+
 
 export default function Jobs() {
 
@@ -30,6 +33,7 @@ export default function Jobs() {
     }
 
     const [allJobs, setJobListings] = useState<Job[]>([]); // Explicitly defining type as Job[]
+    const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'allJobs'), (snapshot) => {
@@ -40,10 +44,10 @@ export default function Jobs() {
     }, []);
 
 
-    const [durations, setDurations] = useState([]);
-    const [location, setLocation] = useState([]);
-    const [places, setPlaces] = useState([]);
-    const [roles, setRoles] = useState([]);
+    const [durations, setDurations] = useState<string[]>([]);
+    const [location, setLocation] = useState<string[]>([]);
+    const [places, setPlaces] = useState<string[]>([]);
+    const [roles, setRoles] = useState<string[]>([]);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, "selectedFilters"), snapshot => {
@@ -69,6 +73,10 @@ export default function Jobs() {
     const getJobs = () => {
         console.log(getJobsToRender)
     }
+
+    const handleJobBlockClick = (job: Job) => {
+        setSelectedJob(job); // Set the selected job when a JobBlock is clicked
+    };
 
     const getJobsToRender = allJobs.filter(Job => {
         console.log("Job: ",Job)
@@ -117,12 +125,31 @@ export default function Jobs() {
                             location={job.location}
                             workMethod={job.place}
                             duration={job.duration}
+                            onClick={() => handleJobBlockClick(job)} // Pass onClick handler to JobBlock
                         />
                     ))}
                 </div>
             </div>
 
             <div className='mb-[20vw]'></div>
+
+            {selectedJob && (
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+                    <JobDetailBlock
+                    job={selectedJob.name}
+                    date={selectedJob.date}
+                    applicants={selectedJob.applicants}
+                    location={selectedJob.location}
+                    workExperience='test'
+                    workType={selectedJob.role}
+                    salary='test'
+                    detDesc='test'
+                    reqDesc='test'
+                    imgSrc='test'
+                    onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
+                    />
+                </div>
+      )}
 
         </main>
 
