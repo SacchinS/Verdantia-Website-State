@@ -22,6 +22,13 @@ const JobPostForm: React.FC = () => {
             description: description,
             requirements: requirements,
         })
+        setName("")
+        setRole("")
+        setPlace("")
+        setDuration("")
+        setLocation("")
+        setDescription("")
+        setRequirements("")
     }
 
     return (
