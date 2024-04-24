@@ -107,7 +107,7 @@ export default function Jobs() {
           subheading="Explore our opportunities"
         />        
         <div className="mx-auto max-w-6xl px-4">
-          <BodyHeading marginTop="18vh" marginBottom="7vh"> </BodyHeading>  
+          <p className="text-center pt-[35vw] pb-[10vw] px-[4vw] text-[8vw] sm:pt-[15vw] sm:text-[3vw]" style={{ fontFamily: 'Bellota Text' }}>Look at some of our benefits below: </p>  
           <div className="flex w-full gap-[2vw] items-start">
             <div className="w-full py-[50vh]">
               <ul>
@@ -128,27 +128,28 @@ export default function Jobs() {
           </div>
         </div>
         <ImageDivider src={walkthrough.src} marginTop="1vw" marginBottom="1vw"></ImageDivider>
+        <p className="text-center pt-[5vw] pb-[20vw] px-[4vw] text-[8vw] sm:pt-[5vw] sm:pb-[5vw] sm:text-[3vw]" style={{ fontFamily: 'Bellota Text' }}>What do employees say? </p>  
         <div className="grid grid-cols-1 sm:grid-cols-3 px-[8vw] gap-[11vw]">
           <TestCard 
             source = {Shawna.src}
-            name ="string"
-            position ="string"
-            location= "string"
-            quote= "string"
+            name ="Shawna D."
+            position ="Senior Environmental Analyst"
+            location= "Seattle, WA"
+            quote= '"At Verdantia, I have thrived in a culture fostering creativity and collaboration. With supportive leadership and innovative projects, my journey here has been transformative. Proud to work where employees are valued."'
           />
           <TestCard 
-            source = {Shawna.src}
-            name ="string"
-            position ="string"
-            location= "string"
-            quote= "string"
+            source = {Adam.src}
+            name ="Adam W."
+            position ="Head of Forestry Operations"
+            location= "San Francisco, CA"
+            quote= '"Verdantia offers a dynamic environment where talent thrives. Through challenging projects and continuous learning, I have grown both professionally and personally. Flexible work and a forward-thinking team make every day fulfilling."'
           />
           <TestCard 
-            source = {Shawna.src}
-            name ="string"
-            position ="string"
-            location= "string"
-            quote= "string"
+            source = {Alisa.src}
+            name ="Alisa C."
+            position ="Sustainable Design Consultant"
+            location= "London, UK"
+            quote= '"Verdantia feels like family, fostering camaraderie and support. Over five years, ensuring customer happiness has been fulfilling. Grateful to work where employee well-being is valued and contributions recognized."'
           />
         </div>
       </div>
