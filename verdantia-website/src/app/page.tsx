@@ -262,7 +262,7 @@ export default function Home() {
             onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
           />
         </div>
-    )}
+      )}
       
       <Footer/>
 
