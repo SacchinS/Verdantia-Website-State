@@ -39,11 +39,11 @@ export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle,
                 </div>
                 <div className="inline-flex items-center gap-[15px] relative flex-[0_0_auto]">
                     <div className="relative w-fit mt-[0.25vw] [font-family: 'Montserrat'] font-medium text-neutral-400 text-[1vw] text-center tracking-[0] leading-[normal]">
-                        {data}
+                        {data} Days ago
                     </div>
                     <div className="relative mt-[0.25vw] w-[0.25vw] h-[0.25vw] bg-neutral-400 rounded-[10vw]" />
                     <div className="relative w-fit mt-[0.25vw] [font-family:'Montserrat'] font-medium text-neutral-400 text-[1vw] text-center tracking-[0] leading-[normal]">
-                        {applicantCount}
+                        {applicantCount} Applicants
                     </div>
                 </div>
             </div>

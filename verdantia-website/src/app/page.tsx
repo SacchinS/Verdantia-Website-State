@@ -98,16 +98,16 @@ const blocks = [
 export default function Home() {
     const [user] = useAuthState(auth)
     console.log(user)
-  const [isVisible, setIsVisible] = useState(false);
-  const controlsFeaturedJobs = useAnimation();
-  const controlsOurMission = useAnimation();
-  const controlsOurValues = useAnimation();
-  const controlsOurImpacts = useAnimation();
+    const [isVisible, setIsVisible] = useState(false);
+    const controlsFeaturedJobs = useAnimation();
+    const controlsOurMission = useAnimation();
+    const controlsOurValues = useAnimation();
+    const controlsOurImpacts = useAnimation();
 
-  const refFeaturedJobs = useRef<HTMLDivElement | null>(null);
-  const refOurMission = useRef<HTMLDivElement | null>(null);
-  const refOurValues = useRef<HTMLDivElement | null>(null);
-  const refOurImpacts = useRef<HTMLDivElement | null>(null);
+    const refFeaturedJobs = useRef<HTMLDivElement | null>(null);
+    const refOurMission = useRef<HTMLDivElement | null>(null);
+    const refOurValues = useRef<HTMLDivElement | null>(null);
+    const refOurImpacts = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => {
