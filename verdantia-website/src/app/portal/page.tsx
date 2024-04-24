@@ -10,7 +10,7 @@ import JobBlock from '@/app/components/jobBlock';
 import JobDetailBlock from '../components/jobDetailBlock';
 import LandingContent from '@/app/components/landingContent';
 import BodyHeading from '@/app/components/bodyHeading';
-import {collection, doc, getDoc, onSnapshot} from 'firebase/firestore';
+import { collection, doc, onSnapshot, updateDoc, arrayUnion, setDoc, getDoc, arrayRemove } from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
 import Footer from '../components/Footer';
 
@@ -31,38 +31,32 @@ interface Job {
 }
 
 export default function Portal() {
-
-
-
     const [user] = useAuthState(auth);
     const router = useRouter();
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+    const [userJobList, setUserJobList] = useState<string[]>([]);
+    const [allJobs, setJobListings] = useState<Job[]>([]);
 
-
+    // Fetch user's job list from Firestore when component mounts
     useEffect(() => {
-        if (user){
-            const userRef = doc(db, 'users', user.uid)
+        if (user) {
+            const userRef = doc(db, 'users', user.uid);
             const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
-                if (docSnapshot.exists()){
-                    const data = docSnapshot.data();
-                    if (data.admin === true){
-                        router.push('/adminPortal')
-                    }
+                if (docSnapshot.exists()) {
+                    const userData = docSnapshot.data();
+                    setUserJobList(userData.jobList || []); // Set user's job list
                 }
-            })
+            });
+            return () => unsubscribe();
         }
+    }, [user]);
 
-
-    }, []);
-
-    const [allJobs, setJobListings] = useState<Job[]>([]); // Explicitly defining type as Job[]
-
+    // Fetch all jobs from Firestore when component mounts
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'allJobs'), (snapshot) => {
-            const jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Job)); // Cast each document to Job type
+            const jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Job));
             setJobListings(jobs);
         });
-
         return () => unsubscribe();
     }, []);
 
@@ -71,23 +65,49 @@ export default function Portal() {
         if (!user) router.push('/signIn');
     }, [user, router]);
 
-    const handleSignOut = () => {
-        signOut(auth);
-        router.push('/');
+    // Function to add job to user's job list
+    const addToUserJobList = async (jobId: string) => {
+        if (user) {
+            try {
+                const userRef = doc(db, 'users', user.uid);
+                const userData = await getDoc(userRef);
+                const userJobList = userData.data()?.jobList || [];
+                
+                if (userJobList.includes(jobId)) {
+                    // If job is already in user's job list, remove it
+                    await updateDoc(userRef, {
+                        jobList: arrayRemove(jobId)
+                    });
+                } else {
+                    // If job is not in user's job list, add it
+                    await updateDoc(userRef, {
+                        jobList: arrayUnion(jobId)
+                    });
+                }
+            } catch (error) {
+                console.error('Error updating user jobList:', error);
+            }
+        }
     };
 
+    // Function to handle clicking on a job block
     const handleJobBlockClick = (job: Job) => {
         setSelectedJob(job); // Set the selected job when a JobBlock is clicked
     };
 
+    // Function to handle exploring more jobs
     const handleExploreCareers = () => {
         router.push('/jobs');
     };
 
+    // Variants for animation
     const variants = {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     };
+
+    // Filter job listings to show only jobs in the user's list
+    const userJobs = allJobs.filter(job => userJobList.includes(job.id));
 
     return (
         <main>
@@ -109,8 +129,8 @@ export default function Portal() {
 
                 <div className="container mx-auto py-5 text-white overflow-x-auto flex justify-center">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[3vw]">
-                        {/* Map over job listings to create JobBlocks */}
-                        {allJobs.map((job) => (
+                        {/* Map over user's job list to create JobBlocks */}
+                        {userJobs.map((job) => (
                             <JobBlock
                                 key={job.id}
                                 applicantCount={job.applicants}
@@ -138,7 +158,12 @@ export default function Portal() {
                             detDesc={selectedJob.description}
                             reqDesc={selectedJob.requirements}
                             onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
-
+                            buttonText={
+                                userJobList.includes(selectedJob.id) 
+                                ? "Remove from List" 
+                                : "Add to List"
+                            }
+                            onAddToList={() => addToUserJobList(selectedJob.id)}
                         />
                     </div>
                 )}

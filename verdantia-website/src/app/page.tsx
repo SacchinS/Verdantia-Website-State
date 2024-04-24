@@ -43,6 +43,7 @@ import { signOut } from '@firebase/auth';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
 import Footer from "./components/Footer"
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 const slides = [
   {
@@ -94,61 +95,105 @@ interface Job {
 }
 
 export default function Home() {
-    const [user] = useAuthState(auth)
-    console.log(user)
-    const [isVisible, setIsVisible] = useState(false);
-    const controlsFeaturedJobs = useAnimation();
-    const controlsOurMission = useAnimation();
-    const controlsOurValues = useAnimation();
-    const controlsOurImpacts = useAnimation();
+  const [user] = useAuthState(auth);
+  const [isVisible, setIsVisible] = useState(false);
+  const controlsFeaturedJobs = useAnimation();
+  const controlsOurMission = useAnimation();
+  const controlsOurValues = useAnimation();
+  const controlsOurImpacts = useAnimation();
 
-    const refFeaturedJobs = useRef<HTMLDivElement | null>(null);
-    const refOurMission = useRef<HTMLDivElement | null>(null);
-    const refOurValues = useRef<HTMLDivElement | null>(null);
-    const refOurImpacts = useRef<HTMLDivElement | null>(null);
+  const refFeaturedJobs = useRef<HTMLDivElement | null>(null);
+  const refOurMission = useRef<HTMLDivElement | null>(null);
+  const refOurValues = useRef<HTMLDivElement | null>(null);
+  const refOurImpacts = useRef<HTMLDivElement | null>(null);
 
-    const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-
-    const [allJobs, setJobListings] = useState<Job[]>([]); // Explicitly defining type as Job[]
-
-    useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, 'allJobs'), (snapshot) => {
-            const jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Job)); // Cast each document to Job type
-            setJobListings(jobs);
-        });
-
-        return () => unsubscribe();
-    }, []);
-
-    const handleJobBlockClick = (job: Job) => {
-      return () => {
-        setSelectedJob(job); // Set the selected job when a JobBlock is clicked
-      };
-    };
-    
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [allJobs, setJobListings] = useState<Job[]>([]);
+  const [userJobList, setUserJobList] = useState<string[]>([]); // Define userJobList state
 
   useEffect(() => {
-    const onScroll = () => {
-      const checkVisibility = (ref: React.MutableRefObject<HTMLDivElement | null>, controls: any) => {
-        if (ref.current && ref.current.getBoundingClientRect().top < window.innerHeight) {
-          setIsVisible(true);
-          controls.start("visible");
-        }
+      const unsubscribe = onSnapshot(collection(db, 'allJobs'), (snapshot) => {
+          const jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Job));
+          setJobListings(jobs);
+      });
+
+      return () => unsubscribe();
+  }, []);
+
+  // Fetch userJobList when user changes
+  useEffect(() => {
+      const fetchUserJobList = async () => {
+          if (user) {
+              try {
+                  const userRef = doc(db, `users/${user.uid}`);
+                  const userData = await getDoc(userRef);
+                  const userJobListData = userData.data()?.jobList || [];
+                  setUserJobList(userJobListData);
+              } catch (error) {
+                  console.error('Error fetching user jobList:', error);
+              }
+          }
       };
 
-      checkVisibility(refFeaturedJobs, controlsFeaturedJobs);
-      checkVisibility(refOurMission, controlsOurMission);
-      checkVisibility(refOurValues, controlsOurValues);
-      checkVisibility(refOurImpacts, controlsOurImpacts);
-    };
+      fetchUserJobList();
+  }, [user]);
 
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+  const addToUserJobList = async (jobId: string) => {
+      if (user) {
+          try {
+              const userRef = doc(db, `users/${user.uid}`);
+              const userData = await getDoc(userRef);
+              const userJobList = userData.data()?.jobList || [];
+
+              let updatedJobList: string[] = []; // Explicitly define the type of updatedJobList as string[]
+
+              if (userJobList.includes(jobId)) {
+                  await updateDoc(userRef, {
+                      jobList: userJobList.filter((id: string) => id !== jobId),
+                  });
+                  updatedJobList = userJobList.filter((id: string) => id !== jobId); // Explicitly define the type of id as string
+              } else {
+                  await updateDoc(userRef, {
+                      jobList: [...userJobList, jobId],
+                  });
+                  updatedJobList = [...userJobList, jobId];
+              }
+
+              // Force a state update to reflect the changes immediately
+            setUserJobList(userJobList);
+
+          } catch (error) {
+              console.error('Error updating user jobList:', error);
+          }
+      }
+  };
+
+  const handleJobBlockClick = (job: Job) => () => {
+      setSelectedJob(job);
+  };
+
+  useEffect(() => {
+      const onScroll = () => {
+          const checkVisibility = (ref: React.MutableRefObject<HTMLDivElement | null>, controls: any) => {
+              if (ref.current && ref.current.getBoundingClientRect().top < window.innerHeight) {
+                  setIsVisible(true);
+                  controls.start("visible");
+              }
+          };
+
+          checkVisibility(refFeaturedJobs, controlsFeaturedJobs);
+          checkVisibility(refOurMission, controlsOurMission);
+          checkVisibility(refOurValues, controlsOurValues);
+          checkVisibility(refOurImpacts, controlsOurImpacts);
+      };
+
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
   }, [controlsFeaturedJobs, controlsOurMission, controlsOurValues, controlsOurImpacts]);
 
   const variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+      hidden: { opacity: 0, y: 50 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (
@@ -250,16 +295,22 @@ export default function Home() {
       {selectedJob && (
         <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
           <JobDetailBlock
-            job={selectedJob.name}
-            date={selectedJob.date}
-            applicants={selectedJob.applicants}
-            location={selectedJob.location}
-            workExperience={selectedJob.experience}
-            workType={selectedJob.role}
-            salary={selectedJob.salary}
-            detDesc={selectedJob.description}
-            reqDesc={selectedJob.requirements}
-            onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
+              job={selectedJob.name}
+              date={selectedJob.date}
+              applicants={selectedJob.applicants}
+              location={selectedJob.location}
+              workExperience={selectedJob.experience}
+              workType={selectedJob.role}
+              salary={selectedJob.salary}
+              detDesc={selectedJob.description}
+              reqDesc={selectedJob.requirements}
+              onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
+              buttonText={
+                userJobList.includes(selectedJob.id) 
+                ? "Remove from List" 
+                : "Add to List"
+              }
+              onAddToList={() => addToUserJobList(selectedJob.id)}
           />
         </div>
       )}

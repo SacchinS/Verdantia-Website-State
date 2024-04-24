@@ -12,7 +12,7 @@ export const JobSubInfoBlock: React.FC<myProps> = ({ title, subtitle, salary }) 
             {salary && 
                 <div className="inline-flex flex-row items-center"> {/* Apply align-items: center */}
                     <p className="text-[1.5vh] font-medium" style={{ fontFamily: 'Montserrat' }}>{salary}</p>
-                    <p className="text-[0.75vh] font-medium text-[#b2b2b2] mt-[0.3vh]" style={{ fontFamily: 'Montserrat' }}>/year</p>    
+                    <p className="text-[1.3vh] font-medium text-[#b2b2b2] mt-[0.3vh]" style={{ fontFamily: 'Montserrat' }}>/year</p>    
                 </div>
             }
         </div>
