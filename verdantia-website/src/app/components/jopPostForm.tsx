@@ -9,6 +9,8 @@ const JobPostForm: React.FC = () => {
     const [place, setPlace] = React.useState("");
     const [duration, setDuration] = React.useState("");
     const [location, setLocation] = React.useState("");
+    const [experience, setExperience] = React.useState("");
+    const [salary, setSalary] = React.useState("$");
     const [description, setDescription] = React.useState("");
     const [requirements, setRequirements] = React.useState("");
 
@@ -29,6 +31,8 @@ const JobPostForm: React.FC = () => {
         setLocation("")
         setDescription("")
         setRequirements("")
+        setExperience("")
+        setSalary("")
     }
 
     return (
@@ -70,7 +74,7 @@ const JobPostForm: React.FC = () => {
                                 value={duration}
                                 onChange={(e) => setDuration(e.target.value)}
                             >
-                                <option value="Full Time">Select</option>
+                                <option hidden={true} value="">Select</option>
                                 <option value="Full Time">Full Time</option>
                                 <option value="Part Time">Part Time</option>
                                 <option value="Internship">Internship</option>
@@ -87,7 +91,7 @@ const JobPostForm: React.FC = () => {
                                 value={place}
                                 onChange={(e) => setPlace(e.target.value)}
                             >
-                                <option value="In Person">Select</option>
+                                <option hidden={true} value="">Select</option>
                                 <option value="In Person">In Person</option>
                                 <option value="Hybrid">Hybrid</option>
                                 <option value="Remote">Remote</option>
@@ -98,20 +102,24 @@ const JobPostForm: React.FC = () => {
                             Description
                         </div>
                         <input
-                            type="firstname"
+                            type="description"
                             placeholder="Enter"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             className="w-full h-fit p-[0.8vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                         />
+                        <div
+                            className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
+                            Salary
+                        </div>
+                        <input
+                            type="firstname"
+                            placeholder="Enter"
+                            value={salary}
+                            onChange={(e) => setSalary(e.target.value)}
+                            className="w-full h-fit p-[0.8vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
+                        />
 
-                        <button
-                            onClick={handleSubmit}
-                            className="mt-[0.75vw] flex items-center justify-center py-[0.7vw] w-full bg-[#53975d] rounded-[0.5vw] overflow-hidden">
-                            <div className="text-white text-[1vw] leading-27.6">
-                                Submit
-                            </div>
-                        </button>
                     </div>
                     <div className="flex flex-col items-start gap-[1vw] w-full">
 
@@ -126,7 +134,7 @@ const JobPostForm: React.FC = () => {
                                 value={role}
                                 onChange={(e) => setRole(e.target.value)}
                             >
-                                <option value="Coordinator">Select</option>
+                                <option hidden={true} value="">Select</option>
                                 <option value="Coordinator">Coordinator</option>
                                 <option value="Manager">Manager</option>
                                 <option value="Engineer">Engineer</option>
@@ -146,10 +154,29 @@ const JobPostForm: React.FC = () => {
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
                             >
-                                <option value="Seattle, WA">Select</option>
+                                <option hidden={true} value="">Select</option>
                                 <option value="Seattle, WA">Seattle, WA</option>
                                 <option value="London, UK">London, UK</option>
                                 <option value="New York City, NY">New York City, NY</option>
+                            </select>
+                        </div>
+                        <div
+                            className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
+                            Experience Level
+                        </div>
+                        <div>
+                            <select
+                                className="rounded-[0.5vw] w-full h-fit p-[0.8vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
+                                style={{fontFamily: "Bellota Text"}}
+                                value={experience}
+                                onChange={(e) => setExperience(e.target.value)}
+                            >
+                                <option hidden={true} value="">Select</option>
+                                <option value="Entry Level">Entry Level</option>
+                                <option value="Intermediate Level">Intermediate Level</option>
+                                <option value="Mid Level">Mid Level</option>
+                                <option value="Senior Level">Senior Level</option>
+                                <option value="Executive Level">Executive Level</option>
                             </select>
                         </div>
                         <div
@@ -163,7 +190,17 @@ const JobPostForm: React.FC = () => {
                             onChange={(e) => setRequirements(e.target.value)}
                             className="w-full h-fit p-[0.8vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                         />
-
+                        <div
+                            className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal] overflow-clip"}>
+                            -------------------------------------------------
+                        </div>
+                        <button
+                            onClick={handleSubmit}
+                            className=" flex items-center justify-center py-[1vw] w-full bg-[#53975d] rounded-[0.5vw] overflow-hidden">
+                            <div className="text-white text-[1vw] leading-27.6">
+                                Submit
+                            </div>
+                        </button>
                     </div>
 
                 </div>
