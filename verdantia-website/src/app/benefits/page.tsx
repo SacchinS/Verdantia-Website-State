@@ -128,7 +128,7 @@ export default function Jobs() {
           </div>
         </div>
         <ImageDivider src={walkthrough.src} marginTop="1vw" marginBottom="1vw"></ImageDivider>
-        <p className="text-center pt-[5vw] pb-[20vw] px-[4vw] text-[8vw] sm:pt-[5vw] sm:pb-[5vw] sm:text-[3vw]" style={{ fontFamily: 'Bellota Text' }}>What do employees say? </p>  
+        <p className="text-center pt-[5vw] pb-[20vw] px-[4vw] text-[8vw] sm:pt-[5vw] sm:pb-[1vw] sm:text-[3vw]" style={{ fontFamily: 'Bellota Text' }}>What do our employees have to say? </p>  
         <div className="grid grid-cols-1 sm:grid-cols-3 px-[8vw] gap-[11vw]">
           <TestCard 
             source = {Shawna.src}
