@@ -12,6 +12,7 @@ interface Block {
   location: string;
   jobTitle: string;
   duration: string;
+  onClick: () => void; // Add onClick prop
 }
 
 interface CarouselProps {
@@ -77,6 +78,7 @@ const Carousel: React.FC<CarouselProps> = ({ blocks }) => {
           location={item.location}
           jobTitle={item.jobTitle}
           duration={item.duration}
+          onClick={item.onClick}
           key={idx}
         />
       ))}

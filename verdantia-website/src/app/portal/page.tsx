@@ -100,25 +100,6 @@ export default function Portal() {
                     </div>
                 </div>
 
-                {selectedJob && (
-                    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
-                        <JobDetailBlock
-                            job={selectedJob.name}
-                            date={selectedJob.date}
-                            applicants={selectedJob.applicants}
-                            location={selectedJob.location}
-                            workExperience='test'
-                            workType={selectedJob.role}
-                            salary='test'
-                            detDesc='test'
-                            reqDesc='test'
-                            imgSrc='test'
-                            onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
-
-                        />
-                    </div>
-                )}
-
             </motion.div>
         </main>
     );
