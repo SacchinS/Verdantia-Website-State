@@ -13,6 +13,7 @@ import BodyHeading from '@/app/components/bodyHeading';
 import { collection, doc, onSnapshot, updateDoc, arrayUnion, setDoc, getDoc, arrayRemove } from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
 import Footer from '../components/Footer';
+import JobApplicationPopUp from "@/app/components/jobApplicationPopUp";
 
 // Define interface for job data
 interface Job {
@@ -169,6 +170,9 @@ export default function Portal() {
                 )}
 
             </motion.div>
+            {/*<div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
+                <JobApplicationPopUp></JobApplicationPopUp>
+            </div> */}
             <Footer/>
         </main>
     );

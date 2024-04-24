@@ -43,7 +43,7 @@ import { signOut } from '@firebase/auth';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
 import Footer from "./components/Footer"
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, arrayRemove, arrayUnion } from 'firebase/firestore';
 
 const slides = [
   {
@@ -138,35 +138,37 @@ export default function Home() {
       fetchUserJobList();
   }, [user]);
 
+  // Update addToUserJobList function to explicitly define the type of the 'id' parameter
   const addToUserJobList = async (jobId: string) => {
-      if (user) {
-          try {
-              const userRef = doc(db, `users/${user.uid}`);
-              const userData = await getDoc(userRef);
-              const userJobList = userData.data()?.jobList || [];
+    if (user) {
+        try {
+            const userRef = doc(db, 'users', user.uid);
+            const userData = await getDoc(userRef);
+            const userJobList = userData.data()?.jobList || [];
+            
+            let updatedJobList: string[] = []; // Explicitly define the type of updatedJobList as string[]
 
-              let updatedJobList: string[] = []; // Explicitly define the type of updatedJobList as string[]
+            if (userJobList.includes(jobId)) {
+                // If job is already in user's job list, remove it
+                await updateDoc(userRef, {
+                    jobList: arrayRemove(jobId)
+                });
+                updatedJobList = userJobList.filter((id: string) => id !== jobId); // Explicitly define the type of id as string
+            } else {
+                // If job is not in user's job list, add it
+                await updateDoc(userRef, {
+                    jobList: arrayUnion(jobId)
+                });
+                updatedJobList = [...userJobList, jobId];
+            }
 
-              if (userJobList.includes(jobId)) {
-                  await updateDoc(userRef, {
-                      jobList: userJobList.filter((id: string) => id !== jobId),
-                  });
-                  updatedJobList = userJobList.filter((id: string) => id !== jobId); // Explicitly define the type of id as string
-              } else {
-                  await updateDoc(userRef, {
-                      jobList: [...userJobList, jobId],
-                  });
-                  updatedJobList = [...userJobList, jobId];
-              }
-
-              // Force a state update to reflect the changes immediately
-            setUserJobList(userJobList);
-
-          } catch (error) {
-              console.error('Error updating user jobList:', error);
-          }
-      }
-  };
+            // Force a state update to reflect the changes immediately
+            setUserJobList(updatedJobList);
+        } catch (error) {
+            console.error('Error updating user jobList:', error);
+        }
+    }
+};
 
   const handleJobBlockClick = (job: Job) => () => {
       setSelectedJob(job);
