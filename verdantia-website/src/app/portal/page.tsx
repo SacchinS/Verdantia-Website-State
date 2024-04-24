@@ -136,7 +136,6 @@ export default function Portal() {
                             salary={selectedJob.salary}
                             detDesc={selectedJob.description}
                             reqDesc={selectedJob.requirements}
-                            imgSrc='test'
                             onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
 
                         />
