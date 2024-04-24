@@ -22,6 +22,7 @@ interface Job {
     applicants: string;
     date: string;
     role: string;
+    duration: string;
 }
 
 export default function Portal() {
@@ -92,6 +93,7 @@ export default function Portal() {
                                 jobTitle={job.name}
                                 location={job.location}
                                 workMethod={job.place}
+                                duration={job.duration}
                                 onClick={() => handleJobBlockClick(job)} // Pass onClick handler to JobBlock
                             />
                         ))}
