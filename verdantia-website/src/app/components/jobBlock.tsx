@@ -12,11 +12,11 @@ interface Props {
     workMethod: string;
     location: string;
     jobTitle: string;
-
     style?: CSSProperties;
+    onClick: () => void; // Add onClick prop
 }
 
-export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle, style }: Props): JSX.Element => {
+export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle, style, onClick }: Props): JSX.Element => {
     const [isHovered, setIsHovered] = useState(false);
 
     const buttonVariants = {
@@ -33,6 +33,7 @@ export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle,
             onHoverEnd={() => setIsHovered(false)}
             whileHover={{ scale: 1.05 }} // Grow a little bit when hovered over
         >
+            {/* Job Block content */}
             <div className="flex flex-col items-start justify-center relative self-stretch w-full flex-[0_0_auto]">
                 <div className="relative self-stretch mt-[-1.00vw] [font-family:'Bellota_Text'] font-normal text-[#3e3e3e] text-[2.5vw] tracking-[0] leading-[3vw]">
                     {jobTitle}
@@ -64,10 +65,12 @@ export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle,
                         </div>
                     </div>
                 </div>
+
                 <motion.button 
                     className="flex w-[9vw] h-[3vw] items-center justify-center gap-[2vw] p-[1.5vw] relative bg-[#5b8c69] rounded-[2vw] overflow-hidden"
                     variants={buttonVariants}
                     whileHover="hover"
+                    onClick={onClick} // Add onClick handler
                 >
                     <div className="relative w-fit mt-[-1vw] mb-[-1vw] [font-family:'Bellota Text'] font-normal text-white text-[1vw] text-center tracking-[0] leading-[normal]">
                         Details
@@ -77,13 +80,5 @@ export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle,
         </motion.div>
     );
 };
-
-JobBlock.propTypes = {
-    data: PropTypes.string,
-    applicantCount: PropTypes.string,
-    workMethod: PropTypes.string,
-    location: PropTypes.string,
-    jobTitle: PropTypes.string
-}
 
 export default JobBlock;
