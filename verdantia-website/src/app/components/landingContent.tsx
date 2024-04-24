@@ -5,6 +5,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import Navbar from "./navbar";
+import JobPostForm from "@/app/components/jopPostForm";
 
 interface LandingPageProps {
   heading: string;
@@ -19,6 +20,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleJopAppPopUp = () => {
+      setIsOpen(!isOpen);
+  }
+
 
   return (
     <div>
@@ -56,7 +64,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
             transition={{ duration: 1, delay: 1 }}
           >
             <motion.button
-              whileHover={{ scale: 1.1 }} // Instant hover grow animation
+
+              whileHover={{ scale: 1.5 }} // Instant hover grow animation
               className="bg-gray-700 text-white font-semibold px-[1.5vw] py-[0.5vw] rounded hover:bg-gray-800 shadow-lg"
               style={{
                 fontFamily: 'Bellota Text',
@@ -95,6 +104,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
           )}
           {isVisible && buttonText && (
           <motion.button
+            onClick={toggleJopAppPopUp}
             whileHover={{ scale: 1.1, transition: {duration: 1, delay: 0} }} // Scale up by 10% on hover
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -113,6 +123,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
           )}
         </AnimatePresence>
       </div>
+        <div className={"w-screen flex justify-center items-center"}>
+            {isOpen && <JobPostForm/>}
+        </div>
+
     </div>
   );
 };

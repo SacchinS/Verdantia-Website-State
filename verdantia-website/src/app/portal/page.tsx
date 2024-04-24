@@ -12,6 +12,7 @@ import LandingContent from '@/app/components/landingContent';
 import BodyHeading from '@/app/components/bodyHeading';
 import {collection, doc, getDoc, onSnapshot} from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
+import Footer from '../components/Footer';
 
 // Define interface for job data
 interface Job {
@@ -143,6 +144,7 @@ export default function Portal() {
                 )}
 
             </motion.div>
+            <Footer/>
         </main>
     );
 }

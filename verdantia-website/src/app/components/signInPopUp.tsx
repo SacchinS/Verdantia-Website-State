@@ -93,7 +93,7 @@ const SignInPopUp: React.FC = () => {
             </div>
 
         </div>
-            <JobPostForm/>
+
         </main>
     );
 };

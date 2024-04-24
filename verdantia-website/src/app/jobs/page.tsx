@@ -16,6 +16,7 @@ import {List} from "postcss/lib/list";
 import placeFilter from "../components/PlaceFilter";
 import signUpPopUp from "@/app/components/signUpPopUp";
 import JobDetailBlock from '../components/jobDetailBlock';
+import Footer from '../components/Footer';
 
 
 
@@ -150,6 +151,7 @@ export default function Jobs() {
                     />
                 </div>
       )}
+        <Footer/>
 
         </main>
 
