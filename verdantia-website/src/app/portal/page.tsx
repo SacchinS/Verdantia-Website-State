@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { signOut } from '@firebase/auth';
 import { motion } from 'framer-motion';
 import JobBlock from '@/app/components/jobBlock';
+import JobDetailBlock from '../components/jobDetailBlock';
 import LandingContent from '@/app/components/landingContent';
 import BodyHeading from '@/app/components/bodyHeading';
 import { collection, onSnapshot } from 'firebase/firestore';
@@ -20,11 +21,13 @@ interface Job {
     place: string;
     applicants: string;
     date: string;
+    role: string;
 }
 
 export default function Portal() {
     const [user] = useAuthState(auth);
     const router = useRouter();
+    const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
     const [allJobs, setJobListings] = useState<Job[]>([]); // Explicitly defining type as Job[]
 
@@ -47,6 +50,10 @@ export default function Portal() {
         router.push('/');
     };
 
+    const handleJobBlockClick = (job: Job) => {
+        setSelectedJob(job); // Set the selected job when a JobBlock is clicked
+    };
+
     const handleExploreCareers = () => {
         router.push('/jobs');
     };
@@ -61,7 +68,7 @@ export default function Portal() {
             <LandingContent
                 heading="Welcome to \nYour Portal"
                 subheading=""
-                buttonText="Explore Careers" 
+                buttonText="Explore Careers"
             />
 
             <motion.div
@@ -85,10 +92,31 @@ export default function Portal() {
                                 jobTitle={job.name}
                                 location={job.location}
                                 workMethod={job.place}
+                                onClick={() => handleJobBlockClick(job)} // Pass onClick handler to JobBlock
                             />
                         ))}
                     </div>
                 </div>
+
+                {selectedJob && (
+                    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+                        <JobDetailBlock
+                            job={selectedJob.name}
+                            date={selectedJob.date}
+                            applicants={selectedJob.applicants}
+                            location={selectedJob.location}
+                            workExperience='test'
+                            workType={selectedJob.role}
+                            salary='test'
+                            detDesc='test'
+                            reqDesc='test'
+                            imgSrc='test'
+                            onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
+
+                        />
+                    </div>
+                )}
+
             </motion.div>
         </main>
     );
