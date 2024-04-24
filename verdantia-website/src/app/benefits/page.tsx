@@ -107,7 +107,7 @@ export default function Jobs() {
           subheading="Explore our opportunities"
         />        
         <div className="mx-auto max-w-6xl px-4">
-          <p className="text-center pt-[35vw] pb-[10vw] px-[4vw] text-[8vw] sm:pt-[15vw] sm:text-[3vw]" style={{ fontFamily: 'Bellota Text' }}>Look at some of our benefits below: </p>  
+          <p className="text-center pt-[35vw] pb-[10vw] px-[4vw] text-[8vw] sm:pt-[12vw] sm:pb-[1vw] sm:text-[3vw]" style={{ fontFamily: 'Bellota Text' }}>Look at some of our benefits below: </p>  
           <div className="flex w-full gap-[2vw] items-start">
             <div className="w-full py-[50vh]">
               <ul>
