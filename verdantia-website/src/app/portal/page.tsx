@@ -23,6 +23,10 @@ interface Job {
     date: string;
     role: string;
     duration: string;
+    experience: string;
+    requirements: string;
+    salary: string;
+    description: string;
 }
 
 export default function Portal() {
@@ -121,17 +125,17 @@ export default function Portal() {
                 </div>
 
                 {selectedJob && (
-                    <div className="top-0 left-0 w-full h-full flex items-center justify-center">
+                    <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
                         <JobDetailBlock
                             job={selectedJob.name}
                             date={selectedJob.date}
                             applicants={selectedJob.applicants}
                             location={selectedJob.location}
-                            workExperience='test'
+                            workExperience={selectedJob.experience}
                             workType={selectedJob.role}
-                            salary='$70,000'
-                            detDesc='Lorem ipsum dolor sit amet consectetur. Tellus mattis in dictum placerat. Imperdiet mauris in ultrices metus adipiscing vitae. Massa ut dui arcu cursus facilisis. Sed eget sem vitae amet.'
-                            reqDesc='Lorem ipsum dolor sit amet consectetur. Pellentesque lectus urna adipiscing elit lectus. Dignissim mus integer in quis. Luctus pretium pellentesque.'
+                            salary={selectedJob.salary}
+                            detDesc={selectedJob.description}
+                            reqDesc={selectedJob.requirements}
                             imgSrc='test'
                             onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
 
