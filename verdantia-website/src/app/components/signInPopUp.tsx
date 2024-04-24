@@ -4,11 +4,12 @@
 
 import {useState} from 'react'
 import {useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth'
-import {auth} from '@/app/firebase/config'
+import {auth, db} from '@/app/firebase/config'
 import JobPostForm from "@/app/components/jopPostForm";
 import signInImage from "./signInImage.png"
 
 import {useRouter} from "next/navigation";
+import {addDoc, collection, doc, setDoc} from "firebase/firestore";
 
 const SignInPopUp: React.FC = () => {
 

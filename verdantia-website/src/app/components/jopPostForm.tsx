@@ -23,6 +23,8 @@ const JobPostForm: React.FC = () => {
             location: location,
             description: description,
             requirements: requirements,
+            experience: experience,
+            salary: salary,
         })
         setName("")
         setRole("")
