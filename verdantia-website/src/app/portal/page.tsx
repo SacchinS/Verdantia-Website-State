@@ -10,7 +10,7 @@ import JobBlock from '@/app/components/jobBlock';
 import JobDetailBlock from '../components/jobDetailBlock';
 import LandingContent from '@/app/components/landingContent';
 import BodyHeading from '@/app/components/bodyHeading';
-import { collection, onSnapshot } from 'firebase/firestore';
+import {collection, doc, getDoc, onSnapshot} from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
 
 // Define interface for job data
@@ -26,9 +26,25 @@ interface Job {
 }
 
 export default function Portal() {
+
+
+
     const [user] = useAuthState(auth);
     const router = useRouter();
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+
+
+    // @ts-ignore
+    // useEffect(async () => {
+    //     const docRef = doc(db, "users", (user?.uid)?.toString());
+    //     const docSnap = await getDoc(docRef);
+    //     if (docSnap.exists()){
+    //         const data = docSnap.data();
+    //         if (data.admin == true){
+    //
+    //         }
+    //     }
+    // }, []);
 
     const [allJobs, setJobListings] = useState<Job[]>([]); // Explicitly defining type as Job[]
 

@@ -113,8 +113,8 @@ export default function Jobs() {
                     </div>
                 </div>
             </div>
-            <div className="container mx-auto py-5 text-white overflow-x-auto flex justify-center mt-[1vw]">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[3vw]">
+            <div className="container mx-auto py-5 text-white  flex justify-center mt-[1vw]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[5vw]">
                     {/* Map over job listings to create JobBlocks */}
                     {getJobsToRender.map((job) => (
                         <JobBlock

@@ -4,11 +4,12 @@
 
 import {useState} from 'react'
 import {useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth'
-import {auth} from '@/app/firebase/config'
-
+import {auth, db} from '@/app/firebase/config'
+import JobPostForm from "@/app/components/jopPostForm";
 import signInImage from "./signInImage.png"
 
 import {useRouter} from "next/navigation";
+import {addDoc, collection, doc, setDoc} from "firebase/firestore";
 
 const SignInPopUp: React.FC = () => {
 
@@ -36,6 +37,7 @@ const SignInPopUp: React.FC = () => {
 
     // @ts-ignore
     return (
+        <main>
         <div className="flex  items-center relative bg-white h-1/2 justify-self-center w-3/4 m-[0.5vw]">
             <div
                 className="overflow-hidden rounded-[1vw] flex items-center border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040]">
@@ -89,7 +91,10 @@ const SignInPopUp: React.FC = () => {
                 <img className="relative w-1/2" alt="signInImage" src={signInImage.src}/>
 
             </div>
+
         </div>
+            <JobPostForm/>
+        </main>
     );
 };
 

@@ -4,12 +4,13 @@
 
 import {useState} from 'react'
 import {useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth'
-import {auth} from '@/app/firebase/config'
+import {auth, db} from '@/app/firebase/config'
 
 import signInImage from "./signInImage.png"
 import {router} from "next/client";
 import {useRouter} from "next/navigation";
 import JobApplicationPopUp from "@/app/components/jobApplicationPopUp";
+import {doc, setDoc} from "firebase/firestore";
 
 
 const SignUpPopUp: React.FC = () => {
@@ -27,6 +28,10 @@ const SignUpPopUp: React.FC = () => {
             setEmail('')
             setPassword('')
             router.push('/portal')
+            const user = auth.currentUser;
+            const docRef = await setDoc(doc(db, "users", (user?.uid)?.toString()), {
+                admin: true
+            })
         } catch (error) {
             console.error(error)
         }
