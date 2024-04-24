@@ -1,7 +1,16 @@
+import Navbar from "@/app/components/navbar";
+import LandingContent from "@/app/components/landingContent";
+import React from "react";
+
 export default function AdminPortal() {
     return (
         <main>
-            <h1>admin portal</h1>
+            <LandingContent
+                heading="Welcome to \nYour Portal"
+                subheading=""
+                buttonText="Post Application"
+            />
+            
         </main>
     )
 }

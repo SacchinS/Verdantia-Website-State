@@ -38,7 +38,7 @@ const JobPostForm: React.FC = () => {
     }
 
     return (
-    <main>
+    <main className={"absolute z-20"}>
         <div
             className={"inline-flex flex-col items-start gap-[1vw] p-[2vw] relative bg-white w-fit border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040] rounded-[1vw]"}>
             <div className="inline-flex flex-col items-start relative">
