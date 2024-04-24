@@ -38,17 +38,21 @@ export default function Portal() {
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
 
-    // @ts-ignore
-    // useEffect(async () => {
-    //     const docRef = doc(db, "users", (user?.uid)?.toString());
-    //     const docSnap = await getDoc(docRef);
-    //     if (docSnap.exists()){
-    //         const data = docSnap.data();
-    //         if (data.admin == true){
-    //
-    //         }
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (user){
+            const userRef = doc(db, 'users', user.uid)
+            const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
+                if (docSnapshot.exists()){
+                    const data = docSnapshot.data();
+                    if (data.admin === true){
+                        router.push('/adminPortal')
+                    }
+                }
+            })
+        }
+
+
+    }, []);
 
     const [allJobs, setJobListings] = useState<Job[]>([]); // Explicitly defining type as Job[]
 

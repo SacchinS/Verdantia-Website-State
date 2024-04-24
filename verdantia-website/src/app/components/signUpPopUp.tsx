@@ -30,7 +30,7 @@ const SignUpPopUp: React.FC = () => {
             router.push('/portal')
             const user = auth.currentUser;
             const docRef = await setDoc(doc(db, "users", (user?.uid)?.toString()), {
-                admin: true
+                admin: false
             })
         } catch (error) {
             console.error(error)
