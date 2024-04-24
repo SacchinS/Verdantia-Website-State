@@ -17,7 +17,7 @@ interface Props {
     onClick: () => void; // Add onClick prop
 }
 
-export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle, style }: Props): JSX.Element => {
+export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle, style, duration }: Props): JSX.Element => {
     const [isHovered, setIsHovered] = useState(false);
 
     const buttonVariants = {
@@ -78,7 +78,7 @@ export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle,
                     className="flex w-[9vw] h-[3vw] items-center justify-center gap-[2vw] p-[1.5vw] relative bg-[#5b8c69] rounded-[2vw] overflow-hidden"
                     variants={buttonVariants}
                     whileHover="hover"
-                    onClick={onClick} // Add onClick handler
+                     // Add onClick handler
                 >
                     <div className="relative w-fit mt-[-1vw] mb-[-1vw] [font-family:'Bellota Text'] font-normal text-white text-[1vw] text-center tracking-[0] leading-[normal]">
                         Details
