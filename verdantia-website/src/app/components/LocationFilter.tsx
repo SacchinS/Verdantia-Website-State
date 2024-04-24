@@ -12,7 +12,7 @@ import {
 import { db } from '@/app/firebase/config';
 
 const LocationFilter: React.FC = () => {
-  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<string[] | null>(null);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selected"), (doc) => {

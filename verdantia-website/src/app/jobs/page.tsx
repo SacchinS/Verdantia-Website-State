@@ -36,6 +36,11 @@ export default function Jobs() {
     const [user] = useAuthState(auth);
     const [userJobList, setUserJobList] = useState<string[]>([]); // Initialize userJobList state
 
+    const [durations, setDurations] = useState<string[]>([]);
+    const [location, setLocation] = useState<string[]>([]);
+    const [places, setPlaces] = useState<string[]>([]);
+    const [roles, setRoles] = useState<string[]>([]);
+
     useEffect(() => {
         // Function to fetch user job list from Firestore
         const fetchUserJobList = async () => {
@@ -57,6 +62,42 @@ export default function Jobs() {
     }, [user]);
 
     useEffect(() => {
+        const unsubscribe = onSnapshot(collection(db, "selectedFilters"), snapshot => {
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+
+                setDurations(data.durations)
+                setLocation(data.location)
+                setPlaces(data.places)
+                setRoles(data.roles)
+            })
+        })
+        return () => unsubscribe();
+    }, []);
+
+    const getFilters = () => {
+        console.log("Durations: ", durations)
+        console.log("Locations: ", location)
+        console.log("Places: ", places)
+        console.log("Roles: ", roles)
+    }
+
+    const getJobs = () => {
+        console.log(getJobsToRender)
+    }
+
+    const getJobsToRender = allJobs.filter(Job => {
+        console.log("Job: ",Job)
+        console.log("Places: ", places)
+        console.log("-", places.includes(Job.place))
+        if ((location.includes(Job.location) || location.length == 0) &&
+            (places.includes(Job.place) || places.length == 0)  &&
+            (durations.includes(Job.duration) || durations.length == 0) &&
+            (roles.includes(Job.role) || roles.length == 0)) return true;
+        return false
+    })
+
+    useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'allJobs'), (snapshot) => {
             const jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Job));
             setJobListings(jobs);
@@ -64,37 +105,37 @@ export default function Jobs() {
         return () => unsubscribe();
     }, []);
 
-  // Update addToUserJobList function to explicitly define the type of the 'id' parameter
-const addToUserJobList = async (jobId: string) => {
-    if (user) {
-        try {
-            const userRef = doc(db, 'users', user.uid);
-            const userData = await getDoc(userRef);
-            const userJobList = userData.data()?.jobList || [];
-            
-            let updatedJobList: string[] = []; // Explicitly define the type of updatedJobList as string[]
+    // Update addToUserJobList function to explicitly define the type of the 'id' parameter
+    const addToUserJobList = async (jobId: string) => {
+        if (user) {
+            try {
+                const userRef = doc(db, 'users', user.uid);
+                const userData = await getDoc(userRef);
+                const userJobList = userData.data()?.jobList || [];
+                
+                let updatedJobList: string[] = []; // Explicitly define the type of updatedJobList as string[]
 
-            if (userJobList.includes(jobId)) {
-                // If job is already in user's job list, remove it
-                await updateDoc(userRef, {
-                    jobList: arrayRemove(jobId)
-                });
-                updatedJobList = userJobList.filter((id: string) => id !== jobId); // Explicitly define the type of id as string
-            } else {
-                // If job is not in user's job list, add it
-                await updateDoc(userRef, {
-                    jobList: arrayUnion(jobId)
-                });
-                updatedJobList = [...userJobList, jobId];
+                if (userJobList.includes(jobId)) {
+                    // If job is already in user's job list, remove it
+                    await updateDoc(userRef, {
+                        jobList: arrayRemove(jobId)
+                    });
+                    updatedJobList = userJobList.filter((id: string) => id !== jobId); // Explicitly define the type of id as string
+                } else {
+                    // If job is not in user's job list, add it
+                    await updateDoc(userRef, {
+                        jobList: arrayUnion(jobId)
+                    });
+                    updatedJobList = [...userJobList, jobId];
+                }
+
+                // Force a state update to reflect the changes immediately
+                setUserJobList(updatedJobList);
+            } catch (error) {
+                console.error('Error updating user jobList:', error);
             }
-
-            // Force a state update to reflect the changes immediately
-            setUserJobList(updatedJobList);
-        } catch (error) {
-            console.error('Error updating user jobList:', error);
         }
-    }
-};
+    };
 
 
     const handleJobBlockClick = (job: Job) => {
@@ -128,7 +169,7 @@ const addToUserJobList = async (jobId: string) => {
             <div className="container mx-auto py-5 text-white  flex justify-center mt-[1vw]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[5vw]">
                     {/* Map over job listings to create JobBlocks */}
-                    {allJobs.map((job) => (
+                    {getJobsToRender.map((job) => (
                         <JobBlock
                             key={job.id}
                             applicantCount={job.applicants}
