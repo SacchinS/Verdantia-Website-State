@@ -54,15 +54,32 @@ interface NavLinkProps {
 }
 
 const NavLink: React.FC<NavLinkProps> = ({ href, text }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <Link href={href}>
       <motion.span
-        className="text-black cursor-pointer hover:text-gray-800"
-        transition={{ duration: 1 }} 
-        style={{ fontSize: '1.25vw' }} 
-        whileHover={{ fontSize: '1.4vw' }}
+        className="text-black cursor-pointer"
+        style={{ fontSize: '1.25vw', position: 'relative' }} 
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
       >
         {text}
+        <motion.div
+          className="underline"
+          initial={{ scaleX: 0, originX: 0.5 }}
+          animate={{ scaleX: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          style={{
+            position: 'absolute',
+            bottom: '-2px',
+            left: 0,
+            width: '100%',
+            height: '2px',
+            background: 'gray',
+            originX: 0.5,
+          }}
+        />
       </motion.span>
     </Link>
   );
