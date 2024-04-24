@@ -25,6 +25,11 @@ import walkthrough from "../../../public/images/walkthrough.svg";
 import JobApplicationPopUp from "@/app/components/jobApplicationPopUp";
 import { FeatureTitle } from "../components/features/title"
 import { Community, Health, Hours, Path, Tech } from "../components/features/card"
+import { TestCard } from "../components/TestimonialCard"
+import Shawna from "../../../public/images/shawna.svg"
+import Adam from "../../../public/images/Adam.svg"
+import Alisa from "../../../public/images/Alisa.svg"
+
 const slides = [
   {
     imageUrl: BenSlide1.src,
@@ -97,39 +102,55 @@ export default function Jobs() {
         //   <JobApplicationPopUp/>
       // </main>
       <div>
-
-      <LandingContent
-        heading="Career \nBenefits"
-        subheading="Explore our opportunities"
-      />        
-
-      <div className="mx-auto max-w-6xl px-4">
-        
-        <BodyHeading marginTop="18vh" marginBottom="7vh"> </BodyHeading>
-        
-        <div className="flex w-full gap-20 items-start">
-          <div className="w-full py-[50vh]">
-            <ul>
-              {features.map((feature) => (
-                <li key={feature.id}>
-                  <FeatureTitle id={feature.id}>{feature.title}</FeatureTitle>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="sticky top-0 flex h-screen w-full items-center">
-            <div className="relative aspect-square w-full bg-gray-100 rounded-2xl">
-              {features.map(feature => (
-                <feature.card id ={feature.id} key ={feature.id}/>
-              ))}
+        <LandingContent
+          heading="Career \nBenefits"
+          subheading="Explore our opportunities"
+        />        
+        <div className="mx-auto max-w-6xl px-4">
+          <BodyHeading marginTop="18vh" marginBottom="7vh"> </BodyHeading>  
+          <div className="flex w-full gap-[2vw] items-start">
+            <div className="w-full py-[50vh]">
+              <ul>
+                {features.map((feature) => (
+                  <li key={feature.id}>
+                    <FeatureTitle id={feature.id}>{feature.title}</FeatureTitle>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="sticky top-0 flex h-screen w-full items-center">
+              <div className="relative aspect-square w-full bg-gray-100 rounded-2xl">
+                {features.map(feature => (
+                  <feature.card id ={feature.id} key ={feature.id}/>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-
-      </div>
         <ImageDivider src={walkthrough.src} marginTop="1vw" marginBottom="1vw"></ImageDivider>
-
-
+        <div className="grid grid-cols-1 sm:grid-cols-3 px-[8vw] gap-[11vw]">
+          <TestCard 
+            source = {Shawna.src}
+            name ="string"
+            position ="string"
+            location= "string"
+            quote= "string"
+          />
+          <TestCard 
+            source = {Shawna.src}
+            name ="string"
+            position ="string"
+            location= "string"
+            quote= "string"
+          />
+          <TestCard 
+            source = {Shawna.src}
+            name ="string"
+            position ="string"
+            location= "string"
+            quote= "string"
+          />
+        </div>
       </div>
       
     )
