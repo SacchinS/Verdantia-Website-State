@@ -29,6 +29,7 @@ import { TestCard } from "../components/TestimonialCard"
 import Shawna from "../../../public/images/shawna.svg"
 import Adam from "../../../public/images/Adam.svg"
 import Alisa from "../../../public/images/Alisa.svg"
+import Footer from "../components/Footer"
 
 const slides = [
   {
@@ -123,7 +124,7 @@ export default function Jobs() {
                 {features.map(feature => (
                   <feature.card id ={feature.id} key ={feature.id}/>
                 ))}
-              </div>
+              </div>  
             </div>
           </div>
         </div>
@@ -152,7 +153,8 @@ export default function Jobs() {
             quote= '"Verdantia feels like family, fostering camaraderie and support. Over five years, ensuring customer happiness has been fulfilling. Grateful to work where employee well-being is valued and contributions recognized."'
           />
         </div>
+        <Footer>
+        </Footer>
       </div>
-      
     )
   }

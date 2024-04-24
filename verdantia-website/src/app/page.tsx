@@ -42,6 +42,7 @@ import React from 'react';
 import { signOut } from '@firebase/auth';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
+import Footer from "./components/Footer"
 
 const slides = [
   {
@@ -259,6 +260,8 @@ export default function Home() {
             />
         </div>
       )}
+      
+      <Footer/>
 
     </main>
   );
