@@ -46,7 +46,7 @@ const LocationFilter: React.FC = () => {
       <div className='mb-[1vw]' style={{fontFamily: "Bellota Text", fontSize: '1.5vw'}}>Location</div>
       <div>
         <select
-          className="shadow-md w-full border border-gray-300 rounded p-3 text-lg"
+          className="shadow-md w-full border border-gray-300 rounded p-3 text-[1.5vw]"
           style={{fontFamily: "Bellota Text"}}
           value={selectedLocation || ''}
           onChange={(e) => updateLocationFilter(e.target.value)}
