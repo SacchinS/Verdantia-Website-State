@@ -15,7 +15,7 @@ const LocationFilter: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selectedLocation"), (doc) => {
+    const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selected"), (doc) => {
       const data = doc.data();
       if (data && data.locations && data.locations.length > 0) {
         setSelectedLocation(data.locations[0]);
@@ -30,14 +30,14 @@ const LocationFilter: React.FC = () => {
   }, []);
 
   const resetFiltersData = async () => {
-    const ref = doc(db, "selectedFilters", "selectedLocation");
-    await updateDoc(ref, { locations: [] });
+    const ref = doc(db, "selectedFilters", "selected");
+    await updateDoc(ref, { location: [] });
   }
 
   const updateLocationFilter = async (location: string) => {
-    const ref = doc(db, "selectedFilters", "selectedLocation");
+    const ref = doc(db, "selectedFilters", "selected");
     await updateDoc(ref, {
-      locations: location ? [location] : []
+      location: location ? [location] : []
     });
   }
 

@@ -12,11 +12,12 @@ interface Props {
     workMethod: string;
     location: string;
     jobTitle: string;
+    duration: string;
     style?: CSSProperties;
     onClick: () => void; // Add onClick prop
 }
 
-export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle, style, onClick }: Props): JSX.Element => {
+export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle, style }: Props): JSX.Element => {
     const [isHovered, setIsHovered] = useState(false);
 
     const buttonVariants = {
@@ -39,18 +40,25 @@ export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle,
                     {jobTitle}
                 </div>
                 <div className="inline-flex items-center gap-[15px] relative flex-[0_0_auto]">
-                    <div className="relative w-fit mt-[0.25vw] [font-family: 'Montserrat'] font-medium text-neutral-400 text-[1vw] text-center tracking-[0] leading-[normal]">
+                    <div
+                        className="relative w-fit mt-[0.25vw] [font-family: 'Montserrat'] font-medium text-neutral-400 text-[1vw] text-center tracking-[0] leading-[normal]">
                         {data} Days ago
                     </div>
-                    <div className="relative mt-[0.25vw] w-[0.25vw] h-[0.25vw] bg-neutral-400 rounded-[10vw]" />
-                    <div className="relative w-fit mt-[0.25vw] [font-family:'Montserrat'] font-medium text-neutral-400 text-[1vw] text-center tracking-[0] leading-[normal]">
+                    <div className="relative mt-[0.25vw] w-[0.25vw] h-[0.25vw] bg-neutral-400 rounded-[10vw]"/>
+                    <div
+                        className="relative w-fit mt-[0.25vw] [font-family:'Montserrat'] font-medium text-neutral-400 text-[1vw] text-center tracking-[0] leading-[normal]">
                         {applicantCount} Applicants
+                    </div>
+                    <div className="relative mt-[0.25vw] w-[0.25vw] h-[0.25vw] bg-neutral-400 rounded-[10vw]"/>
+                    <div
+                        className="relative w-fit mt-[0.25vw] [font-family:'Montserrat'] font-medium text-neutral-400 text-[1vw] text-center tracking-[0] leading-[normal]">
+                        {duration}
                     </div>
                 </div>
             </div>
             <div className="flex items-center gap-[5vw] relative self-stretch w-full flex-[0_0_auto]">
                 <div className="flex flex-col items-start justify-center gap-[1vw] relative flex-1 grow">
-                    <div
+                <div
                         className={'inline-flex items-center gap-[1vw] relative flex-[0_0_auto] mr-[-3vw] ${frameClassName}'}
                     >
                         <img src={LocationIcon.src} alt="Location Icon" className="w-[1vw] h-[1.5vw]" /> {/* Location Icon */}
