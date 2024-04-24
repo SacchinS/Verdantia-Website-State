@@ -15,7 +15,7 @@ const RoleFilter: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selectedRoles"), (doc) => {
+    const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selected"), (doc) => {
       const data = doc.data();
       if (data) {
         setSelectedFilters(data.roles);
@@ -30,12 +30,12 @@ const RoleFilter: React.FC = () => {
   }, []);
 
   const resetFiltersData = async () => {
-    const ref = doc(db, "selectedFilters", "selectedRoles");
+    const ref = doc(db, "selectedFilters", "selected");
     await updateDoc(ref, { roles: [] });
   }
 
   const updateRoleFilter = async (role: string) => {
-    const ref = doc(db, "selectedFilters", "selectedRoles");
+    const ref = doc(db, "selectedFilters", "selected");
     if (selectedFilters.includes(role)) {
       await updateDoc(ref, { roles: arrayRemove(role) });
     } else {

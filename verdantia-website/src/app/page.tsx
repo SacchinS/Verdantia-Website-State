@@ -36,6 +36,8 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 
+import Carousel from "./components/Carousel";
+
 const slides = [
   {
     imageUrl: Slide1.src,
@@ -69,19 +71,43 @@ const slides = [
   }
 ];
 
+const blocks = [
+  {
+    data: '3 Days ago',
+    applicantCount: '178 Applicants',
+    workMethod: 'Remote',
+    location: 'San Francisco, CA',
+    jobTitle: 'Environmental Scientist',
+  },
+  {
+    data: '11 Days ago',
+    applicantCount: '67 Applicants',
+    workMethod: 'In Person',
+    location: 'Seattle, WA',
+    jobTitle: 'Renewable Energy Analyst',
+  },
+  {
+    data: '8 Days ago',
+    applicantCount: '63 Applicants',
+    workMethod: 'Remote',
+    location: 'London, UK',
+    jobTitle: 'Carbon Footprint Analyst',
+  },
+];
+
 export default function Home() {
     const [user] = useAuthState(auth)
     console.log(user)
-  const [isVisible, setIsVisible] = useState(false);
-  const controlsFeaturedJobs = useAnimation();
-  const controlsOurMission = useAnimation();
-  const controlsOurValues = useAnimation();
-  const controlsOurImpacts = useAnimation();
+    const [isVisible, setIsVisible] = useState(false);
+    const controlsFeaturedJobs = useAnimation();
+    const controlsOurMission = useAnimation();
+    const controlsOurValues = useAnimation();
+    const controlsOurImpacts = useAnimation();
 
-  const refFeaturedJobs = useRef<HTMLDivElement | null>(null);
-  const refOurMission = useRef<HTMLDivElement | null>(null);
-  const refOurValues = useRef<HTMLDivElement | null>(null);
-  const refOurImpacts = useRef<HTMLDivElement | null>(null);
+    const refFeaturedJobs = useRef<HTMLDivElement | null>(null);
+    const refOurMission = useRef<HTMLDivElement | null>(null);
+    const refOurValues = useRef<HTMLDivElement | null>(null);
+    const refOurImpacts = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -122,29 +148,7 @@ export default function Home() {
         variants={variants}
       >
         <BodyHeading marginTop="6vw" marginBottom="2vw">Featured Jobs</BodyHeading>
-        <div className="container mx-auto py-5 px-6 text-white relative z-10 overflow-x-auto flex gap-[5vw]">
-          <JobBlock
-            applicantCount="178 Applicants"
-            data="3 Days ago"
-            jobTitle="Environmental Scientist"
-            location="San Francisco, CA"
-            workMethod="Remote"
-          />
-          <JobBlock
-            applicantCount="178 Applicants"
-            data="3 Days ago"
-            jobTitle="Environmental Scientist"
-            location="San Francisco, CA"
-            workMethod="Remote"
-          />
-          <JobBlock
-            applicantCount="178 Applicants"
-            data="3 Days ago"
-            jobTitle="Environmental Scientist"
-            location="San Francisco, CA"
-            workMethod="Remote"
-          />
-        </div>
+        <Carousel blocks={blocks} />
       </motion.div>
 
       <motion.div
@@ -153,7 +157,7 @@ export default function Home() {
         animate={controlsOurMission}
         variants={variants}
       >
-        <BodyHeading marginTop="3vw">Our Mission</BodyHeading>
+        <BodyHeading marginTop="24vw">Our Mission</BodyHeading>
         <div className="flex items-center ml-[8vw] mr-[8vw]" style={{ fontFamily: 'Montserrat', fontWeight: 300, color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2.25vw' }}>
           <div className="mr-[10vw]">
             At Verdantia, our mission is to revolutionize <strong>environmental sustainability</strong> by seamlessly integrating technology and human impact. We believe in a holistic approach, leveraging <strong>cutting-edge innovations</strong> alongside direct, hands-on efforts to create a more <strong>sustainable and resilient future</strong> for our planet.
