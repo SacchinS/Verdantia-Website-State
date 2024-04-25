@@ -4,19 +4,38 @@ import { motion } from 'framer-motion';
 import { signOut } from "@firebase/auth";
 import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-const Navbar: React.FC = () => {
+interface myProps {
+  buttonText?: string;
+  route?: string;
+}
+
+const Navbar: React.FC<myProps> = ( {buttonText, route} ) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
+  const [user] = useAuthState(auth);
+
+  if (user) {
+    buttonText = "Sign Out";
+  }
+  else {
+    buttonText = "Sign In";
+  }
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
   const handleSignOut = () => {
-    signOut(auth);
-    console.log('Sign Out');
-    router.push('/');
+    if (user) {
+      signOut(auth);
+      console.log('Sign Out');
+      router.push('/');
+    }
+    else {
+      router.push('/signIn');
+    }
   };
 
   return (
@@ -38,7 +57,7 @@ const Navbar: React.FC = () => {
             <img src="/images/user-nobg.png" alt="Account" className="h-[1.5vw] w-[1.5vw] cursor-pointer" />
             {dropdownOpen && (
               <div className="absolute bg-white rounded-md flex flex-col w-max px-[0.6vw] py-[0.4vh] mt-[0.4vw] right-0">
-                <button onClick={handleSignOut}>Sign Out</button>
+                <button onClick={handleSignOut}>{buttonText}</button>
               </div>
             )}
           </div>
