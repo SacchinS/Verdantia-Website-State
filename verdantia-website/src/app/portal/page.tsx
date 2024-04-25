@@ -1,5 +1,6 @@
 'use client'
 
+// Portal.tsx
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
@@ -10,7 +11,7 @@ import JobBlock from '@/app/components/jobBlock';
 import JobDetailBlock from '../components/jobDetailBlock';
 import LandingContent from '@/app/components/landingContent';
 import BodyHeading from '@/app/components/bodyHeading';
-import { collection, doc, onSnapshot, updateDoc, arrayUnion, setDoc, getDoc, arrayRemove } from 'firebase/firestore';
+import { collection, doc, onSnapshot, addDoc, updateDoc, arrayUnion, setDoc, getDoc, arrayRemove } from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
 import Footer from '../components/Footer';
 import JobApplicationPopUp from "@/app/components/jobApplicationPopUp";
@@ -31,12 +32,26 @@ interface Job {
     description: string;
 }
 
+// Define an interface for the form data
+interface JobApplicationFormData {
+    userId: string; // New property to store the user ID
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: string;
+    zipCode: string;
+}
+
 export default function Portal() {
     const [user] = useAuthState(auth);
     const router = useRouter();
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
     const [userJobList, setUserJobList] = useState<string[]>([]);
+    const [userAppliedJobs, setUserAppliedJobs] = useState<string[]>([]);
     const [allJobs, setJobListings] = useState<Job[]>([]);
+    const [showApplicationPopup, setShowApplicationPopup] = useState(false); // State variable for popup visibility
+    const [jobApplicationSubmitted, setJobApplicationSubmitted] = useState(false);
+    const [applyButtonText, setApplyButtonText] = useState("");
 
     // Fetch user's job list from Firestore when component mounts
     useEffect(() => {
@@ -46,6 +61,7 @@ export default function Portal() {
                 if (docSnapshot.exists()) {
                     const userData = docSnapshot.data();
                     setUserJobList(userData.jobList || []); // Set user's job list
+                    setUserAppliedJobs(userData.appliedJobs || []);
                 }
             });
             return () => unsubscribe();
@@ -91,14 +107,71 @@ export default function Portal() {
         }
     };
 
+    // Function to add job to user's applied jobs list
+    const addToUserAppliedJobs = async (jobId: string) => {
+        if (user) {
+            try {
+                const userRef = doc(db, 'users', user.uid);
+                const userData = await getDoc(userRef);
+                const userAppliedJobs = userData.data()?.appliedJobs || [];
+                
+                if (userAppliedJobs.includes(jobId)) {
+                    // If job is already in user's applied jobs list, remove it
+                    await updateDoc(userRef, {
+                        appliedJobs: arrayRemove(jobId)
+                    });
+                } else {
+                    // If job is not in user's applied jobs list, add it
+                    await updateDoc(userRef, {
+                        appliedJobs: arrayUnion(jobId)
+                    })
+                }
+            } catch (error) {
+                console.error('Error updating user appliedJobs:', error);
+            }
+        }
+    };
+
+    // Function to handle applying to a job
+    const handleApplyToJob = (jobId: string) => {
+        addToUserAppliedJobs(jobId); // Add the job ID to the user's applied jobs list
+        setShowApplicationPopup(true); // Show application popup when applying
+    };
+
+    // Define a function to handle job application submission
+    const handleJobApplicationSubmit = async (formData: JobApplicationFormData) => {
+        if (user && selectedJob) {
+            try {
+                // Populate the userId property with the user's ID
+                formData.userId = user.uid;
+    
+                // Use the job ID as the document name
+                const docRef = await setDoc(doc(db, 'jobApplications', selectedJob.id), formData);
+                console.log('Document written with ID: ', selectedJob.id);
+    
+                // Update the jobApplicationSubmitted state to true
+                setJobApplicationSubmitted(true);
+            } catch (error) {
+                console.error('Error adding document: ', error);
+            }
+        }
+    };
+
     // Function to handle clicking on a job block
     const handleJobBlockClick = (job: Job) => {
         setSelectedJob(job); // Set the selected job when a JobBlock is clicked
+        // Set the apply button text based on whether the user has applied for the job
+        setApplyButtonText(userAppliedJobs.includes(job.id) ? "Applied" : "Apply");
     };
 
     // Function to handle exploring more jobs
     const handleExploreCareers = () => {
         router.push('/jobs');
+    };
+
+    // Function to close the application popup
+    const handleClosePopup = () => {
+        setShowApplicationPopup(false);
     };
 
     // Variants for animation
@@ -159,20 +232,29 @@ export default function Portal() {
                             detDesc={selectedJob.description}
                             reqDesc={selectedJob.requirements}
                             onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
-                            buttonText={
+                            listButtonText={
                                 userJobList.includes(selectedJob.id) 
                                 ? "Remove from List" 
                                 : "Add to List"
                             }
                             onAddToList={() => addToUserJobList(selectedJob.id)}
+                            onApply={() => handleApplyToJob(selectedJob.id)}
+                            applyButtonText={
+                                userAppliedJobs.includes(selectedJob.id)
+                                ? "Apply"
+                                : "Applied"
+                            }
                         />
                     </div>
                 )}
 
             </motion.div>
-            {/*<div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
-                <JobApplicationPopUp></JobApplicationPopUp>
-            </div> */}
+            {/* Conditionally render the JobApplicationPopUp */}
+            {showApplicationPopup && applyButtonText !== "Applied" && selectedJob && (
+                <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
+                    <JobApplicationPopUp onClose={handleClosePopup} onSubmit={handleJobApplicationSubmit} job={selectedJob?.name || ''} />
+                </div>
+            )}
             <Footer/>
         </main>
     );

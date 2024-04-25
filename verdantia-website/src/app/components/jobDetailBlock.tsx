@@ -21,10 +21,12 @@ interface myProps {
     reqDesc: string;
     onClose: () => void;
     onAddToList: () => void; // Add a prop to handle adding job to list
-    buttonText: string;
+    onApply: () => void;
+    listButtonText: string;
+    applyButtonText: string;
 }
 
-const JobDetailBlock: React.FC<myProps> = ({ workExperience, workType, salary, job, date, applicants, location, detDesc, reqDesc, onClose, onAddToList, buttonText }) => {
+const JobDetailBlock: React.FC<myProps> = ({ workExperience, workType, salary, job, date, applicants, location, detDesc, reqDesc, onClose, onAddToList, onApply, listButtonText, applyButtonText }) => {
     // Map workType to the appropriate banner image source
     const getBannerByWorkType = (workType: string) => {
         switch (workType.toLowerCase()) {
@@ -49,7 +51,7 @@ const JobDetailBlock: React.FC<myProps> = ({ workExperience, workType, salary, j
             <div style={{ height: "10vw", overflow: "hidden" }}>
                 <img src={bannerSrc.src} alt="Banner" className="w-[40vw]" />
             </div>
-            <TitleBlock job={job} date={date} applicants={applicants} location={location} onAddToList={onAddToList} buttonText={buttonText} />
+            <TitleBlock job={job} date={date} applicants={applicants} location={location} onAddToList={onAddToList} onApply={onApply} listButtonText={listButtonText} applyButtonText={applyButtonText}/>
             <InfoPanel workExperience={workExperience} workType={workType} salary={salary} />
             <DetReqBlock detDesc={detDesc} reqDesc={reqDesc} />
             <button onClick={onClose}>Close</button>

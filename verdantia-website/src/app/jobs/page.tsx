@@ -197,7 +197,7 @@ export default function Jobs() {
                         detDesc={selectedJob.description}
                         reqDesc={selectedJob.requirements}
                         onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
-                        buttonText={
+                        listButtonText={
                             userJobList.includes(selectedJob.id) 
                             ? "Remove from List" 
                             : "Add to List"

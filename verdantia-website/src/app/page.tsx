@@ -97,15 +97,6 @@ interface Job {
 export default function Home() {
   const [user] = useAuthState(auth);
   const [isVisible, setIsVisible] = useState(false);
-  const controlsFeaturedJobs = useAnimation();
-  const controlsOurMission = useAnimation();
-  const controlsOurValues = useAnimation();
-  const controlsOurImpacts = useAnimation();
-
-  const refFeaturedJobs = useRef<HTMLDivElement | null>(null);
-  const refOurMission = useRef<HTMLDivElement | null>(null);
-  const refOurValues = useRef<HTMLDivElement | null>(null);
-  const refOurImpacts = useRef<HTMLDivElement | null>(null);
 
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [allJobs, setJobListings] = useState<Job[]>([]);
@@ -174,30 +165,6 @@ export default function Home() {
       setSelectedJob(job);
   };
 
-  useEffect(() => {
-      const onScroll = () => {
-          const checkVisibility = (ref: React.MutableRefObject<HTMLDivElement | null>, controls: any) => {
-              if (ref.current && ref.current.getBoundingClientRect().top < window.innerHeight) {
-                  setIsVisible(true);
-                  controls.start("visible");
-              }
-          };
-
-          checkVisibility(refFeaturedJobs, controlsFeaturedJobs);
-          checkVisibility(refOurMission, controlsOurMission);
-          checkVisibility(refOurValues, controlsOurValues);
-          checkVisibility(refOurImpacts, controlsOurImpacts);
-      };
-
-      window.addEventListener("scroll", onScroll);
-      return () => window.removeEventListener("scroll", onScroll);
-  }, [controlsFeaturedJobs, controlsOurMission, controlsOurValues, controlsOurImpacts]);
-
-  const variants = {
-      hidden: { opacity: 0, y: 50 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
     <main>
       <LandingContent
@@ -206,11 +173,7 @@ export default function Home() {
         buttonText="Join the Team"
       />
 
-      <motion.div
-        ref={refFeaturedJobs}
-        initial="hidden"
-        animate={controlsFeaturedJobs}
-        variants={variants}
+      <div
       >
         <BodyHeading marginTop="6vw" marginBottom="2vw">Featured Jobs</BodyHeading>
         <Carousel blocks={allJobs.map(job => ({
@@ -222,13 +185,9 @@ export default function Home() {
           duration: job.duration,
           onClick: handleJobBlockClick(job),
         }))} />
-      </motion.div>
+      </div>
 
-      <motion.div
-        ref={refOurMission}
-        initial="hidden"
-        animate={controlsOurMission}
-        variants={variants}
+      <div
       >
         <BodyHeading marginTop="24vw">Our Mission</BodyHeading>
         <div className="flex items-center ml-[8vw] mr-[8vw]" style={{ fontFamily: 'Montserrat', fontWeight: 300, color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2.25vw' }}>
@@ -237,15 +196,12 @@ export default function Home() {
           </div>
           <img src={HandsPlanting.src} alt="Hands Planting" className="w-[40vw] h-auto" />
         </div>
-      </motion.div>
+      </div>
 
       <ImageDivider src={PotDivider.src} marginTop="6vw"></ImageDivider>
 
-      <motion.div
-        ref={refOurValues}
-        initial="hidden"
-        animate={controlsOurValues}
-        variants={variants}
+      <div
+
       >
         <BodyHeading marginTop="4vw" marginBottom="3vw">Our Values</BodyHeading>
 
@@ -276,20 +232,17 @@ export default function Home() {
           />      
         </div>
 
-      </motion.div>
+      </div>
 
       <ImageDivider src={ForestDivider.src} marginTop="6vw"></ImageDivider>
 
-      <motion.div
-        ref={refOurImpacts}
-        initial="hidden"
-        animate={controlsOurImpacts}
-        variants={variants}
+      <div
+
       >
         <BodyHeading marginTop="4vw" marginBottom="2vw" centerAligned={true}>Our Impacts</BodyHeading>
 
         <Slideshow slides={slides} />
-      </motion.div>
+      </div>
 
       {/* Extra margin so footer doesn't look weird */}
       <div style={{ marginBottom: '20vw' }}></div>
@@ -307,7 +260,7 @@ export default function Home() {
               detDesc={selectedJob.description}
               reqDesc={selectedJob.requirements}
               onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
-              buttonText={
+              listButtonText={
                 userJobList.includes(selectedJob.id) 
                 ? "Remove from List" 
                 : "Add to List"

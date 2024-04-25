@@ -1,32 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 
 interface myProps {
     job: string;
     onClose: () => void;
+    onSubmit: (formData: JobApplicationFormData) => void;
 }
 
-const JobApplicationPopUp: React.FC = () => {
-    const handleSubmit = () => {
-        console.log("Job Application Submitted");
-    }
+// Define an interface for the form data
+interface JobApplicationFormData {
+    userId: string; // New property to store the user ID
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: string;
+    zipCode: string;
+}
 
-    // State for the selected file
-    const [selectedFile, setSelectedFile] = useState(null);
+const JobApplicationPopUp: React.FC<myProps> = ({ job, onClose, onSubmit }) => {
+    // State for form data
+    const [formData, setFormData] = useState<JobApplicationFormData>({
+        userId: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        address: "",
+        zipCode: "",
+    });
 
-    // Handler for file input change
-    const handleFileChange = (event) => {
-        setSelectedFile(event.target.files[0]);
+    // Handler for input field change
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
     };
 
-    // Handler for file upload
-    const handleUpload = () => {
-        // Process the selected file locally
-        if (selectedFile) {
-            console.log('Selected file:', selectedFile);
-            // You can perform any operations with the file here, such as reading its content, etc.
-        } else {
-            console.log('No file selected');
-        }
+    // Handler for form submission
+    const handleSubmit = () => {
+        // Call the onSubmit prop function and pass the form data
+        onSubmit(formData);
+
+        // Optionally, you can close the popup after submission
+        onClose();
     };
 
     return (
@@ -37,7 +53,7 @@ const JobApplicationPopUp: React.FC = () => {
                         Job Application
                     </div>
                     <div className="relative w-fit [font-family:'Bellota_Text',Helvetica] text-[#53975dab] text-[1.5vw] tracking-[0] leading-[normal]">
-                        Environmental Scientist
+                        {job}
                     </div>
                 </div>
                 <div className={"inline-flex flex-col items-start gap-[1vw] relative"}>
@@ -49,6 +65,8 @@ const JobApplicationPopUp: React.FC = () => {
                             <input
                                 type="firstname"
                                 placeholder="Enter"
+                                name="firstName" // Add name attribute
+                                onChange={handleInputChange} // Add onChange handler
                                 className="w-full h-fit p-[0.8vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
@@ -57,6 +75,8 @@ const JobApplicationPopUp: React.FC = () => {
                             <input
                                 type="email"
                                 placeholder="Enter"
+                                name="email" // Add name attribute
+    onChange={handleInputChange} // Add onChange handler
                                 className="rounded-[0.5vw] w-full h-fit p-[0.8vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
@@ -65,6 +85,8 @@ const JobApplicationPopUp: React.FC = () => {
                             <input
                                 type="zipcode"
                                 placeholder="Enter"
+                                name="zipCode" // Add name attribute
+    onChange={handleInputChange} // Add onChange handler
                                 className="rounded-[0.5vw] w-full h-fit p-[0.8vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
                             <div></div>
@@ -78,7 +100,7 @@ const JobApplicationPopUp: React.FC = () => {
                                     </div>
                                 </button>
                                 <button
-                                    onClick={handleSubmit}
+                                    onClick={onClose}
                                     className="mt-[0.75vw] flex items-center justify-center py-[0.7vw] w-1/2 bg-[#53975d] rounded-[0.5vw] overflow-hidden"
                                 >
                                     <div className="text-white text-[1vw] leading-27.6">
@@ -94,6 +116,8 @@ const JobApplicationPopUp: React.FC = () => {
                             <input
                                 type="lastname"
                                 placeholder="Enter"
+                                name="lastName" // Add name attribute
+    onChange={handleInputChange} // Add onChange handler
                                 className="w-full h-fit p-[0.8vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
@@ -102,13 +126,15 @@ const JobApplicationPopUp: React.FC = () => {
                             <input
                                 type="address"
                                 placeholder="Enter"
+                                name="address" // Add name attribute
+    onChange={handleInputChange} // Add onChange handler
                                 className="rounded-[0.5vw] w-full h-fit p-[0.8vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
                                 Upload Resume
                             </div>
-                            <input className={"h-full text-[1.2vw]"} type="file" onChange={handleFileChange} />
-                            <button onClick={handleUpload}></button>
+                            <input className={"h-full text-[1.2vw]"} type="file"/>
+                            <button onClick={handleSubmit}></button>
                         </div>
                     </div>
                 </div>

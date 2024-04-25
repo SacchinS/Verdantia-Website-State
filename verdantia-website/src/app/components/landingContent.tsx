@@ -24,7 +24,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleJopAppPopUp = () => {
+    if (buttonText === 'Post Appliation'){
       setIsOpen(!isOpen);
+    }
+      
   }
 
 
