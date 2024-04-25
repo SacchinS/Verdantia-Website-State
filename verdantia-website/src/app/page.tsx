@@ -251,13 +251,16 @@ const addToUserAppliedJobs = async (jobId: string) => {
     <main>
       <LandingContent
         heading="Welcome to \nVerdantia"
-        subheading="Where Sustainability meets Innovation"
+        subheading="Where Sustainability meets Innovation."
         buttonText="Join the Team"
       />
 
       <div
       >
-        <BodyHeading marginTop="6vw" marginBottom="2vw">Featured Jobs</BodyHeading>
+        <div className="sm:mt-[10vw] sm:mb-[5vw] sm:ml-[8vw] sm:text-[2.8vw]" style={{fontFamily : "Bellota Text"}}>
+          Featured Jobs
+        </div>
+        
         <Carousel blocks={allJobs.map(job => ({
     data: job.date,
     applicantCount: job.applicants,
@@ -272,12 +275,15 @@ const addToUserAppliedJobs = async (jobId: string) => {
 
       <div
       >
-        <BodyHeading marginTop="24vw">Our Mission</BodyHeading>
-        <div className="flex items-center ml-[8vw] mr-[8vw]" style={{ fontFamily: 'Montserrat', fontWeight: 300, color: '#3E3E3E', fontSize: '1.5vw', lineHeight: '2.25vw' }}>
-          <div className="mr-[10vw]">
+        <div className="sm:mt-[26vw] sm:mb-[2vw] sm:ml-[8vw] sm:text-[2.8vw]" style={{fontFamily : "Bellota Text"}}>
+          Our Mission
+        </div>
+
+        <div className="flex items-center sm:ml-[8vw] sm:mr-[8vw] sm:text-[1.5vw] text-[#3e3e3e]" style={{ fontFamily: 'Montserrat'}}>
+          <div className="sm:mr-[10vw]">
             At Verdantia, our mission is to revolutionize <strong>environmental sustainability</strong> by seamlessly integrating technology and human impact. We believe in a holistic approach, leveraging <strong>cutting-edge innovations</strong> alongside direct, hands-on efforts to create a more <strong>sustainable and resilient future</strong> for our planet.
           </div>
-          <img src={HandsPlanting.src} alt="Hands Planting" className="w-[40vw] h-auto" />
+          <img src={HandsPlanting.src} alt="Hands Planting" className="sm:w-[40vw] h-auto" />
         </div>
       </div>
 

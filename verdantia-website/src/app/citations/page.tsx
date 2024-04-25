@@ -14,7 +14,7 @@ import Footer from "../components/Footer";
 
 const Citations = () => {
 
-  return (
+  return (  
     <main>
       <LandingContent heading="Citations and\nReferences" subheading="" />
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

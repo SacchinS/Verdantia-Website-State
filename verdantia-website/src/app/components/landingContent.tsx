@@ -12,9 +12,9 @@ import { auth } from '@/app/firebase/config';
 
 interface LandingPageProps {
   heading: string;
-  subheading: string;
+  subheading?: string;
   buttonText?: string;
-}
+}   
 
 const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonText }) => {
   const [headingPart1, headingPart2] = heading.split('\\n');
@@ -56,7 +56,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 0, y: 0 }}
               transition={{ duration: 1 }}
-              className="text-3xl mb-[1vw]"
+              className="text-[60vw] mb-[1vw]"
               style={{ fontFamily: 'Enriqueta', color: '#3E3E3E', fontSize: '7vw', lineHeight: '8vw' }}
             >
               <div>&nbsp;</div> {/* Placeholder for headingPart1 */}
@@ -101,9 +101,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
-              className="text-3xl mb-[1vw]"
-              style={{ fontFamily: 'Enriqueta', color: '#3E3E3E', fontSize: '7vw', lineHeight: '8vw' }}
-            >
+              className="text-[#3e3e3e] text-[10vw] sm:text-[6vw] sm:ml-[0vw] sm:mb-[0vw] mb-[1vw] "
+              // style={{ fontFamily: 'Enriqueta', color: '#3E3E3E', fontSize: '7vw', lineHeight: '8vw' }}
+              style={{fontFamily: 'Enriqueta'}}
+              >
               {headingPart1 && <div>{headingPart1}</div>}
               {headingPart2 && <div>{headingPart2}</div>}
             </motion.div>
@@ -113,9 +114,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-lg mb-[2vw]"
-              style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: '2.1vw', lineHeight: '3vw' }}
-            >
+              className="text-[5vw] text-[#3e3e3e] mt-[8vw] sm: mt-[.1vw] sm: ml-[0.8vw] sm:text-[2vw] sm:mb-[2vw]"
+              // style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: ' 100vw sm:2.1vw', lineHeight: '3vw' }}
+              style={{fontFamily: "Bellota Text"}}
+          >
               {subheading}
             </motion.div>
           )}
@@ -126,13 +128,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }} // Transition for initial and animate
-            className="bg-gray-700 text-white font-semibold px-[1.5vw] py-[0.5vw] rounded hover:bg-gray-800 shadow-lg"
+            className="bg-gray-700 text-white font-semibold sm:px-[1.5vw] py-[0.5vw]   ml-[22vw] sm:ml-[1vw] text-[#3e3e3e] mt-[2vw] p-[4vw] flex items-center justify-center rounded-[28vw] rounded hover:bg-gray-800 shadow-lg"
             style={{
               fontFamily: 'Bellota Text',
-              fontSize: '1.4vw',
-              backgroundColor: '#3E3E3E',
-              borderRadius: '25px',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.7)',
+              // fontSize: '1.4vw',
+              // backgroundColor: '#3E3E3E',
+              // borderRadius: '25px',
+              // boxShadow: '0 4px 12px rgba(0, 0, 0, 0.7)',
             }}
             >
               {buttonText}

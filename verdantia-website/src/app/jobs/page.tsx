@@ -227,7 +227,7 @@ export default function Jobs() {
         <main>
             <LandingContent
                 heading="Discover your \nNext Job"
-                subheading="Explore your passions"
+                subheading="Explore your passions."
             />
 
             <div className="container mx-auto">
