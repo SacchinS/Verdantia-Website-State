@@ -56,6 +56,7 @@ export default function AdminPortal() {
 
     const handleJobEditBlockClick = (job: Job) => {
         setJob(job.id);
+        router.push(`/adminPortal#popUp`);
     };
 
 
@@ -93,11 +94,14 @@ export default function AdminPortal() {
                     </div>
 
                 </div>
-                {job != "" &&
-                    <EditJobPopUp
-                        job={allJobs.filter(j => j.id == job)[0]}
-                        close={() => setJob("")}
-                    />}
+                <div id={"popUp"}>
+                    {job != "" &&
+                        <EditJobPopUp
+                            job={allJobs.filter(j => j.id == job)[0]}
+                            close={() => setJob("")}
+                        />}
+                </div>
+
             </div>
 
 
