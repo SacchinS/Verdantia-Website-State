@@ -17,7 +17,7 @@ interface Job {
     description: string;
 }
 
-const EditJobPopUp: ({job, close}: { job: Job; close: Function }) => React.JSX.Element = ({job, close}: { job:Job, close: Function }) => {
+    const EditJobPopUp: ({job, close}: { job: Job; close: Function }) => React.JSX.Element = ({job, close}: { job:Job, close: Function }) => {
 
     const [name, setName] = React.useState(job.name);
     const [role, setRole] = React.useState(job.role);

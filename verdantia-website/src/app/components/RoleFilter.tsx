@@ -15,7 +15,7 @@ const RoleFilter: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selected"), (doc) => {
+    const unsubscribe= onSnapshot(doc(db, "selectedFilters", "selected"), (doc) => {
       const data = doc.data();
       if (data) {
         setSelectedFilters(data.roles);

@@ -23,8 +23,6 @@ const SignUpPopUp: React.FC = () => {
     const handleSignUp = async () => {
         try {
             const res = await createUserWithEmailAndPassword(email, password)
-            console.log("createUserWithEmailAndPassword")
-            console.log(res)
             setEmail('')
             setPassword('')
             router.push('/portal')

@@ -37,7 +37,7 @@ const SignInPopUp: React.FC = () => {
 
     // @ts-ignore
     return (
-        <main>
+        <main className={"flex justify-center items-center"}>
         <div className="flex  items-center relative bg-white h-1/2 justify-self-center w-3/4 m-[0.5vw]">
             <div
                 className="overflow-hidden rounded-[1vw] flex items-center border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040]">
