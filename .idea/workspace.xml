@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="84c462bd-f45e-44de-a790-2ac62b8d8669" name="Changes" comment="updated file name">
       <change afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/editJobPopUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/adminPortal/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/adminPortal/page.tsx" afterDir="false" />
@@ -81,7 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713978045215</updated>
       <workItem from="1713978046022" duration="7608000" />
-      <workItem from="1714025413070" duration="8794000" />
+      <workItem from="1714025413070" duration="8943000" />
     </task>
     <task id="LOCAL-00001" summary="updated file name">
       <option name="closed" value="true" />
