@@ -185,7 +185,7 @@ export default function Portal() {
     const handleJobBlockClick = (job: Job) => {
         setSelectedJob(job); // Set the selected job when a JobBlock is clicked
         // Set the apply button text based on whether the user has applied for the job
-        setApplyButtonText(userAppliedJobs.includes(job.id) ? "Applied" : "Apply");
+        setApplyButtonText(userAppliedJobs.includes(job.id) ? "Apply" : "Applied");
     };
 
     // Function to handle exploring acmore jobs
@@ -265,8 +265,8 @@ export default function Portal() {
                             onApply={() => handleApplyToJob(selectedJob.id)}
                             applyButtonText={
                                 userAppliedJobs.includes(selectedJob.id)
-                                ? "Apply"
-                                : "Applied"
+                                ? "Applied"
+                                : "Apply"
                             }
                         />
                     </div>
