@@ -38,11 +38,29 @@ export default function Portal() {
     const [userJobList, setUserJobList] = useState<string[]>([]);
     const [allJobs, setJobListings] = useState<Job[]>([]);
 
+    useEffect(() => {
+        if (user){
+            const userRef = doc(db, 'users', user.uid)
+            const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
+                if (docSnapshot.exists()){
+                    const data = docSnapshot.data();
+                    if (data.admin === true){
+                        router.push('/adminPortal')
+                    }
+                }
+            })
+        }
+
+
+    }, []);
+
     // Fetch user's job list from Firestore when component mounts
     useEffect(() => {
+
         if (user) {
             const userRef = doc(db, 'users', user.uid);
             const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
+
                 if (docSnapshot.exists()) {
                     const userData = docSnapshot.data();
                     setUserJobList(userData.jobList || []); // Set user's job list
