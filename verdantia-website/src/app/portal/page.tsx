@@ -268,7 +268,7 @@ export default function Portal() {
 
             </motion.div>
             {/* Conditionally render the JobApplicationPopUp */}
-            {showApplicationPopup && applyButtonText !== "Applied" && selectedJob && (
+            {showApplicationPopup && selectedJob && (
                 <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
                     <JobApplicationPopUp onClose={handleClosePopup} onSubmit={handleJobApplicationSubmit} job={selectedJob?.name || ''} />
                 </div>
