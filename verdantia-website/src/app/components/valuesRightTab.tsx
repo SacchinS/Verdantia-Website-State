@@ -16,12 +16,12 @@ const SectionWithIcon: React.FC<SectionWithIconProps> = ({
   return (
     <div className="ml-[8vw] mr-[8vw]">
       <div className="flex items-center justify-between">
-        <img src={iconSrc} alt="Icon" className="w-[10vw] h-[10vw]" />
+        <img src={iconSrc} alt="Icon" className="w-[20vw] h-[20vw]" />
         <div className="flex flex-col text-right">
-          <div className="text-lg mb-8 font-extrabold" style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: '1.7vw', lineHeight: '1vw' }}>
+          <div className="text-lg mb-8 mt-[8vw] font-extrabold" style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: '5.3vw', lineHeight: '1vw' }}>
             {title}
           </div>
-          <div className="text-sm font-light" style={{ fontFamily: 'Montserrat', color: 'black', fontSize: '1.5vw', lineHeight: '2vw', marginLeft: '15vw' }}>
+          <div className="text-sm font-light mb-[8vw]" style={{ fontFamily: 'Montserrat', color: 'black', fontSize: '4.5vw', lineHeight: '7vw', marginLeft: '15vw' }}>
             {subheading}
           </div>
         </div>

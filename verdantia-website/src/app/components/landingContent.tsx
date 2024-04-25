@@ -101,7 +101,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
-              className="text-[#3e3e3e] text-[10vw] sm:text-[6vw] sm:ml-[0vw] sm:mb-[0vw] mb-[1vw] "
+              className="text-[#3e3e3e] text-[9vw] sm:text-[6vw] sm:ml-[0vw] sm:mb-[0vw] mb-[1vw] "
               // style={{ fontFamily: 'Enriqueta', color: '#3E3E3E', fontSize: '7vw', lineHeight: '8vw' }}
               style={{fontFamily: 'Enriqueta'}}
               >
@@ -114,7 +114,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-[5vw] text-[#3e3e3e] mt-[8vw] sm: mt-[.1vw] sm: ml-[0.8vw] sm:text-[2vw] sm:mb-[2vw]"
+              className="text-[7vw] flex justify-center items-center ml-[-15vw] text-center text-[#3e3e3e] mt-[8vw] sm: mt-[.1vw] sm: ml-[0.8vw] sm:text-[2vw] sm:mb-[2vw]"
               // style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: ' 100vw sm:2.1vw', lineHeight: '3vw' }}
               style={{fontFamily: "Bellota Text"}}
           >
@@ -128,7 +128,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }} // Transition for initial and animate
-            className="bg-gray-700 text-white font-semibold sm:px-[1.5vw] py-[0.5vw]   ml-[22vw] sm:ml-[1vw] text-[#3e3e3e] mt-[2vw] p-[4vw] flex items-center justify-center rounded-[28vw] rounded hover:bg-gray-800 shadow-lg"
+            className="bg-gray-700 text-white font-semibold sm:px-[1.5vw] py-[0.5vw]   ml-[24vw] sm:ml-[1vw] text-[#3e3e3e] mt-[5vw] p-[4vw] flex items-center justify-center rounded-[28vw] rounded hover:bg-gray-800 shadow-lg"
             style={{
               fontFamily: 'Bellota Text',
               // fontSize: '1.4vw',

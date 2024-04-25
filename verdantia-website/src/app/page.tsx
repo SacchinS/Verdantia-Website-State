@@ -255,66 +255,91 @@ const addToUserAppliedJobs = async (jobId: string) => {
         buttonText="Join the Team"
       />
 
-      <div
-      >
-        <div className="sm:mt-[10vw] sm:mb-[5vw] sm:ml-[8vw] sm:text-[2.8vw]" style={{fontFamily : "Bellota Text"}}>
+    
+        <div className=" mb-[5vw] mt-[5vw] text-[9vw] ml-[19vw]                  sm:mt-[10vw] sm:mb-[19vw] sm:ml-[8vw] sm:text-[2.8vw]" style={{fontFamily : "Bellota Text"}}>
           Featured Jobs
         </div>
         
-        <Carousel blocks={allJobs.map(job => ({
-    data: job.date,
-    applicantCount: job.applicants,
-    workMethod: job.place,
-    location: job.location,
-    jobTitle: job.name,
-    duration: job.duration,
-    onClick: () => handleJobBlockClick(job), // Wrap handleJobBlockClick in a function
-}))} />
+        <div className="flex flex-col justify-center ml-[13vw] gap-[5vw]">
+          <JobBlock
+
+            data="3 days ago"
+            applicantCount="13"
+            workMethod="Remote"
+            location="Seattle, WA"
+            jobTitle= "Environmental Systems Manager"
+            duration="Full Time"
+
+          />
+          <JobBlock
+
+            data="9 days ago"
+            applicantCount="154"
+            workMethod="Hybrid"
+            location="London, UK"
+            jobTitle= "Forest Projects Coordinator"
+            duration="Part Time"
+
+          />
+
+          <JobBlock
+
+            data="27 days ago"
+            applicantCount="43"
+            workMethod="In Person"
+            location="Seattle, WA"
+            jobTitle= "Senior Systems Engineer"
+            duration="Internship"
+
+          />          
+        </div>
+        <div>
+
 
       </div>
 
       <div
       >
-        <div className="sm:mt-[26vw] sm:mb-[2vw] sm:ml-[8vw] sm:text-[2.8vw]" style={{fontFamily : "Bellota Text"}}>
+        <div className=" mb-[10vw] mt-[10vw] text-[9vw] ml-[23vw]    sm:mt-[10vw] sm:mb-[19vw] sm:ml-[8vw] sm:text-[2.8vw]" style={{fontFamily : "Bellota Text"}}>
           Our Mission
         </div>
+        <img src={HandsPlanting.src} alt="Hands Planting" className="sm:w-[40vw] h-auto" />
 
-        <div className="flex items-center sm:ml-[8vw] sm:mr-[8vw] sm:text-[1.5vw] text-[#3e3e3e]" style={{ fontFamily: 'Montserrat'}}>
-          <div className="sm:mr-[10vw]">
+        <div className="flex justify-center text-center items-center ml-[5vw] mt-[10vw] mr-[5vw] px-[4vw] text-[4.4vw]" style={{ fontFamily: 'Montserrat'}}>
+          <div className="" style={{ fontFamily: 'Montserrat'}}>
             At Verdantia, our mission is to revolutionize <strong>environmental sustainability</strong> by seamlessly integrating technology and human impact. We believe in a holistic approach, leveraging <strong>cutting-edge innovations</strong> alongside direct, hands-on efforts to create a more <strong>sustainable and resilient future</strong> for our planet.
           </div>
-          <img src={HandsPlanting.src} alt="Hands Planting" className="sm:w-[40vw] h-auto" />
-        </div>
+        </div>  
       </div>
 
-      <ImageDivider src={PotDivider.src} marginTop="6vw"></ImageDivider>
 
       <div
 
       >
-        <BodyHeading marginTop="4vw" marginBottom="3vw">Our Values</BodyHeading>
-
+        <div className=" mb-[10vw] mt-[10vw] text-[9vw] ml-[28vw]" style={{fontFamily : "Bellota Text"}}>
+          Our Impact
+        </div>
         <div>
           <ValuesLeftTab
-            title = "01 - Environmental Awareness"
+            title = "Environmental Awareness"
             subheading = "We inspire positive change through mindful environmental awareness and education."
             iconSrc= "/images/Values1.svg"
           />
 
           <ValuesRightTab
-            title = "02 - Collaboration"
+            title = "Collaboration"
             subheading = "We thrive using collaboration, leveraging its power for meaningful change in sustainability."
             iconSrc= "/images/Values2.svg"
           />
 
           <ValuesLeftTab
-            title = "03 - Leadership"
+            title = "Leadership"
             subheading = "Guided by visionary leadership, we aim to inspire a sustainable future through innovation and determination."
             iconSrc= "/images/Values3.svg"
           />
 
           <ValuesRightTab
-            title = "04 - Responsibility"
+            title = "Responsibility"
             subheading = "Responsibility is central to Verdantia, guiding decisions with integrity as well as transparency for sustainable initiatives."
             iconSrc= "/images/Values4.svg"
             showDivider={false}
@@ -323,54 +348,6 @@ const addToUserAppliedJobs = async (jobId: string) => {
 
       </div>
 
-      <ImageDivider src={ForestDivider.src} marginTop="6vw"></ImageDivider>
-
-      <div
-
-      >
-        <BodyHeading marginTop="4vw" marginBottom="2vw" centerAligned={true}>Our Impacts</BodyHeading>
-
-        <Slideshow slides={slides} />
-      </div>
-
-      {/* Extra margin so footer doesn't look weird */}
-      <div style={{ marginBottom: '20vw' }}></div>
-
-      {selectedJob && (
-        <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
-          <JobDetailBlock
-            job={selectedJob.name}
-            date={selectedJob.date}
-            applicants={selectedJob.applicants}
-            location={selectedJob.location}
-            workExperience={selectedJob.experience}
-            workType={selectedJob.role}
-            salary={selectedJob.salary}
-            detDesc={selectedJob.description}
-            reqDesc={selectedJob.requirements}
-            onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
-            listButtonText={
-                userJobList.includes(selectedJob.id) 
-                ? "Remove from List" 
-                : "Add to List"
-            }
-            onAddToList={() => addToUserJobList(selectedJob.id)}
-            onApply={() => handleApplyToJob(selectedJob.id)}
-            applyButtonText={
-                userAppliedJobs.includes(selectedJob.id)
-                ? "Apply"
-                : "Apply"
-            }
-          />
-        </div>
-      )}
-      
-      {/* Conditionally render the JobApplicationPopUp */}
-      {showApplicationPopup && selectedJob && (
-                <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
-                    <JobApplicationPopUp onClose={handleClosePopup} onSubmit={handleJobApplicationSubmit} job={selectedJob?.name || ''} />
-                </div>
-            )}
 
       <Footer/>
 

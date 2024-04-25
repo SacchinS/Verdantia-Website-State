@@ -14,7 +14,7 @@ interface Props {
     jobTitle: string;
     duration: string;
     style?: CSSProperties;
-    onClick: () => void; // Add onClick prop
+    onClick?: () => void; // Add onClick prop
 }
 
 export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle, duration, style, onClick }: Props): JSX.Element => {
@@ -29,17 +29,17 @@ export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle,
     return (
         <motion.div
             style={style}
-            className={'flex flex-col w-[28vw] items-start justify-center gap-[1vw] p-[2vw] relative bg-white rounded-[1vw] border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040]'}
+            className={'flex flex-col w-[70vw] items-start justify-center gap-[2.5vw] p-[5vw] relative bg-white rounded-[5vw] border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040]'}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             whileHover={{ scale: 1.05 }} // Grow a little bit when hovered over
         >
             {/* Job Block content */}
             <div className="flex flex-col items-start justify-center relative self-stretch w-full flex-[0_0_auto]">
-                <div className="relative self-stretch mt-[-1.00vw] [font-family:'Bellota_Text'] font-normal text-[#3e3e3e] text-[2.5vw] tracking-[0] leading-[3vw]">
+                <div className="relative self-stretch mt-[-2.500vw] [font-family:'Bellota_Text'] font-normal text-[#3e3e3e] text-[6.25vw] tracking-[0] leading-[7.5vw]">
                     {jobTitle}
                 </div>
-                <div className="inline-flex items-center gap-[15px] relative flex-[0_0_auto]">
+                <div className="inline-flex items-center gap-[37px] relative flex-[0_0_auto]">
                     {/*<div
                         className="relative w-fit mt-[0.25vw] [font-family: 'Montserrat'] font-medium text-neutral-400 text-[1vw] text-center tracking-[0] leading-[normal]">
                         {data} Days ago
@@ -52,30 +52,30 @@ export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle,
                     <div className="relative mt-[0.25vw] w-[0.25vw] h-[0.25vw] bg-neutral-400 rounded-[10vw]"/>
                     */}
                     <div
-                        className="relative w-fit mt-[0.25vw] [font-family:'Montserrat'] font-medium text-neutral-400 text-[1vw] text-center tracking-[0] leading-[normal]">
+                        className="relative w-fit mt-[0.625vw] [font-family:'Montserrat'] font-medium text-neutral-400 text-[2.5vw] text-center tracking-[0] leading-[normal]">
                         {duration}
                     </div>
                 </div>
             </div>
-            <div className="flex items-center gap-[5vw] relative self-stretch w-full flex-[0_0_auto]">
-                <div className="flex flex-col items-start justify-center gap-[1vw] relative flex-1 grow">
+            <div className="flex items-center gap-[12.5vw] relative self-stretch w-full flex-[0_0_auto]">
+                <div className="flex flex-row items-start justify-left gap-[17.5vw] relative flex-1 grow">
                 <div
-                        className={'inline-flex items-center gap-[1vw] relative flex-[0_0_auto] mr-[-3vw] ${frameClassName}'}
+                        className={'inline-flex items-center gap-[2.5vw] relative flex-[0_0_auto] mr-[-7.5vw] ${frameClassName}'}
                     >
-                        <img src={LocationIcon.src} alt="Location Icon" className="w-[1vw] h-[1.5vw]" /> {/* Location Icon */}
-                        <div className="relative w-fit [font-family:'Montserrat'] font-normal text-black text-[1vw] text-center tracking-[0] leading-[normal]">
+                        <img src={LocationIcon.src} alt="Location Icon" className="w-[2.5vw] h-[3.75vw]" /> {/* Location Icon */}
+                        <div className="relative w-fit [font-family:'Montserrat'] font-normal text-black text-[2.5vw] text-center tracking-[0] leading-[normal]">
                             {location}
                         </div>
                     </div>
-                    <div className="inline-flex items-center gap-[1vw] relative flex-[0_0_auto]">
-                        <img src={RemoteIcon.src} alt="Remote Icon" className="w-[1.5vw] h-[1.5vw]" /> {/* Remote Icon */}
-                        <div className="relative w-fit [font-family:'Montserrat'] font-normal text-black text-[1vw] text-center tracking-[0] leading-[normal]">
+                    <div className="inline-flex items-center gap-[2.5vw] relative flex-[0_0_auto]">
+                        <img src={RemoteIcon.src} alt="Remote Icon" className="w-[3.75vw] h-[3.75vw]" /> {/* Remote Icon */}
+                        <div className="relative w-fit [font-family:'Montserrat'] font-normal text-black text-[2.5vw] text-center tracking-[0] leading-[normal]">
                             {workMethod}
                         </div>
                     </div>
                 </div>
 
-                <motion.button 
+                {/* <motion.button 
                     className="flex w-[9vw] h-[3vw] items-center justify-center gap-[2vw] p-[1.5vw] relative bg-[#5b8c69] rounded-[2vw] overflow-hidden"
                     variants={buttonVariants}
                     whileHover="hover"
@@ -84,7 +84,7 @@ export const JobBlock = ({ data, applicantCount, workMethod, location, jobTitle,
                     <div className="relative w-fit mt-[-1vw] mb-[-1vw] [font-family:'Bellota Text'] font-normal text-white text-[1vw] text-center tracking-[0] leading-[normal]">
                         Details
                     </div>
-                </motion.button>
+                </motion.button> */}
             </div>
         </motion.div>
     );
