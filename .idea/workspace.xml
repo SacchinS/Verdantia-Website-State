@@ -11,6 +11,16 @@
       <change beforePath="$PROJECT_DIR$/verdantia-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/adminPortal/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/adminPortal/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/benefits/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/benefits/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/titleBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/titleBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topRightInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topRightInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/editableJobBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/editableJobBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/jobApplicationPopUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/jobApplicationPopUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/jobDetailBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/jobDetailBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/jopPostForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/jopPostForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/landingContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/landingContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/jobs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/jobs/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/portal/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/portal/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713978045215</updated>
       <workItem from="1713978046022" duration="7608000" />
-      <workItem from="1714025413070" duration="7328000" />
+      <workItem from="1714025413070" duration="8794000" />
     </task>
     <task id="LOCAL-00001" summary="updated file name">
       <option name="closed" value="true" />

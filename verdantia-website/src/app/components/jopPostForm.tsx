@@ -2,7 +2,8 @@ import React from "react";
 import {addDoc, collection} from "firebase/firestore";
 import {db} from "@/app/firebase/config";
 
-const JobPostForm: React.FC = () => {
+const JobPostForm: ({close}: { close: Function }) => React.JSX.Element = ({close}: { close: Function }) => {
+
 
     const [name, setName] = React.useState("");
     const [role, setRole] = React.useState("");
@@ -35,6 +36,7 @@ const JobPostForm: React.FC = () => {
         setRequirements("")
         setExperience("")
         setSalary("")
+        close()
     }
 
     return (

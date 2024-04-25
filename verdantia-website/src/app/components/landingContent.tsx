@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import Navbar from "./navbar";
 import JobPostForm from "@/app/components/jopPostForm";
+import {useRouter} from "next/navigation";
 
 interface LandingPageProps {
   heading: string;
@@ -16,6 +17,7 @@ interface LandingPageProps {
 const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonText }) => {
   const [headingPart1, headingPart2] = heading.split('\\n');
   const [isVisible, setIsVisible] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsVisible(true);
@@ -24,8 +26,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleJopAppPopUp = () => {
-    if (buttonText === 'Post Appliation'){
+    if (buttonText === 'Post Application'){
       setIsOpen(!isOpen);
+      router.push('#popUp')
     }
       
   }
@@ -126,8 +129,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
           )}
         </AnimatePresence>
       </div>
-        <div className={"w-screen flex justify-center items-center"}>
-            {isOpen && <JobPostForm/>}
+        <div className={"w-screen flex justify-center items-center"} id={"popUp"}>
+            {isOpen && <JobPostForm close={() => setIsOpen(false)}/>}
         </div>
 
     </div>

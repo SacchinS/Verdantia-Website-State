@@ -42,7 +42,7 @@ const JobApplicationPopUp: React.FC<myProps> = ({ job, onClose, onSubmit }) => {
         onSubmit(formData);
 
         // Optionally, you can close the popup after submission
-        onClose();
+
     };
 
     return (
