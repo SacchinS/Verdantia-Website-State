@@ -7,6 +7,8 @@ import React, { useEffect, useState } from 'react';
 import Navbar from "./navbar";
 import JobPostForm from "@/app/components/jopPostForm";
 import {useRouter} from "next/navigation";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/app/firebase/config';
 
 interface LandingPageProps {
   heading: string;
@@ -18,7 +20,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
   const [headingPart1, headingPart2] = heading.split('\\n');
   const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
-
+  const [user] = useAuthState(auth);
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -31,7 +33,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
       router.push('#popUp')
     }
     if (buttonText === 'Join the Team'){
-      router.push('/signIn')
+      if (user){
+        router.push('/jobs')
+      }
+      else{
+        router.push('/signIn')
+      }
+     
     }
       
   }
