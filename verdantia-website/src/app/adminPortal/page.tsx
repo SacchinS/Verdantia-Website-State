@@ -10,7 +10,7 @@ import {signOut} from "@firebase/auth";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {useRouter} from "next/navigation";
 import EditableJobBlock from "@/app/components/editableJobBlock";
-
+import EditJobPopUp from "@/app/components/editJobPopUp";
 
 interface Job {
     id: string;
@@ -29,6 +29,9 @@ interface Job {
 
 export default function AdminPortal() {
 
+    const [job, setJob] = useState<String>("");
+
+
     const [user] = useAuthState(auth);
     const router = useRouter();
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
@@ -46,11 +49,13 @@ export default function AdminPortal() {
 
     // Redirect to signIn if user is not authenticated
 
+    useEffect(() => {
+        console.log(job);
+    }, [job])
 
 
-
-    const handleJobBlockClick = (job: Job) => {
-        setSelectedJob(job); // Set the selected job when a JobBlock is clicked
+    const handleJobEditBlockClick = (job: Job) => {
+        setJob(job.id);
     };
 
 
@@ -59,6 +64,8 @@ export default function AdminPortal() {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     };
+
+    console.log(job);
     return (
         <main>
             <LandingContent
@@ -66,24 +73,35 @@ export default function AdminPortal() {
                 subheading=""
                 buttonText="Post Application"
             />
-            {/*<div className="container mx-auto mt-[10vw] text-white  flex justify-center">*/}
-            {/*    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[5vw]">*/}
-            {/*        /!* Map over job listings to create JobBlocks *!/*/}
-            {/*        {allJobs.map((job) => (*/}
-            {/*            <EditableJobBlock*/}
-            {/*                key={job.id}*/}
-            {/*                id = {job.id}*/}
-            {/*                applicantCount={job.applicants}*/}
-            {/*                data={job.date}*/}
-            {/*                jobTitle={job.name}*/}
-            {/*                location={job.location}*/}
-            {/*                workMethod={job.place}*/}
-            {/*                duration={job.duration}*/}
-            {/*                onClick={() => handleJobBlockClick(job)} // Pass onClick handler to JobBlock*/}
-            {/*            />*/}
-            {/*        ))}*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div className={"flex flex-col justify-center items-center"}>
+                <div className="container mx-auto mt-[10vw] text-white  flex justify-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[5vw]">
+                        {/* Map over job listings to create JobBlocks */}
+                        {allJobs.map((job) => (
+                            <EditableJobBlock
+                                key={job.id}
+                                id = {job.id}
+                                applicantCount={job.applicants}
+                                data={job.date}
+                                jobTitle={job.name}
+                                location={job.location}
+                                workMethod={job.place}
+                                duration={job.duration}
+                                onClick={() => handleJobEditBlockClick(job)} // Pass onClick handler to JobBlock
+                            />
+                        ))}
+                    </div>
+
+                </div>
+                {job != "" &&
+                    <EditJobPopUp
+                        job={allJobs.filter(j => j.id == job)[0]}
+                        close={() => setJob("")}
+                    />}
+            </div>
+
+
+
         </main>
     )
 }
