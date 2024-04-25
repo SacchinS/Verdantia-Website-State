@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import { useRouter } from "next/navigation";
 import facebook from "../../../public/images/facebook.png"
