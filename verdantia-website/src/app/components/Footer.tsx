@@ -55,17 +55,17 @@ const items = [
 
 const Footer = () =>{
     return (
-        <div className="w-full mt-24 bg-[#7b906f] text-gray-300 py-y px-2">
+        <div className="w-full mt-24 bg-custom-green text-white py-y px-2">
             <div className="max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-6 border-b-2 border-gray-600 py-8">
                 {
                     sections.map((section, index) => (
                         <div key={index}>
-                            <h6 className="font-bold uppercase pt-2">
+                            <h6 className="text-white font-bold uppercase pt-2">
                                 {section.title}
                             </h6>
                             <ul>
                                 {section.items.map((item, i) => (
-                                    <li key = {i} className="py-1 text-gray-300 hover:text-white cursor-pointer">
+                                    <li key = {i} className="py-1 text-white hover:text-white cursor-pointer">
                                         {item}
                                     </li>
                                 ))}   
@@ -89,7 +89,7 @@ const Footer = () =>{
                 </div>
             </div> 
 
-            <div className="flex flex-col max-w-[1240px] px-2 py-4 mx-auto justify-between sm:flex-row text-center text-gray-300">
+            <div className="flex flex-col max-w-[1240px] px-2 py-4 mx-auto justify-between sm:flex-row text-center text-white">
                 <p className="py-4">
                     2024 Verdantia, LLC. All rights reserved.
                 </p>

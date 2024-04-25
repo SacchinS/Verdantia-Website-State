@@ -122,6 +122,8 @@ export default function Portal() {
             } catch (error) {
                 console.error('Error updating user jobList:', error);
             }
+        } else {
+            router.push('/signIn'); // Redirect to sign-in page if user is not authenticated
         }
     };
 
@@ -152,8 +154,12 @@ export default function Portal() {
 
     // Function to handle applying to a job
     const handleApplyToJob = (jobId: string) => {
-        addToUserAppliedJobs(jobId); // Add the job ID to the user's applied jobs list
-        setShowApplicationPopup(true); // Show application popup when applying
+        if (user) {
+            addToUserAppliedJobs(jobId); // Add the job ID to the user's applied jobs list
+            setShowApplicationPopup(true); // Show application popup when applying
+        } else {
+            router.push('/signIn'); // Redirect to sign-in page if user is not authenticated
+        }
     };
 
     // Define a function to handle job application submission
@@ -182,7 +188,7 @@ export default function Portal() {
         setApplyButtonText(userAppliedJobs.includes(job.id) ? "Applied" : "Apply");
     };
 
-    // Function to handle exploring more jobs
+    // Function to handle exploring acmore jobs
     const handleExploreCareers = () => {
         router.push('/jobs');
     };

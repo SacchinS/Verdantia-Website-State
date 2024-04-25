@@ -6,7 +6,7 @@ import RoleFilter from '../components/RoleFilter';
 import DurationFilter from '../components/DurationFilter';
 import LocationFilter from '../components/LocationFilter';
 import PlaceFilter from "../components/PlaceFilter"
-import { collection, doc, onSnapshot, arrayUnion, arrayRemove, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, onSnapshot, arrayUnion, arrayRemove, getDoc, updateDoc, setDoc } from "firebase/firestore";
 import { db } from "@/app/firebase/config";
 import React, { useEffect, useState } from "react";
 import JobBlock from "@/app/components/jobBlock";
@@ -14,6 +14,8 @@ import JobDetailBlock from '../components/jobDetailBlock';
 import Footer from '../components/Footer';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
+import JobApplicationPopUp from '../components/jobApplicationPopUp';
+import { useRouter } from 'next/navigation';
 
 interface Job {
     id: string;
@@ -30,6 +32,16 @@ interface Job {
     salary: string;
 }
 
+// Define an interface for the form data
+interface JobApplicationFormData {
+    userId: string; // New property to store the user ID
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: string;
+    zipCode: string;
+}
+
 export default function Jobs() {
     const [allJobs, setJobListings] = useState<Job[]>([]);
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
@@ -40,6 +52,12 @@ export default function Jobs() {
     const [location, setLocation] = useState<string[]>([]);
     const [places, setPlaces] = useState<string[]>([]);
     const [roles, setRoles] = useState<string[]>([]);
+
+    const [showApplicationPopup, setShowApplicationPopup] = useState(false); // State variable for popup visibility
+    const [jobApplicationSubmitted, setJobApplicationSubmitted] = useState(false);
+    const [userAppliedJobs, setUserAppliedJobs] = useState<string[]>([]);
+
+    const router = useRouter();
 
     useEffect(() => {
         // Function to fetch user job list from Firestore
@@ -97,6 +115,61 @@ export default function Jobs() {
         return false
     })
 
+    // Function to handle applying to a job
+    const handleApplyToJob = (jobId: string) => {
+        addToUserAppliedJobs(jobId); // Add the job ID to the user's applied jobs list
+        setShowApplicationPopup(true); // Show application popup when applying
+    };
+
+    // Function to add job to user's applied jobs list
+    const addToUserAppliedJobs = async (jobId: string) => {
+        if (user) {
+            try {
+                const userRef = doc(db, 'users', user.uid);
+                const userData = await getDoc(userRef);
+                const userAppliedJobs = userData.data()?.appliedJobs || [];
+                
+                if (userAppliedJobs.includes(jobId)) {
+                    // If job is already in user's applied jobs list, remove it
+                    await updateDoc(userRef, {
+                        appliedJobs: arrayRemove(jobId)
+                    });
+                } else {
+                    // If job is not in user's applied jobs list, add it
+                    await updateDoc(userRef, {
+                        appliedJobs: arrayUnion(jobId)
+                    })
+                }
+            } catch (error) {
+                console.error('Error updating user appliedJobs:', error);
+            }
+        }
+        else {
+            router.push('/signIn');
+        }
+    };
+
+
+
+    // Define a function to handle job application submission
+    const handleJobApplicationSubmit = async (formData: JobApplicationFormData) => {
+        if (user && selectedJob) {
+            try {
+                // Populate the userId property with the user's ID
+                formData.userId = user.uid;
+    
+                // Use the job ID as the document name
+                const docRef = await setDoc(doc(db, 'jobApplications', selectedJob.id), formData);
+                console.log('Document written with ID: ', selectedJob.id);
+    
+                // Update the jobApplicationSubmitted state to true
+                setJobApplicationSubmitted(true);
+            } catch (error) {
+                console.error('Error adding document: ', error);
+            }
+        }
+    };
+
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'allJobs'), (snapshot) => {
             const jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Job));
@@ -135,11 +208,19 @@ export default function Jobs() {
                 console.error('Error updating user jobList:', error);
             }
         }
+        else {
+            router.push('/signIn');
+        }
     };
 
 
     const handleJobBlockClick = (job: Job) => {
         setSelectedJob(job);
+    };
+
+    // Function to close the application popup
+    const handleClosePopup = () => {
+        setShowApplicationPopup(false);
     };
 
     return (
@@ -187,23 +268,35 @@ export default function Jobs() {
             {selectedJob && (
                 <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
                     <JobDetailBlock
-                        job={selectedJob.name}
-                        date={selectedJob.date}
-                        applicants={selectedJob.applicants}
-                        location={selectedJob.location}
-                        workExperience={selectedJob.experience}
-                        workType={selectedJob.role}
-                        salary={selectedJob.salary}
-                        detDesc={selectedJob.description}
-                        reqDesc={selectedJob.requirements}
-                        onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
-                        listButtonText={
-                            userJobList.includes(selectedJob.id) 
-                            ? "Remove from List" 
-                            : "Add to List"
-                        }
-                        onAddToList={() => addToUserJobList(selectedJob.id)}
-                    />
+                            job={selectedJob.name}
+                            date={selectedJob.date}
+                            applicants={selectedJob.applicants}
+                            location={selectedJob.location}
+                            workExperience={selectedJob.experience}
+                            workType={selectedJob.role}
+                            salary={selectedJob.salary}
+                            detDesc={selectedJob.description}
+                            reqDesc={selectedJob.requirements}
+                            onClose={() => setSelectedJob(null)} // Add onClose handler to close the modal
+                            listButtonText={
+                                userJobList.includes(selectedJob.id) 
+                                ? "Remove from List" 
+                                : "Add to List"
+                            }
+                            onAddToList={() => addToUserJobList(selectedJob.id)}
+                            onApply={() => handleApplyToJob(selectedJob.id)}
+                            applyButtonText={
+                                userAppliedJobs.includes(selectedJob.id)
+                                ? "Applied"
+                                : "Apply"
+                            }
+                        />
+                </div>
+            )}
+
+            {showApplicationPopup && selectedJob && (
+                <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
+                <JobApplicationPopUp onClose={handleClosePopup} onSubmit={handleJobApplicationSubmit} job={selectedJob?.name || ''} />
                 </div>
             )}
 

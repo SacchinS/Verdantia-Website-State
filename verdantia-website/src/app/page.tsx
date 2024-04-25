@@ -176,6 +176,9 @@ export default function Home() {
             console.error('Error updating user jobList:', error);
         }
     }
+    else {
+      router.push('/signIn');
+    }
 };
 
 // Function to add job to user's applied jobs list
@@ -200,6 +203,9 @@ const addToUserAppliedJobs = async (jobId: string) => {
       } catch (error) {
           console.error('Error updating user appliedJobs:', error);
       }
+  }
+  else {
+    router.push('/signIn');
   }
 };
 
