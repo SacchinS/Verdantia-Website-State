@@ -30,6 +30,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
       setIsOpen(!isOpen);
       router.push('#popUp')
     }
+    if (buttonText === 'Join the Team'){
+      router.push('/signIn')
+    }
       
   }
 
