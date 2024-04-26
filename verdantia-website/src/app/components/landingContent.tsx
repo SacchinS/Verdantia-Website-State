@@ -49,7 +49,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
     <div>
       <div className="absolute inset-0 w-screen h-screen bg-center bg-cover" style={{ backgroundImage: `url('/images/background-cropped.png')`, zIndex: -1, height: '37vw'}}></div>
       <Navbar />
-      <div className="container py-[1vw] text-white relative z-10 mx-[4vw]">
+      <div className="container py-[1vw] text-white relative z-10 ml-[4vw]">
         <AnimatePresence>
           {!isVisible && (
             <motion.div
@@ -128,7 +128,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }} // Transition for initial and animate
-            className="bg-gray-700 text-white font-semibold sm:px-[1.5vw] py-[0.5vw]   ml-[24vw] sm:ml-[1vw] text-[#3e3e3e] mt-[5vw] p-[4vw] flex items-center justify-center rounded-[28vw] rounded hover:bg-gray-800 shadow-lg"
+            className="bg-gray-700 text-white font-semibold sm:px-[1.5vw] py-[0.5vw]   ml-[18vw] sm:ml-[1vw] text-[#3e3e3e] mt-[5vw] p-[4vw] flex items-center justify-center rounded-[28vw] rounded hover:bg-gray-800 shadow-lg"
             style={{
               fontFamily: 'Bellota Text',
               // fontSize: '1.4vw',

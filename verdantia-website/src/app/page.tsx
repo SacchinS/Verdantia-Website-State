@@ -251,9 +251,9 @@ const addToUserAppliedJobs = async (jobId: string) => {
     <main>
       <LandingContent
         heading="Welcome to \nVerdantia"
-        subheading="Where Sustainability meets Innovation."
         buttonText="Join the Team"
       />
+        <p className="text-center pt-[35vw] pb-[10vw] px-[4vw] text-[8vw] sm:pt-[12vw] sm:pb-[1vw] sm:text-[3vw]" style={{ fontFamily: 'Bellota Text' }}>Where Sustainability meets Innovation.</p>  
 
     
         <div className=" mb-[5vw] mt-[5vw] text-[9vw] ml-[19vw]                  sm:mt-[10vw] sm:mb-[19vw] sm:ml-[8vw] sm:text-[2.8vw]" style={{fontFamily : "Bellota Text"}}>
