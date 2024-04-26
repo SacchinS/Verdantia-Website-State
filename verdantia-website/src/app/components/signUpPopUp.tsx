@@ -10,7 +10,7 @@ import signInImage from "./signInImage.png"
 import {router} from "next/client";
 import {useRouter} from "next/navigation";
 import JobApplicationPopUp from "@/app/components/jobApplicationPopUp";
-import {doc, setDoc} from "firebase/firestore";
+import {Firestore, doc, setDoc} from "firebase/firestore";
 
 
 const SignUpPopUp: React.FC = () => {
@@ -29,9 +29,9 @@ const SignUpPopUp: React.FC = () => {
             setPassword('')
             router.push('/portal')
             const user = auth.currentUser;
-            const docRef = await setDoc(doc(db, "users", (user?.uid)?.toString()), {
+            {/*const docRef = await setDoc(doc(db, "users", (user?.uid)?.toString()), {
                 admin: false
-            })
+            })*/}
         } catch (error) {
             console.error(error)
         }

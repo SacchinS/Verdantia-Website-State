@@ -12,7 +12,7 @@ import {
 import { db } from '@/app/firebase/config';
 
 const LocationFilter: React.FC = () => {
-  const [selectedLocation, setSelectedLocation] = useState<string[] | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<string[]>([]); // Changed from null to []
 
   useEffect(() => {
     const unsubscribe = onSnapshot(doc(db, "selectedFilters", "selected"), (doc) => {
@@ -20,7 +20,7 @@ const LocationFilter: React.FC = () => {
       if (data && data.locations && data.locations.length > 0) {
         setSelectedLocation(data.locations[0]);
       } else {
-        setSelectedLocation(null);
+        setSelectedLocation([]); // Ensure it's always an array
       }
     });
 
@@ -48,7 +48,7 @@ const LocationFilter: React.FC = () => {
         <select
           className="shadow-md w-full border border-gray-300 rounded p-3 text-[1.5vw]"
           style={{fontFamily: "Bellota Text"}}
-          value={selectedLocation}
+          value={selectedLocation.length > 0 ? selectedLocation[0] : ''} // Access first element if array has elements
           onChange={(e) => updateLocationFilter(e.target.value)}
         >
           <option value="">All</option>

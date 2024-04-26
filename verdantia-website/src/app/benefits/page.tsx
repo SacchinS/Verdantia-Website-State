@@ -136,21 +136,21 @@ export default function Jobs() {
             name ="Shawna D."
             position ="Senior Environmental Analyst"
             location= "Seattle, WA"
-            quote= '"At Verdantia, I have thrived in a culture fostering creativity and collaboration. With supportive leadership and innovative projects, my journey here has been transformative. Proud to work where employees are valued."'
+            quote= "At Verdantia, I have thrived in a culture fostering creativity and collaboration. With supportive leadership and innovative projects, my journey here has been transformative. Proud to work where employees are valued."
           />
           <TestCard 
             source = {Adam.src}
             name ="Adam W."
             position ="Head of Forestry Operations"
             location= "San Francisco, CA"
-            quote= '"Verdantia offers a dynamic environment where talent thrives. Through challenging projects and continuous learning, I have grown both professionally and personally. Flexible work and a forward-thinking team make every day fulfilling."'
+            quote= "Verdantia offers a dynamic environment where talent thrives. Through challenging projects and continuous learning, I have grown both professionally and personally. Flexible work and a forward-thinking team make every day fulfilling."
           />
           <TestCard 
             source = {Alisa.src}
             name ="Alisa C."
             position ="Sustainable Design Consultant"
             location= "London, UK"
-            quote= '"Verdantia feels like family, fostering camaraderie and support. Over five years, ensuring customer happiness has been fulfilling. Grateful to work where employee well-being is valued and contributions recognized."'
+            quote= "Verdantia feels like family, fostering camaraderie and support. Over five years, ensuring customer happiness has been fulfilling. Grateful to work where employee well-being is valued and contributions recognized."
           />
         </div>
         <Footer>
