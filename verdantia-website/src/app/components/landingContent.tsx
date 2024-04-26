@@ -49,7 +49,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
     <div>
       <div className="absolute inset-0 w-screen h-screen bg-center bg-cover" style={{ backgroundImage: `url('/images/background-cropped.png')`, zIndex: -1, height: '37vw'}}></div>
       <Navbar />
-      <div className="container py-[1vw] text-white relative z-10 ml-[8vw]">
+      <div className="container py-[1vw] text-white relative z-10 mx-[4vw]">
         <AnimatePresence>
           {!isVisible && (
             <motion.div
