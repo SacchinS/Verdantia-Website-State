@@ -59,7 +59,7 @@ export default function Portal() {
             const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
                 if (docSnapshot.exists()){
                     const data = docSnapshot.data();
-                    if (data.admin === true){
+                    if (data.role === "admin"){
                         router.push('/adminPortal')
                     }
                 }

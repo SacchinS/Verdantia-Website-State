@@ -6,16 +6,19 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 
-interface Props {
-    id: any;
-    data: string;
-    applicantCount: string;
-    workMethod: string;
+interface Job {
+    id: string;
+    name: string;
     location: string;
-    jobTitle: string;
+    place: string;
+    applicants: string;
+    date: string;
+    role: string;
     duration: string;
-    style?: CSSProperties;
-    onClick: () => void; // Add onClick prop
+    experience: string;
+    requirements: string;
+    salary: string;
+    description: string;
 }
 
 export const EditableJobBlock = ({ id, data, applicantCount, workMethod, location, jobTitle, duration, style, onClick }: Props): JSX.Element => {
