@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { collection, doc, getDoc, onSnapshot, updateDoc, arrayUnion, arrayRemove, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
@@ -104,6 +104,7 @@ export default function Home() {
   const [allJobs, setJobListings] = useState<Job[]>([]);
   const [showApplicationPopup, setShowApplicationPopup] = useState(false);
   const [jobApplicationSubmitted, setJobApplicationSubmitted] = useState(false);
+  
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, 'allJobs'), (snapshot) => {
@@ -201,8 +202,8 @@ export default function Home() {
 
   const handleApplyToJob = (jobId: string) => {
     if (!userAppliedJobs.includes(jobId)) {
-      addToUserAppliedJobs(jobId);
-      setShowApplicationPopup(true);
+      setSelectedJob(allJobs.find(job => job.id === jobId) || null); // Select the job
+      setShowApplicationPopup(true); // Show the application popup when they click Apply within the popup
     }
   };
 
@@ -214,14 +215,28 @@ export default function Home() {
     if (user && selectedJob) {
       try {
         formData.userId = user.uid;
+        // Add job application document
         await setDoc(doc(db, 'jobApplications', selectedJob.id), formData);
+  
+        // Update user's appliedJobs locally
+        const updatedAppliedJobs = [...userAppliedJobs, selectedJob.id];
+        setUserAppliedJobs(updatedAppliedJobs);
+  
+        // Update user's appliedJobs in Firestore
+        const userRef = doc(db, 'users', user.uid);
+        await updateDoc(userRef, {
+          appliedJobs: arrayUnion(selectedJob.id),
+        });
+  
         setJobApplicationSubmitted(true);
         setShowApplicationPopup(false); // Close popup after submission
+  
       } catch (error) {
         console.error('Error adding document: ', error);
       }
     }
   };
+  
 
   const handleJobBlockClick = (job: Job) => {
     setSelectedJob(job);
