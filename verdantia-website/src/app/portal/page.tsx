@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 // Portal.tsx
 import React, { useEffect, useState } from 'react';
@@ -11,7 +11,7 @@ import JobBlock from '@/app/components/jobBlock';
 import JobDetailBlock from '../components/jobDetailBlock';
 import LandingContent from '@/app/components/landingContent';
 import BodyHeading from '@/app/components/bodyHeading';
-import { collection, doc, onSnapshot, addDoc, updateDoc, arrayUnion, setDoc, getDoc, arrayRemove } from 'firebase/firestore';
+import { collection, doc, onSnapshot, updateDoc, arrayUnion, setDoc, getDoc, arrayRemove } from 'firebase/firestore';
 import { db } from '@/app/firebase/config';
 import Footer from '../components/Footer';
 import JobApplicationPopUp from "@/app/components/jobApplicationPopUp";
@@ -54,28 +54,24 @@ export default function Portal() {
     const [applyButtonText, setApplyButtonText] = useState("");
 
     useEffect(() => {
-        if (user){
-            const userRef = doc(db, 'users', user.uid)
-            const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
-                if (docSnapshot.exists()){
-                    const data = docSnapshot.data();
-                    if (data.admin === true){
-                        router.push('/adminPortal')
-                    }
-                }
-            })
-        }
-
-
-    }, []);
-
-    // Fetch user's job list from Firestore when component mounts
-    useEffect(() => {
-
         if (user) {
             const userRef = doc(db, 'users', user.uid);
             const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
+                if (docSnapshot.exists()) {
+                    const data = docSnapshot.data();
+                    if (data.admin === true) {
+                        router.push('/adminPortal');
+                    }
+                }
+            });
+        }
+    }, [user, router]);
 
+    // Fetch user's job list from Firestore when component mounts
+    useEffect(() => {
+        if (user) {
+            const userRef = doc(db, 'users', user.uid);
+            const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
                 if (docSnapshot.exists()) {
                     const userData = docSnapshot.data();
                     setUserJobList(userData.jobList || []); // Set user's job list
@@ -144,7 +140,7 @@ export default function Portal() {
                     // If job is not in user's applied jobs list, add it
                     await updateDoc(userRef, {
                         appliedJobs: arrayUnion(jobId)
-                    })
+                    });
                 }
             } catch (error) {
                 console.error('Error updating user appliedJobs:', error);
@@ -155,7 +151,10 @@ export default function Portal() {
     // Function to handle applying to a job
     const handleApplyToJob = (jobId: string) => {
         if (user) {
-            addToUserAppliedJobs(jobId); // Add the job ID to the user's applied jobs list
+            if (userAppliedJobs.includes(jobId)) {
+                return; // Prevent the popup from opening again if already applied
+            }
+            setSelectedJob(allJobs.find(job => job.id === jobId) || null);
             setShowApplicationPopup(true); // Show application popup when applying
         } else {
             router.push('/signIn'); // Redirect to sign-in page if user is not authenticated
@@ -170,11 +169,18 @@ export default function Portal() {
                 formData.userId = user.uid;
     
                 // Use the job ID as the document name
-                const docRef = await setDoc(doc(db, 'jobApplications', selectedJob.id), formData);
+                await setDoc(doc(db, 'jobApplications', selectedJob.id), formData);
                 console.log('Document written with ID: ', selectedJob.id);
     
                 // Update the jobApplicationSubmitted state to true
                 setJobApplicationSubmitted(true);
+
+                // Add the job to the user's applied jobs list
+                await addToUserAppliedJobs(selectedJob.id);
+                setUserAppliedJobs([...userAppliedJobs, selectedJob.id]);
+                
+                setApplyButtonText("Applied"); // Immediately change the apply button text to "Applied"
+                setShowApplicationPopup(false); // Close the popup after submission
             } catch (error) {
                 console.error('Error adding document: ', error);
             }
@@ -185,10 +191,10 @@ export default function Portal() {
     const handleJobBlockClick = (job: Job) => {
         setSelectedJob(job); // Set the selected job when a JobBlock is clicked
         // Set the apply button text based on whether the user has applied for the job
-        setApplyButtonText(userAppliedJobs.includes(job.id) ? "Apply" : "Applied");
+        setApplyButtonText(userAppliedJobs.includes(job.id) ? "Applied" : "Apply");
     };
 
-    // Function to handle exploring acmore jobs
+    // Function to handle exploring more jobs
     const handleExploreCareers = () => {
         router.push('/jobs');
     };
@@ -279,7 +285,7 @@ export default function Portal() {
                     <JobApplicationPopUp onClose={handleClosePopup} onSubmit={handleJobApplicationSubmit} job={selectedJob?.name || ''} />
                 </div>
             )}
-            <Footer/>
+            <Footer />
         </main>
     );
 }

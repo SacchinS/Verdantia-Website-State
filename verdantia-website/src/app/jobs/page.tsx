@@ -69,6 +69,7 @@ export default function Jobs() {
                     const userData = userDoc.data();
                     if (userData) {
                         setUserJobList(userData.jobList || []); // Set userJobList state
+                        setUserAppliedJobs(userData.appliedJobs || []); // Set userAppliedJobs state
                     }
                 } catch (error) {
                     console.error('Error fetching user job list:', error);
@@ -117,7 +118,10 @@ export default function Jobs() {
 
     // Function to handle applying to a job
     const handleApplyToJob = (jobId: string) => {
-        addToUserAppliedJobs(jobId); // Add the job ID to the user's applied jobs list
+        if (userAppliedJobs.includes(jobId)) {
+            return; // Prevent the popup from opening again if already applied
+        }
+        setSelectedJob(allJobs.find(job => job.id === jobId) || null);
         setShowApplicationPopup(true); // Show application popup when applying
     };
 
@@ -140,6 +144,13 @@ export default function Jobs() {
                         appliedJobs: arrayUnion(jobId)
                     })
                 }
+
+                // Update the state
+                setUserAppliedJobs((prev) => 
+                    userAppliedJobs.includes(jobId) 
+                    ? prev.filter((id) => id !== jobId) 
+                    : [...prev, jobId]
+                );
             } catch (error) {
                 console.error('Error updating user appliedJobs:', error);
             }
@@ -148,8 +159,6 @@ export default function Jobs() {
             router.push('/signIn');
         }
     };
-
-
 
     // Define a function to handle job application submission
     const handleJobApplicationSubmit = async (formData: JobApplicationFormData) => {
@@ -164,6 +173,12 @@ export default function Jobs() {
     
                 // Update the jobApplicationSubmitted state to true
                 setJobApplicationSubmitted(true);
+
+                // Add the job to the user's applied jobs list
+                await addToUserAppliedJobs(selectedJob.id);
+                setUserAppliedJobs([...userAppliedJobs, selectedJob.id]);
+                
+                setShowApplicationPopup(false); // Close the popup after submission
             } catch (error) {
                 console.error('Error adding document: ', error);
             }
