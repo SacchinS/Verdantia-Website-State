@@ -6,9 +6,8 @@ interface myProps {
     onSubmit: (formData: JobApplicationFormData) => void;
 }
 
-// Define an interface for the form data
 interface JobApplicationFormData {
-    userId: string; // New property to store the user ID
+    userId: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -17,7 +16,6 @@ interface JobApplicationFormData {
 }
 
 const JobApplicationPopUp: React.FC<myProps> = ({ job, onClose, onSubmit }) => {
-    // State for form data
     const [formData, setFormData] = useState<JobApplicationFormData>({
         userId: "",
         firstName: "",
@@ -27,7 +25,8 @@ const JobApplicationPopUp: React.FC<myProps> = ({ job, onClose, onSubmit }) => {
         zipCode: "",
     });
 
-    // Handler for input field change
+    const [formErrors, setFormErrors] = useState<string[]>([]); // State to hold form validation errors
+
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData(prevState => ({
@@ -36,13 +35,34 @@ const JobApplicationPopUp: React.FC<myProps> = ({ job, onClose, onSubmit }) => {
         }));
     };
 
-    // Handler for form submission
     const handleSubmit = () => {
-        // Call the onSubmit prop function and pass the form data
-        onSubmit(formData);
+        const errors: string[] = [];
 
-        // Optionally, you can close the popup after submission
+        // Check each field for validity
+        if (formData.firstName === "") {
+            errors.push("First Name is required");
+        }
+        if (formData.lastName === "") {
+            errors.push("Last Name is required");
+        }
+        if (formData.email === "") {
+            errors.push("Email is required");
+        }
+        if (formData.zipCode === "") {
+            errors.push("Zip Code is required");
+        }
+        if (formData.address === "") {
+            errors.push("Address is required");
+        }
 
+        // If there are errors, display them and prevent form submission
+        if (errors.length > 0) {
+            setFormErrors(errors);
+        } else {
+            // If no errors, submit the form
+            onSubmit(formData);
+            onClose(); // Close the popup after submission
+        }
     };
 
     return (
@@ -55,41 +75,59 @@ const JobApplicationPopUp: React.FC<myProps> = ({ job, onClose, onSubmit }) => {
                     <div className="relative w-fit [font-family:'Bellota_Text',Helvetica] text-[#53975dab] text-[1.5vw] tracking-[0] leading-[normal]">
                         {job}
                     </div>
+                    {/* Error message display */}
                 </div>
                 <div className={"inline-flex flex-col items-start gap-[1vw] relative"}>
                     <div className="flex flex-row items-start justify-center gap-[1vw] relative self-stretch w-full flex-[0_0_auto]">
                         <div className="flex flex-col items-start gap-[1vw] w-full">
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
-                                First Name
+                                First Name <span className="text-red-600">*</span>
                             </div>
                             <input
-                                type="firstname"
+                                type="text"
                                 placeholder="Enter"
-                                name="firstName" // Add name attribute
-                                onChange={handleInputChange} // Add onChange handler
+                                name="firstName"
+                                value={formData.firstName}
+                                onChange={handleInputChange}
+                                required
                                 className="w-full h-fit p-[0.8vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
-                                Email
+                                Email <span className="text-red-600">*</span>
                             </div>
                             <input
                                 type="email"
                                 placeholder="Enter"
-                                name="email" // Add name attribute
-    onChange={handleInputChange} // Add onChange handler
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                required
                                 className="rounded-[0.5vw] w-full h-fit p-[0.8vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
-                                Zip Code
+                                Zip Code <span className="text-red-600">*</span>
                             </div>
                             <input
-                                type="zipcode"
+                                type="text"
                                 placeholder="Enter"
-                                name="zipCode" // Add name attribute
-    onChange={handleInputChange} // Add onChange handler
+                                name="zipCode"
+                                value={formData.zipCode}
+                                onChange={handleInputChange}
+                                required
                                 className="rounded-[0.5vw] w-full h-fit p-[0.8vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
-                            <div></div>
+                            {formErrors.length > 0 && (
+                        <div className="text-red-600 mt-2">
+                            Please make sure all required fields are completed.
+                        </div>
+                    )}
+                            {/* Placeholder for error message */}
+                    <div className="mt-2 invisible">
+                        Please make sure all required fields are completed.
+                    </div>
+                    {/* Actual error message display */}
+                    
+
                             <div className="flex items-center justify-between w-full gap-[1vw]">
                                 <button
                                     onClick={handleSubmit}
@@ -111,36 +149,39 @@ const JobApplicationPopUp: React.FC<myProps> = ({ job, onClose, onSubmit }) => {
                         </div>
                         <div className="flex flex-col items-start gap-[1vw] w-full">
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
-                                Last Name
+                                Last Name <span className="text-red-600">*</span>
                             </div>
                             <input
-                                type="lastname"
+                                type="text"
                                 placeholder="Enter"
-                                name="lastName" // Add name attribute
-    onChange={handleInputChange} // Add onChange handler
+                                name="lastName"
+                                value={formData.lastName}
+                                onChange={handleInputChange}
+                                required
                                 className="w-full h-fit p-[0.8vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
-                                Address
+                                Address <span className="text-red-600">*</span>
                             </div>
                             <input
-                                type="address"
+                                type="text"
                                 placeholder="Enter"
-                                name="address" // Add name attribute
-    onChange={handleInputChange} // Add onChange handler
+                                name="address"
+                                value={formData.address}
+                                onChange={handleInputChange}
+                                required
                                 className="rounded-[0.5vw] w-full h-fit p-[0.8vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"
                             />
                             <div className={"relative ml-0 w-fit mt-[-1.00px] [font-family:'Bellota_Text-Bold',Helvetica] text-black text-[1vw] tracking-[0] leading-[normal]"}>
-                                Upload Resume
+                                Upload Resume <span className="text-red-600">*</span>
                             </div>
-                            <input className={"h-full text-[1.2vw]"} type="file"/>
-                            <button onClick={handleSubmit}></button>
+                            <input className={"rounded-[0.5vw] w-full h-fit p-[0.8vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"} type="file"/>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-    )
-}
+    );
+};
 
 export default JobApplicationPopUp;
