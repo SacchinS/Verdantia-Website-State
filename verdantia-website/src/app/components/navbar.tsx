@@ -54,7 +54,7 @@ const Navbar: React.FC<myProps> = ( {buttonText, route} ) => {
           <NavLink href="/jobs" text="Jobs" />
           <NavLink href="/portal" text="Portal" />
           <div onClick={toggleDropdown} className="relative">
-            <img src="/images/user-nobg.png" alt="Account" className="h-[1.5vw] w-[1.5vw] cursor-pointer" />
+            <img src={user ? "/images/user-bg.png" : "/images/user-nobg.png"} alt="Account" className="h-[1.5vw] w-[1.5vw] cursor-pointer" />
             {dropdownOpen && (
               <div className="absolute bg-white rounded-md flex flex-col w-max px-[0.6vw] py-[0.4vh] mt-[0.4vw] right-0">
                 <button onClick={handleSignOut}>{buttonText}</button>
