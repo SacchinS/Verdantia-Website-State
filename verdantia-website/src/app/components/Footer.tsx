@@ -41,8 +41,8 @@ const Footer = () =>{
     };
 
     return (
-        <div className="w-full mt-24 bg-custom-green text-white py-y px-2 justify-center items-center">
-            <div className="mx-auto grid grid-cols-2 md:grid-cols-4 border-b-2 border-gray-600 p-8">
+        <div className="w-full mt-24 bg-button-green text-white py-y px-2 justify-center items-center">
+            <div className="mx-auto grid grid-cols-2 md:grid-cols-4 border-b-2 border-white-600 p-8">
                 {
                     sections.map((section, index) => (
                         <div key={index}>
@@ -54,7 +54,7 @@ const Footer = () =>{
                                     <li key = {i} className="py-1 text-white hover:text-white cursor-pointer" onClick={() => handleItemClick(item)}>
                                         {item}
                                     </li>
-                                ))}   
+                                ))}
                             </ul>
                         </div>
                     ))
