@@ -59,7 +59,7 @@ interface Job {
     console.log(name);
 
     return (
-        <main className={"sticky mt-[5vw] z-20"}>
+        <main className={"fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"}>
             <div
                 className={"inline-flex flex-col items-start gap-[1vw] p-[2vw] relative bg-white w-fit border border-solid border-[#b2b2b2] shadow-[0px_4px_4px_#00000040] rounded-[1vw]"}>
                 <div className="inline-flex flex-col items-start relative">
@@ -67,11 +67,15 @@ interface Job {
                         className="relative w-fit mt-[-1.00px] [font-family:'Bellota_Text',Helvetica] text-black text-[2.5vw] tracking-[0] leading-[normal]">
                         Edit Job Application
                     </div>
-
+                    <button
+                    onClick={() => close()}
+                    className="absolute top-[-0.5vw] right-[-10vw] text-black text-[3vw] leading-[normal]"
+                >
+                    &times;
+                </button>
                 </div>
                 <div className={"inline-flex flex-col items-start gap-[1vw] relative"}>
-                    <div
-                        className="flex flex-row items-start justify-center gap-[1vw] relative self-stretch w-full flex-[0_0_auto]">
+                    <div className="flex flex-row items-start justify-center gap-[1vw] relative self-stretch w-full flex-[0_0_auto]">
                         <div className="flex flex-col items-start gap-[1vw] w-full">
 
                             <div

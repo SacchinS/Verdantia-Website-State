@@ -11,6 +11,7 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import {useRouter} from "next/navigation";
 import EditableJobBlock from "@/app/components/editableJobBlock";
 import EditJobPopUp from "@/app/components/editJobPopUp";
+import Footer from '../components/Footer';
 
 interface Job {
     id: string;
@@ -105,7 +106,7 @@ export default function AdminPortal() {
             </div>
 
 
-
+        <Footer />
         </main>
     )
 }
