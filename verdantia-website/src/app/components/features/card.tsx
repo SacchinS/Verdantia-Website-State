@@ -39,7 +39,7 @@ type CardProps = {
             <p className="px-[5vw] absolute top-[56%] text-[0] sm:text-[1.4vw] text-[#3e3e3e]">
                 We always say that the right tools empower our employees to reach new heights. 
                 From state-of-the-art software solutions to the latest hardware advancements, 
-                we invest in technology that propels our workforce forward. 
+                we invest in technology to propel our workforce.
 
             </p>
         </FeatureCard>
@@ -66,7 +66,7 @@ type CardProps = {
             <img className="rounded-xl shadow-lg absolute w-[80%] top-[22%] left-[10%] sm:left-[20.4%] sm:top-[7%] sm:w-[57%]" src={community.src}/>
             <p className="px-[5vw] absolute top-[56%] text-[0] sm:text-[1.4vw] text-[#3e3e3e]">
             We take pride in cultivating an inclusive environment where collaboration is not just encouraged but celebrated. 
-            Our diverse team members create a sense of belonging by bringing a rich tapestry of experiences, ideas, and perspectives.
+            Our diverse team members bring a rich tapestry of experiences, ideas, and perspectives.
             </p>
 
         </FeatureCard>
@@ -79,7 +79,7 @@ type CardProps = {
             <img className="rounded-xl shadow-lg absolute w-[70%] top-[20%] left-[16%] sm:left-[24.8%] sm:top-[7%] sm:w-[47%]" src={hours.src}/>
             <p className="px-[5vw] absolute top-[56%] text-[0] sm:text-[1.4vw] text-[#3e3e3e]">
                 Flexibility is a philosophy that empowers our team to manage their work in a way that suits their individual 
-                preferences and lifestyles. That's why we believe in giving you the freedom to choose when and where you work best.
+                lifestyles. We believe in giving you the freedom to choose when and where you work best.
             </p>        
         </FeatureCard>
     )

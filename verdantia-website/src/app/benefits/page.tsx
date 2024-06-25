@@ -124,7 +124,7 @@ export default function Jobs() {
             name ="Adam W."
             position ="Head of Forestry Operations"
             location= "San Francisco, CA"
-            quote= '"Verdantia offers a dynamic environment where talent thrives. Through challenging projects and continuous learning, I have grown both professionally and personally. Flexible work and a forward-thinking team make every day fulfilling."'
+            quote= '"Verdantia offers a dynamic environment where talent thrives. Through continuous learning, I have grown both professionally and personally. Flexible work and a forward-thinking team make every day fulfilling."'
             email= "AdamW@verdantia.com"
           />
           <TestCard 
