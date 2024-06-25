@@ -35,7 +35,7 @@ const DurationFilter: React.FC = () => {
   }
 
   const updateDurationFilter = async (duration: string) => {
-    const ref = doc(db, "selectedFilters", "selected");
+    const ref = doc(db, "selectedFilters", "selected"); 
     if (selectedFilters.includes(duration)) {
       await updateDoc(ref, { durations: arrayRemove(duration) });
     } else {

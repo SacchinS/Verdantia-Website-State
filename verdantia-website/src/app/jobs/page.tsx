@@ -6,6 +6,7 @@ import RoleFilter from '../components/RoleFilter';
 import DurationFilter from '../components/DurationFilter';
 import LocationFilter from '../components/LocationFilter';
 import PlaceFilter from "../components/PlaceFilter"
+import PriceFilter from '../components/PriceFilter';
 import { collection, doc, onSnapshot, arrayUnion, arrayRemove, getDoc, updateDoc, setDoc } from "firebase/firestore";
 import { db } from "@/app/firebase/config";
 import React, { useEffect, useState } from "react";
@@ -52,6 +53,7 @@ export default function Jobs() {
     const [location, setLocation] = useState<string[]>([]);
     const [places, setPlaces] = useState<string[]>([]);
     const [roles, setRoles] = useState<string[]>([]);
+    const [price, setPrice] = useState<number>();
 
     const [showApplicationPopup, setShowApplicationPopup] = useState(false); // State variable for popup visibility
     const [jobApplicationSubmitted, setJobApplicationSubmitted] = useState(false);
@@ -89,6 +91,7 @@ export default function Jobs() {
                 setLocation(data.location)
                 setPlaces(data.places)
                 setRoles(data.roles)
+                setPrice(data.price)
             })
         })
         return () => unsubscribe();
@@ -109,10 +112,11 @@ export default function Jobs() {
         console.log("Job: ",Job)
         console.log("Places: ", places)
         console.log("-", places.includes(Job.place))
-        if ((location.includes(Job.location) || location.length == 0) &&
+        if ((price && price < parseInt(Job.salary) &&
+            (location.includes(Job.location) || location.length == 0) &&
             (places.includes(Job.place) || places.length == 0)  &&
             (durations.includes(Job.duration) || durations.length == 0) &&
-            (roles.includes(Job.role) || roles.length == 0)) return true;
+            (roles.includes(Job.role) || roles.length == 0))) return true;
         return false
     })
 
@@ -249,16 +253,19 @@ export default function Jobs() {
                 <BodyHeading marginTop="8vw" marginBottom="2vw">Jobs at Verdantia</BodyHeading>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 ml-[8vw] mr-[8vw]">
-                    <div className="md:col-span-1"> {/* Apply styling specifically for RoleFilter */}
+                    <div className="md:col-span-1">
                         <RoleFilter />
                     </div>
-                    <div className="md:col-span-1"> {/* Apply styling specifically for DurationFilter */}
+                    <div className="md:col-span-1"> 
                         <DurationFilter />
                     </div>
                     <div
-                        className="md:col-span-2"> {/* This div spans both columns, applying styling for LocationFilter */}
+                        className="md:col-span-2"> 
+                        
                         <LocationFilter />
+                        
                         <PlaceFilter />
+                        <PriceFilter />
                     </div>
                 </div>
             </div>

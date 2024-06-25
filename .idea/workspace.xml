@@ -12,7 +12,9 @@
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/adminPortal/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/adminPortal/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/benefits/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/benefits/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/citations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/citations/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/DurationFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/DurationFilter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/jobSubInfoBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/jobSubInfoBlock.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/titleBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/titleBlock.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topRightInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topRightInfo.tsx" afterDir="false" />
@@ -25,6 +27,7 @@
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/signInPopUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/signInPopUp.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/signUpPopUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/signUpPopUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/jobs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/jobs/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/portal/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/portal/page.tsx" afterDir="false" />
@@ -43,6 +46,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/verdantia-website" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -89,6 +93,7 @@
       <workItem from="1713978046022" duration="7608000" />
       <workItem from="1714025413070" duration="9847000" />
       <workItem from="1714038427984" duration="7071000" />
+      <workItem from="1719267153836" duration="7305000" />
     </task>
     <task id="LOCAL-00001" summary="updated file name">
       <option name="closed" value="true" />
