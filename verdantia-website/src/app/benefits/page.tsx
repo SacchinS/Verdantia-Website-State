@@ -30,27 +30,7 @@ import Shawna from "../../../public/images/shawna.svg"
 import Adam from "../../../public/images/Adam.svg"
 import Alisa from "../../../public/images/Alisa.svg"
 import Footer from "../components/Footer"
-
-const slides = [
-  {
-    imageUrl: BenSlide1.src,
-    heading: "Reforestation Initiatives",
-    subheading: "\"30 per cent of emissions from industry and fossil fuels are soaked up by forests and woodlands. Yet every year the world loses 10 million hectares of forest. Deforestation and forest degradation accounts for 11 per cent of carbon emissions.\" - UN Environment Programme",
-    description: "Verdantia has successfully planted over 500,000 trees in deforested regions, contributing to the restoration of critical ecosystems and providing habitat for various wildlife species.",
-  },
-  {
-    imageUrl: BenSlide2.src,
-    heading: "Carbon Neutrality Achieved",
-    subheading: "\"A recently published report identified that 100 energy companies have been responsible for 71% of all industrial emissions since human-driven climate change was officially recognized.\" - National Resources Defense Council",
-    description: "Through innovative technologies and sustainable practices, Verdantia has achieved carbon neutrality across its operations, making significant strides in reducing its carbon footprint.",
-  },
-  {
-    imageUrl: BenSlide3.src,
-    heading: "Eco-Education Outreach",
-    subheading: "\"Environmental education is a process that allows individuals to explore environmental issues, engage in problem solving, and take action to improve the environment.\" - United States Environmental Protection Agency",
-    description: "Verdantia's dedicated teams have conducted eco-education programs in local communities, reaching over 10,000 individuals and inspiring environmentally conscious practices.",
-  },
-];
+import EmailButton from "../components/emailButton"
 
 const features = [
   {
@@ -137,6 +117,7 @@ export default function Jobs() {
             position ="Senior Environmental Analyst"
             location= "Seattle, WA"
             quote= '"At Verdantia, I have thrived in a culture fostering creativity and collaboration. With supportive leadership and innovative projects, my journey here has been transformative. Proud to work where employees are valued."'
+            email= "ShawnaD@verdantia.com"
           />
           <TestCard 
             source = {Adam.src}
@@ -144,13 +125,15 @@ export default function Jobs() {
             position ="Head of Forestry Operations"
             location= "San Francisco, CA"
             quote= '"Verdantia offers a dynamic environment where talent thrives. Through challenging projects and continuous learning, I have grown both professionally and personally. Flexible work and a forward-thinking team make every day fulfilling."'
+            email= "AdamW@verdantia.com"
           />
           <TestCard 
             source = {Alisa.src}
             name ="Alisa C."
             position ="Sustainable Design Consultant"
             location= "London, UK"
-            quote= '"Verdantia feels like family, fostering camaraderie and support. Over five years, ensuring customer happiness has been fulfilling. Grateful to work where employee well-being is valued and contributions recognized."'
+            quote= '"Verdantia feels like family, fostering camaraderie and support. Over five years, ensuring customer happiness has been fulfilling. Super grateful to work where employee well-being is valued and contributions recognized."'
+            email= "AlisaC@verdantia.com"
           />
         </div>
         <Footer>

@@ -10,6 +10,7 @@ import React, { CSSProperties } from "react";
 import LocationIcon from "../../../public/images/locationIcon.svg";
 import RemoteIcon from "../../../public/images/remoteIcon.svg";
 import { useState } from "react";
+import EmailButton from "./emailButton";
 
 type TestProps = {
     source : string
@@ -17,11 +18,11 @@ type TestProps = {
     position : string
     location : string
     quote : string
+    email: string
     onClick?: () => void; // Add onClick prop
-
 }
 
-export const TestCard: React.FC<TestProps> = ({source, name, position, location, quote, onClick} : TestProps) =>{
+export const TestCard: React.FC<TestProps> = ({source, name, position, location, quote, email, onClick} : TestProps) =>{
     const [isHovered, setIsHovered] = useState(false);
     const buttonVariants = {
         hover: {
@@ -56,20 +57,9 @@ export const TestCard: React.FC<TestProps> = ({source, name, position, location,
                     </div>
                     <div>
                         
-                        {/* <button className="sm:text-[0.95vw] text-[4vw] text-green-300 border-[.6vw] py-[0.30vw]  px-[1.5vw] sm:border-[.18vw] sm:py-[0.30vw]  sm:px-[0.63vw] border-green-300">
-                            Connect
-                        </button> */}
-                        
-                    <motion.button 
-                        className="flex w-[25vw] h-[8.3vw] rounded-[5vw] sm:w-[9vw] sm:h-[3vw] items-center justify-center sm:gap-[2vw]  bg-[#5b8c69] sm:rounded-[2vw] overflow-hidden "
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        onClick={onClick}
-                    >
-                        <div className="w-fit mt-[-1vw] mb-[-1vw] [font-family:'Bellota Text'] font-normal text-white text-[3.05vw] sm:text-[1vw] text-center tracking-[0] leading-[normal]">
-                            Connect
-                        </div>
-                    </motion.button>
+                    <EmailButton
+                        emailAddress = {email}
+                    />
                     </div>
                 </div>
             </div>

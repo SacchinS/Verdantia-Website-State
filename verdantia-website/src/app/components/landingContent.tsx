@@ -32,16 +32,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
       setIsOpen(!isOpen);
       router.push('#popUp')
     }
-    if (buttonText === 'Join the Team'){
+    if (buttonText === 'Join the Team' || buttonText === 'Explore Careers'){
       if (user){
         router.push('/jobs')
       }
       else{
         router.push('/signIn')
       }
-     
     }
-      
   }
 
 
