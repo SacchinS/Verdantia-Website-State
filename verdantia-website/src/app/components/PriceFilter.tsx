@@ -1,14 +1,14 @@
-import {SetStateAction, useEffect, useState} from "react";
+import React, {SetStateAction, useEffect, useState} from "react";
 import {doc, onSnapshot, updateDoc} from "firebase/firestore";
 import {db} from "@/app/firebase/config";
 import {update} from "@firebase/database";
 
-const PriceFilter: () => void = () => {
+const PriceFilter: React.FC = () => {
 
-    const [minValue, setMinValue] = useState(20);
+    const [minValue, setMinValue] = useState(40000);
 
 
-    const handleMinChange = async (event) => {
+    const handleMinChange = async (event: { target: { value: any; }; }) => {
         const value = Math.min(Number(event.target.value));
         setMinValue(value);
 
@@ -31,13 +31,13 @@ const PriceFilter: () => void = () => {
                             step={"5000"}
                             value={minValue}
                             onChange={handleMinChange}
-                            className="absolute w-full pointer-events-all absolute w-full h-10 bg-transparent ${minValue > maxValue - 10 ? 'z-40' : 'z-30'}"
+                            className="absolute w-full pointer-events-all h-10 ${minValue > maxValue - 10 ? 'z-40' : 'z-30'}"
 
                         />
 
                     </div>
                     <div className="flex justify-center w-full max-w-lg mt-9"style={{fontFamily: "Bellota Text", fontSize: '1.5vw'}}>
-                        <p>${minValue/1000}{minValue == 0 ? "" : ",000"}</p>
+                        <p>${minValue/1000}{minValue == 0 ? "" : ",000"}{minValue/1000 == 200 ? "+" : ""}</p>
                     </div>
                 </div>
             </div>
