@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/public/images/walkthrough.svg" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/public/images/walkthrough.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/adminPortal/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/adminPortal/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/benefits/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/benefits/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/citations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/citations/page.tsx" afterDir="false" />
@@ -19,7 +20,9 @@
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topRightInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/JDB/topRightInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/RoleFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/RoleFilter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/TestimonialCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/TestimonialCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/editableJobBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/editableJobBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/features/card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/features/card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/jobApplicationPopUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/jobApplicationPopUp.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/jobDetailBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/jobDetailBlock.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/jopPostForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/jopPostForm.tsx" afterDir="false" />
@@ -93,7 +96,7 @@
       <workItem from="1713978046022" duration="7608000" />
       <workItem from="1714025413070" duration="9847000" />
       <workItem from="1714038427984" duration="7071000" />
-      <workItem from="1719267153836" duration="7305000" />
+      <workItem from="1719267153836" duration="8018000" />
     </task>
     <task id="LOCAL-00001" summary="updated file name">
       <option name="closed" value="true" />
