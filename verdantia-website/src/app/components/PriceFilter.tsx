@@ -31,7 +31,7 @@ const PriceFilter: React.FC = () => {
                             step={"5000"}
                             value={minValue}
                             onChange={handleMinChange}
-                            className="absolute w-full accent-green-700 pointer-events-all h-10 ${minValue > maxValue - 10 ? 'z-40' : 'z-30'}"
+                            className="absolute w-full pointer-events-auto ${minValue > maxValue - 10 ? 'z-40' : 'z-30'} accent-green-700"
 
                         />
 
