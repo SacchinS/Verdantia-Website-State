@@ -17,7 +17,7 @@ interface TopRightInfoProps {
 const TopRightInfo: React.FC<TopRightInfoProps> = ({ onAddToList, onApply, listButtonText, applyButtonText }) => {
     const [user] = useAuthState(auth);
     const router = useRouter();
-    let showButton = true;
+    const [showButton, changeShowButton] = useState(false);
 
     useEffect(() => {
         if (user) {
@@ -25,17 +25,17 @@ const TopRightInfo: React.FC<TopRightInfoProps> = ({ onAddToList, onApply, listB
             const unsubscribe = onSnapshot(userRef, (docSnapshot) => {
                 if (docSnapshot.exists()) {
                     const data = docSnapshot.data();
-                    if (data.admin == true) {
-                        showButton = false;
+                    if (data.admin != true) {
+                        changeShowButton(true)
                     }
                     else {
-                        showButton = true;
+                        changeShowButton(false);
                     }
                 }
             });
         }
         else {
-            showButton = true;
+            changeShowButton(true); 
         }
     }, [user, router]);
 
