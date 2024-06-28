@@ -26,6 +26,8 @@ import Slide2 from '../../public/images/Slide2.svg';
 import Slide3 from '../../public/images/Slide3.svg';
 import Slide4 from '../../public/images/Slide4.svg';
 import Slide5 from '../../public/images/Slide5.svg';
+import MaxWidthWrapper from './components/MaxWidthWrapper';
+import MobileNavBar from './components/MobileNavBar';
 
 interface Job {
   id: string;
@@ -244,7 +246,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className='xl:hidden'>
+      <div className='hidden sm:block'>
         <LandingContent
           heading="Welcome to \nVerdantia"
           subheading="Where Sustainability meets Innovation"
@@ -367,8 +369,35 @@ export default function Home() {
 
         <Footer />
       </div>
-      <div>
-        fluh
+      
+      <div className='bg-slate-50'>
+      <MobileNavBar/>
+
+        {/* <section>
+
+          <MaxWidthWrapper className='pb-24 pt-10 lg:grid lg:grid-cols-3
+            sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52'>
+              <div className='col-span-2 px-6 lg:px-0 lg:pt-4'>
+                <div className=' relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start'>
+                  <div className='absolute w-28 left-0 -top-20 hidden lg:block'>
+
+                  </div>
+                  <h1 className='relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl'>
+                    Sustainable <span className='bg-green-600 px-2 text-white'>Solutions</span>. Now.
+                  </h1>
+                  <p className='mt-8 text-lg lg:pr-10 max-w-prose text-center'>
+                    At Verdantia, our mission is to revolutionize{' '}
+                    <strong>environmental sustainability</strong> by seamlessly integrating technology and
+                    human impact. We believe in a holistic approach, leveraging{' '}
+                    <strong>cutting-edge innovations</strong> alongside direct, hands-on efforts to create a
+                    more <strong>sustainable and resilient future</strong> for our planet.                  
+                  </p>
+                </div>
+
+              </div>
+          </MaxWidthWrapper>
+          
+        </section>  */}
       </div>
     </main>
   );
