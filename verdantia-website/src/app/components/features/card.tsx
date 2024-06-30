@@ -34,7 +34,7 @@ type CardProps = {
 
   export const Tech = ({id} : CardProps) => {
     return(
-        <FeatureCard id={id} gradient="from-[#f7f0ff] to-[#a78afe]">
+        <FeatureCard id={id} gradient="from-[#e4ede8] to-[#e4ede8]">
             <img className="rounded-xl shadow-lg absolute w-[80%] top-[22%] left-[10%] sm:left-[18%] sm:top-[7%] sm:w-[65%]" src={tech.src}/>
             <p className="px-[5vw] absolute top-[56%] text-[0] sm:text-[1.4vw] text-[#3e3e3e]">
                 We always say that the right tools empower our employees to reach new heights. 
@@ -48,7 +48,7 @@ type CardProps = {
 
   export const Path = ({id} : CardProps) => {
     return(
-        <FeatureCard id={id} gradient="from-[#f5fbff] to-[#addeff]">
+        <FeatureCard id={id} gradient="from-[#ccd9d2] to-[#ccd9d2]">
             <img className="rounded-xl shadow-lg absolute w-[80%] top-[27%] left-[11%] sm:left-[18%] sm:top-[7%] sm:w-[63%]" src={path.src}/>
             <p className="px-[5vw] absolute top-[56%] text-[0] sm:text-[1.4vw] text-[#3e3e3e]">
                 At Verdantia, we believe that every individual brings a unique set of skills, talents, 
@@ -62,7 +62,7 @@ type CardProps = {
   export const Community = ({id} : CardProps) => {
 
     return(
-        <FeatureCard id={id} gradient="from-[#f5fff7] to-[#adf8ff]">
+        <FeatureCard id={id} gradient="from-[#d5f0e2] to-[#d5f0e2]">
             <img className="rounded-xl shadow-lg absolute w-[80%] top-[22%] left-[10%] sm:left-[20.4%] sm:top-[7%] sm:w-[57%]" src={community.src}/>
             <p className="px-[5vw] absolute top-[56%] text-[0] sm:text-[1.4vw] text-[#3e3e3e]">
             We take pride in cultivating an inclusive environment where collaboration is not just encouraged but celebrated. 
@@ -75,7 +75,7 @@ type CardProps = {
 
   export const Hours = ({id} : CardProps) => {
     return(
-        <FeatureCard id={id} gradient="from-[#f7fff5] to-[#adffd8]">
+        <FeatureCard id={id} gradient="from-[#bfdbcd] to-[#bfdbcd]">
             <img className="rounded-xl shadow-lg absolute w-[70%] top-[20%] left-[16%] sm:left-[24.8%] sm:top-[7%] sm:w-[47%]" src={hours.src}/>
             <p className="px-[5vw] absolute top-[56%] text-[0] sm:text-[1.4vw] text-[#3e3e3e]">
                 Flexibility is a philosophy that empowers our team to manage their work in a way that suits their individual 
@@ -87,7 +87,7 @@ type CardProps = {
 
   export const Health = ({id} : CardProps) => {
     return(
-        <FeatureCard id={id} gradient="from-[#fff7f5] to-[#ffd8ad]">
+        <FeatureCard id={id} gradient="from-[#c3e8d5] to-[#c3e8d5]">
             <img className="rounded-xl shadow-lg absolute w-[70%] top-[22%] left-[16%] sm:left-[25.8%] sm:top-[7%] sm:w-[47%]" src={health.src}/>
             <p className="px-[5vw] absolute top-[56%] text-[0] sm:text-[1.4vw] text-[#3e3e3e]">
                 Our healthcare plan includes a range of benefits such as 

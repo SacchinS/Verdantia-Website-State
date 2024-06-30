@@ -17,11 +17,6 @@ export default function SignIn() {
     const handleSignOut = () => {
         if (user) {
           signOut(auth);
-          console.log('Sign Out');
-          router.push('/');
-        }
-        else {
-          router.push('/signIn');
         }
     }
 

@@ -7,7 +7,9 @@
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
   --custom-green: #C7D4CD;
+  --footer-green: #9fb7aa;
   --button-green: #BCD6C0;
+  --custom-footer: #3E3E3E;
 }
 
 @media (prefers-color-scheme: dark) {
