@@ -45,7 +45,7 @@ import {
   
 export function MobileValues() {
 return (
-    <Accordion type="single" collapsible className="w-full">
+    <Accordion type="single" collapsible className="w-[80vw]">
     <AccordionItem value="item-1">
         <AccordionTrigger>Is it grippy?</AccordionTrigger>
         <AccordionContent>
