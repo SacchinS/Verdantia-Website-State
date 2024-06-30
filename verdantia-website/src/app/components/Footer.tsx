@@ -63,7 +63,7 @@ const Footer = () =>{
 
             <div className="flex flex-col max-w-[1240px] px-2 py-4 mx-7 justify-between sm:flex-row text-center text-white">
                 <p className="py-4">
-                    2024 Verdantia
+                    © 2024 Verdantia
                 </p>
             </div>
         </div>
