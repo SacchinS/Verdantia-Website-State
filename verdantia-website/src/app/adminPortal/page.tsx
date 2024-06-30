@@ -76,7 +76,7 @@ export default function AdminPortal() {
                 buttonText="Post Application"
             />
             <div className={"flex flex-col justify-center items-center"}>
-                <div className="container mx-auto mt-[1vw] text-white  flex justify-center">
+                <div className="container mx-auto mt-[10vw] text-white  flex justify-center">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[5vw]">
                         {/* Map over job listings to create JobBlocks */}
                         {allJobs.map((job) => (
