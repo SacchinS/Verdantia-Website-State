@@ -32,6 +32,7 @@
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/signInPopUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/signInPopUp.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/components/signUpPopUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/signUpPopUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/jobs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/jobs/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/src/app/portal/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/src/app/portal/page.tsx" afterDir="false" />
@@ -103,7 +104,7 @@
       <workItem from="1719712212666" duration="754000" />
       <workItem from="1719713338442" duration="3101000" />
       <workItem from="1719716798438" duration="7537000" />
-      <workItem from="1719724418614" duration="1936000" />
+      <workItem from="1719724418614" duration="3535000" />
     </task>
     <task id="LOCAL-00001" summary="updated file name">
       <option name="closed" value="true" />
