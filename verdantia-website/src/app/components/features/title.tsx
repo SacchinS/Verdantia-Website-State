@@ -25,7 +25,7 @@ export const FeatureTitle = ({children, id} : Props) => {
         <p 
             ref={ref} 
             className={classNames(
-                "text-[5vw] font-family py-[2vw] transition-colors", 
+                "text-[3vw] font-family py-[2vw] transition-colors",
                 isInView ? "text-black" : "text-gray-300"
             )} 
             style={{ fontFamily: 'Bellota Text' }}>
