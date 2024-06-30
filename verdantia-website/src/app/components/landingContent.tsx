@@ -50,7 +50,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ heading, subheading, buttonTe
 
   return (
     <div>
-      <div className="absolute inset-0 w-screen h-auto bg-center bg-cover" style={{ backgroundImage: `url('/images/background-cropped.png')`, zIndex: -1}}></div>
+      <div className="absolute inset-0 w-[100vw] h-[46vw] bg-center bg-cover" style={{ backgroundImage: `url('/images/background-cropped.png')`, zIndex: -1}}></div>
       <Navbar />
       <div className="container py-[1vw] text-white relative z-10 ml-[8vw] mt-[5vw]">
         <AnimatePresence>
