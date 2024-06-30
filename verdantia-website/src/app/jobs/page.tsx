@@ -240,7 +240,7 @@ export default function Jobs() {
         setShowApplicationPopup(false);
     };
 
-    const [prompt, setPrompt] = useState<string>("enter");
+    const [prompt, setPrompt] = useState<string>("");
     const handlePrompt = (event) => {
         setPrompt(event.target.value);
     }
@@ -253,7 +253,7 @@ export default function Jobs() {
         setRec(rec);
         console.log("Output: ", rec);
         if (rec != null) {
-            setPrompt(rec)
+            setPrompt("")
         }
         setShowRec(true)
     }
@@ -268,24 +268,30 @@ export default function Jobs() {
             />
 
             <div className="container mx-auto">
-                <div>
-                    <input type={"text"} value={prompt} onChange={handlePrompt}></input>
-                    <button onClick={handlePromptEnter}> click</button>
-                </div>
-                <BodyHeading marginTop="8vw" marginBottom="2vw">Jobs at Verdantia</BodyHeading>
 
+                <BodyHeading marginTop="8vw" marginBottom="2vw"></BodyHeading>
+
+                <div className={"flex justify-center"}>
+                    <input placeholder={"Enter your interests..."} className={"w-fit h-fit p-[0.8vw] m-[1vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"} type={"text"} value={prompt} onChange={handlePrompt}></input>
+                    <div className={"flex items-center justify-center h-fit m-[1vw] p-[0.8vw] w-fit bg-[#53975d] rounded-[0.5vw] overflow-hidden"}>
+                        <button className={"text-white text-[1.3vw] leading-27.6"} onClick={handlePromptEnter}> Submit
+                        </button>
+                    </div>
+
+                </div>
+                <BodyHeading marginTop="1vw" marginBottom="2vw">Jobs at Verdantia</BodyHeading>
                 <div className="grid grid-cols-1 md:grid-cols-2 ml-[8vw] mr-[8vw]">
                     <div className="md:col-span-1">
                         <RoleFilter />
                     </div>
-                    <div className="md:col-span-1"> 
+                    <div className="md:col-span-1">
                         <DurationFilter />
                     </div>
                     <div
-                        className="md:col-span-2"> 
-                        
+                        className="md:col-span-2">
+
                         <LocationFilter />
-                        
+
                         <PlaceFilter />
                         <PriceFilter />
                     </div>
