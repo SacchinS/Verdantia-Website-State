@@ -52,7 +52,7 @@ type CardProps = {
             <img className="rounded-xl shadow-lg absolute w-[80%] top-[27%] left-[11%] sm:left-[18%] sm:top-[7%] sm:w-[63%]" src={path.src}/>
             <p className="px-[5vw] absolute top-[56%] text-[0] sm:text-[1.4vw] text-[#3e3e3e]">
                 At Verdantia, we believe that every individual brings a unique set of skills, talents, 
-                and aspirations to the table. That's why we're proud to foster an environment where you
+                and aspirations to the table. That&apos;s why we&apos;re proud to foster an environment where you
                 have a canvas to paint your career masterpiece!
             </p>
         </FeatureCard>
