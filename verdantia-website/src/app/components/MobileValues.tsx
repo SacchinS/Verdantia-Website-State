@@ -45,6 +45,7 @@ import {
   
 export function MobileValues() {
 return (
+<<<<<<< HEAD
     <div className="px-[50vw]">
         <div className="relative text-center px-[3vw] pb-[5vw] text" style={{ fontFamily: 'Montserrat', color: '#3e3e3e', fontSize: '7vw', lineHeight: '9vw' }}>
                     Our Values  
@@ -75,6 +76,30 @@ return (
         </Accordion>
     </div>
 
+=======
+    <Accordion type="single" collapsible className="w-[80vw]">
+    <AccordionItem value="item-1">
+        <AccordionTrigger>Is it grippy?</AccordionTrigger>
+        <AccordionContent>
+        Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+        <AccordionTrigger>Do it Jiggle?</AccordionTrigger>
+        <AccordionContent>
+        Yes. It comes with default styles that matches the other
+        components&apos; aesthetic.
+        </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+        <AccordionTrigger>Can my cronem hit?</AccordionTrigger>
+        <AccordionContent>
+        Yes. It&apos;s animated by default, but you can disable it if you
+        prefer.
+        </AccordionContent>
+    </AccordionItem>
+    </Accordion>
+>>>>>>> parent of 738397c (fixed accordion)
 )
 }
   
