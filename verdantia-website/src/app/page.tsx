@@ -26,6 +26,8 @@ import Slide2 from '../../public/images/Slide2.svg';
 import Slide3 from '../../public/images/Slide3.svg';
 import Slide4 from '../../public/images/Slide4.svg';
 import Slide5 from '../../public/images/Slide5.svg';
+import NewSlideshow from "./components/DesktopCarousel";
+import CarouselDemo from './components/niglatron';
 
 interface Job {
   id: string;
@@ -327,11 +329,11 @@ export default function Home() {
 
       <ImageDivider src={ForestDivider.src} marginTop="6vw"></ImageDivider>
 
-      <div>
+      <div className=''>
         <BodyHeading marginTop="4vw" marginBottom="2vw" centerAligned={true}>
           Our Impacts
         </BodyHeading>
-        <Slideshow slides={slides} />
+        <NewSlideshow/>
       </div>
 
       {/* Extra margin so footer doesn't look weird */}
