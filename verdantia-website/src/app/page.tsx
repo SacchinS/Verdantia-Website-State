@@ -254,7 +254,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className='hidden sm:block flex'>
+      <div className='hidden "1200px":block flex'>
         
         <LandingContent
           heading="Welcome to \nVerdantia"
@@ -378,7 +378,7 @@ export default function Home() {
 
         <Footer />
       </div>
-      <div className='   sm:hidden'>
+      <div className='   "800px":hidden'>
         <MobileNavBar/>
         <div className='flex flex-col items-center justify-center py-[10vw] gap-[10vw] '>
 
