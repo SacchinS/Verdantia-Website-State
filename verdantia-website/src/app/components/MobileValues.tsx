@@ -69,7 +69,7 @@ return (
         <AccordionItem value="item-3">
             <AccordionTrigger className="text-green-700">Leadership</AccordionTrigger>
             <AccordionContent>
-            Our leadership policies adopt a "nobody left behind" attitude, ensuring that every member of Verdantia can stay committed to the sustainability mission of the orgnization.
+            Our leadership policies adopt a &quot;nobody left behind&quot; attitude, ensuring that every member of Verdantia can stay committed to the sustainability mission of the orgnization.
             </AccordionContent>
         </AccordionItem>
         </Accordion>
