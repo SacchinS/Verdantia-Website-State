@@ -43,7 +43,7 @@ import {
                             <img className="z-10 px-[2.5vw] py-[3vw] rounded-[5vw] w-full h-auto object-cover object-center" src={Slide1.src} />
                             <div className="absolute inset-0 flex items-center justify-center p-4">
                                 <div className="text-center bg-black bg-opacity-50 p-[2vw] rounded-[1vw] mx-[10vw] items-center justify-center flex relative" style={{ fontFamily: 'Montserrat', color: 'white', fontSize: '1.5vw', lineHeight: '2.5vw' }}>
-                                    "30 per cent of emissions from industry and fossil fuels are soaked up by forests and woodlands." <br /> - UN Environment Programme <br /><br />
+                                    &quot;30 percent of emissions from industry and fossil fuels are soaked up by forests and woodlands.&quot; <br /> - UN Environment Programme <br /><br />
                                     Verdantia has successfully planted over 500,000 trees in deforested regions, contributing to the restoration of habitats for various wildlife species.
                                 </div>
                             </div>
