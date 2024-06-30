@@ -34,6 +34,7 @@ import OurMissionMobile from './components/OurMissionMobile';
 import MobileCarousel from './components/MobileCarousel';
 import { Sprout } from "lucide-react";
 import MobileDivider from './components/MobileDivider';
+import MobileValues from './components/MobileValues';
 
 
 interface Job {
@@ -398,7 +399,7 @@ export default function Home() {
           <OurMissionMobile/>
           <MobileDivider/>
           <MobileCarousel/>
-
+          <MobileValues/>
           <div className='w-[75vw] h-[75vw] justify-center items-center overflow-hidden relative'>
           </div>
         </div>

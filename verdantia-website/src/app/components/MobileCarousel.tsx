@@ -40,7 +40,7 @@ import MobileCard from "./MobileCard";
 
     return(
         <div>
-            <div className="relative text-center pb-[10vw]" style={{ fontFamily: 'Montserrat', color: '#3e3e3e', fontSize: '7vw', lineHeight: '9vw' }}>
+            <div className="relative text-center px-[3vw] pb-[10vw]" style={{ fontFamily: 'Montserrat', color: '#3e3e3e', fontSize: '7vw', lineHeight: '9vw' }}>
                     Our Projects  
             </div>
           
@@ -111,7 +111,7 @@ import MobileCard from "./MobileCard";
                               biodiversity conservation efforts by protecting endangered species and preserving vital habitats.
 
 
-                            </div>
+                            </div> 
                         </div>
                     </CarouselItem>
                 
@@ -139,8 +139,8 @@ import MobileCard from "./MobileCard";
 
                     {/* </CarouselItem> */} 
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+                <CarouselPrevious className="hidden"/>
+                <CarouselNext className="hidden"/>
             </Carousel>
         </div>
     )
