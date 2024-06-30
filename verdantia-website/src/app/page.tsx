@@ -30,6 +30,10 @@ import MaxWidthWrapper from './components/MaxWidthWrapper';
 import MobileNavBar from './components/MobileNavBar';
 import zip from '../../public/images/zip.jpg';
 import download2 from '../../public/images/download2.jpg';
+import OurMissionMobile from './components/OurMissionMobile';
+import MobileCarousel from './components/carouselesh';
+import { Sprout } from "lucide-react";
+import MobileDivider from './components/MobileDivider';
 
 
 interface Job {
@@ -250,6 +254,7 @@ export default function Home() {
   return (
     <main>
       <div className='hidden sm:block flex'>
+        
         <LandingContent
           heading="Welcome to \nVerdantia"
           subheading="Where Sustainability meets Innovation"
@@ -291,7 +296,7 @@ export default function Home() {
               human impact. We believe in a holistic approach, leveraging{' '}
               <strong>cutting-edge innovations</strong> alongside direct, hands-on efforts to create a
               more <strong>sustainable and resilient future</strong> for our planet.
-            </div>
+            </div>j
             <img src={HandsPlanting.src} alt="Hands Planting" className="w-[40vw] h-auto" />
           </div>
         </div>
@@ -374,23 +379,32 @@ export default function Home() {
       </div>
       <div className=''>
         <MobileNavBar/>
-        <div className='flex items-center justify-center py-[10vw] '>
+        <div className='flex flex-col items-center justify-center py-[10vw] gap-[10vw] '>
 
-          <div className='w-[75vw] h-[75vw] overflow-hidden relative grid place-items-center'>
-            <div className='relative w-full h-full text-center '>
-              <img src={download2.src} className=' rounded-[8vw] w-full h-full flex justify-self-center items-center object-cover object-center'/>
-              <div className='flex absolute flex-col top-0 left-0 items-center text-center justify-center gap-[5vw]'>
-                <div>
-                  text
+          <div className='w-[75vw] h-[75vw] overflow-hidden relative place-items-center'>
+            <div className='relative w-full h-full '>
+              <img src={download2.src} className=' z-10 rounded-[8vw] w-full h-full flex justify-self-center items-end object-cover object-center'/>
+              <div className='flex absolute pt-[5vw] pr-[5vw] flex-col z-20 top-0 left-0 items-end justify-end gap-[0vw]'>
+                <div className='font-bold text-right' style={{ fontFamily: 'Montserrat', color: '#F3F3F3', fontSize: '7vw', lineHeight: '9vw' }}>
+                  Sustainable Solutions. 
+                </div>
+                <div className='font-bold text-right' style={{ fontFamily: 'Montserrat', color: '#F3F3F3', fontSize: '7vw', lineHeight: '9vw' }}>
+                  Now.
                 </div>
               </div>
             </div>
             
+          </div>  
+          <OurMissionMobile/>
+          <MobileDivider/>
+          <MobileCarousel/>
+
+          <div className='w-[75vw] h-[75vw] justify-center items-center overflow-hidden relative'>
           </div>
-          
         </div>
+
         <div className='bg-slate-50'>
-      </div>
+        </div>
       
         
       </div>

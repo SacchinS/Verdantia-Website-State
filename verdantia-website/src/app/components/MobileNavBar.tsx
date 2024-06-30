@@ -116,7 +116,7 @@ const MobileNavBar = () => {
            
         // </nav>
         //</div>
-        <div className="sticky top-0 w-full inset-x-0 border-border border-[0.4vw] bg-background/85 backdrop-blur ">
+        <div className="sticky z-[100] top-0 w-full inset-x-0 border-border border-[0.4vw] bg-background/85 backdrop-blur ">
             <div className="container mx-auto flex h-[15vw] items-center justify-between gap ">
                 <Link href = "/" className="flex" style={{ fontFamily: 'Bellota Text', color: '#3E3E3E', fontSize: '8vw', lineHeight: '5vw' }}>
                     Verdantia
@@ -130,7 +130,7 @@ const MobileNavBar = () => {
                         <DropdownMenuTrigger>
                             <Menu>
 
-                        </Menu>
+                            </Menu>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
