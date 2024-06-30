@@ -48,9 +48,7 @@ import {
 
                     <CarouselItem className="flex flex-col gap-[15vw]justify-center w-[50vw] h-[50vw] items-center">
                         <img className="z-10 px-[2.5vw] rounded-[12vw] w-full h-full overflow-hidden object-cover object-center " src={Slide1.src} />
-                        <div className="">
-                            asdfl asdf dsf ds fsdf d f sdf s fsd f sd f sd fs df sdfsdf sdfsdfsdf 
-                        </div>   
+                    
                     </CarouselItem>
 
                     <CarouselItem className="justify-center w-[50vw] h-[50vw] items-center">
