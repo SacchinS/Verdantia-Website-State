@@ -378,7 +378,7 @@ export default function Home() {
 
         <Footer />
       </div>
-      <div className=''>
+      <div className='   sm:hidden'>
         <MobileNavBar/>
         <div className='flex flex-col items-center justify-center py-[10vw] gap-[10vw] '>
 
@@ -400,6 +400,7 @@ export default function Home() {
           <OurMissionMobile/>
           <MobileDivider/>
           <MobileCarousel/>
+          <MobileDivider/>
           <MobileValues/>
           <div className='w-[75vw] h-[75vw] justify-center items-center overflow-hidden relative'>
           </div>

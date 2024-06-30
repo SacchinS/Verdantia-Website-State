@@ -45,28 +45,36 @@ import {
   
 export function MobileValues() {
 return (
-    <Accordion type="single" collapsible className="w-[80vw]">
-    <AccordionItem value="item-1">
-        <AccordionTrigger>Is it grippy?</AccordionTrigger>
-        <AccordionContent>
-        Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-        <AccordionTrigger>Do it Jiggle?</AccordionTrigger>
-        <AccordionContent>
-        Yes. It comes with default styles that matches the other
-        components&apos; aesthetic.
-        </AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-3">
-        <AccordionTrigger>Can my cronem hit?</AccordionTrigger>
-        <AccordionContent>
-        Yes. It&apos;s animated by default, but you can disable it if you
-        prefer.
-        </AccordionContent>
-    </AccordionItem>
-    </Accordion>
+    <div className="px-[50vw]">
+        <div className="relative text-center px-[3vw] pb-[5vw] text" style={{ fontFamily: 'Montserrat', color: '#3e3e3e', fontSize: '7vw', lineHeight: '9vw' }}>
+                    Our Values  
+        </div>
+        <div className="relative text-center px-[3vw] pb-[10vw]" style={{ fontFamily: 'Montserrat', color: '#3e3e3e', fontSize: '5vw', lineHeight: '9vw' }}>
+                    Learn about what we stand for
+        </div>
+        <Accordion type="single" collapsible className="w-[60vw]">
+        <AccordionItem value="item-1">
+            <AccordionTrigger className="text-green-700">Environmental Awareness</AccordionTrigger>
+            <AccordionContent>
+            We inspire positive change through mindful environmental awareness and education. Holding public programs and workshops is our way of giving back to the world and helping people connect with the environment.
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+            <AccordionTrigger className="text-green-700">Collaboration</AccordionTrigger>
+            <AccordionContent>
+            We thrive using collaboration by its power for change in sustainability practices. We&apos;ve connected with organizations like UNEP and the EPA to push for sustainable policies. 
+
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+            <AccordionTrigger className="text-green-700">Leadership</AccordionTrigger>
+            <AccordionContent>
+            Our leadership policies adopt a "nobody left behind" attitude, ensuring that every member of Verdantia can stay committed to the sustainability mission of the orgnization.
+            </AccordionContent>
+        </AccordionItem>
+        </Accordion>
+    </div>
+
 )
 }
   

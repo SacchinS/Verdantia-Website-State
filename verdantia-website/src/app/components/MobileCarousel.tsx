@@ -139,8 +139,8 @@ import MobileCard from "./MobileCard";
 
                     {/* </CarouselItem> */} 
                 </CarouselContent>
-                <CarouselPrevious className="hidden"/>
-                <CarouselNext className="hidden"/>
+                <CarouselPrevious className=""/>
+                <CarouselNext className=""/>
             </Carousel>
         </div>
     )
