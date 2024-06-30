@@ -1,5 +1,6 @@
 'use client'
 
+import JobRecPopUp from "@/app/components/jobRecPopUp";
 import BodyHeading from '../components/bodyHeading';
 import LandingContent from '../components/landingContent';
 import RoleFilter from '../components/RoleFilter';
@@ -17,6 +18,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import JobApplicationPopUp from '../components/jobApplicationPopUp';
 import { useRouter } from 'next/navigation';
+import {Send} from "@/app/components/ChatGPT";
+import * as events from "node:events";
+import SignInPopUp from "@/app/components/signInPopUp";
 
 interface Job {
     id: string;
@@ -98,20 +102,14 @@ export default function Jobs() {
     }, []);
 
     const getFilters = () => {
-        console.log("Durations: ", durations)
-        console.log("Locations: ", location)
-        console.log("Places: ", places)
-        console.log("Roles: ", roles)
+
     }
 
     const getJobs = () => {
-        console.log(getJobsToRender)
+        //console.log(getJobsToRender)
     }
 
     const getJobsToRender = allJobs.filter(Job => {
-        console.log("Job: ",Job)
-        console.log("Places: ", places)
-        console.log("-", places.includes(Job.place))
         if ((price && price < parseInt(Job.salary) &&
             (location.includes(Job.location) || location.length == 0) &&
             (places.includes(Job.place) || places.length == 0)  &&
@@ -173,7 +171,7 @@ export default function Jobs() {
     
                 // Use the job ID as the document name
                 const docRef = await setDoc(doc(db, 'jobApplications', selectedJob.id), formData);
-                console.log('Document written with ID: ', selectedJob.id);
+                //console.log('Document written with ID: ', selectedJob.id);
     
                 // Update the jobApplicationSubmitted state to true
                 setJobApplicationSubmitted(true);
@@ -242,14 +240,38 @@ export default function Jobs() {
         setShowApplicationPopup(false);
     };
 
+    const [prompt, setPrompt] = useState<string>("enter");
+    const handlePrompt = (event) => {
+        setPrompt(event.target.value);
+    }
+
+    const [rec, setRec] = useState<string | null>();
+
+    const handlePromptEnter = async () => {
+
+        const rec : string | null = await Send(prompt);
+        setRec(rec);
+        console.log("Output: ", rec);
+        if (rec != null) {
+            setPrompt(rec)
+        }
+        setShowRec(true)
+    }
+    const [showRec, setShowRec] = useState<boolean | null>(false);
+
     return (
         <main>
+
             <LandingContent
                 heading="Discover your \nNext Job"
                 subheading="Explore your passions"
             />
 
             <div className="container mx-auto">
+                <div>
+                    <input type={"text"} value={prompt} onChange={handlePrompt}></input>
+                    <button onClick={handlePromptEnter}> click</button>
+                </div>
                 <BodyHeading marginTop="8vw" marginBottom="2vw">Jobs at Verdantia</BodyHeading>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 ml-[8vw] mr-[8vw]">
@@ -321,7 +343,11 @@ export default function Jobs() {
                 <JobApplicationPopUp onClose={handleClosePopup} onSubmit={handleJobApplicationSubmit} job={selectedJob?.name || ''} />
                 </div>
             )}
+            {showRec && (<JobRecPopUp
+                    sentJob={rec}
 
+                />
+            )}
             <Footer />
         </main>
     );
