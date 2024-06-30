@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
+    "dotenv": "^16.4.5",
     "firebase": "^10.11.0",
     "firebase-admin": "^12.1.0",
     "framer-motion": "^11.1.7",
