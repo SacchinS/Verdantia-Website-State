@@ -272,8 +272,8 @@ export default function Jobs() {
                 <BodyHeading marginTop="8vw" marginBottom="2vw"></BodyHeading>
 
                 <div className={"flex justify-center"}>
-                    <input placeholder={"Enter your interests..."} className={"w-fit h-fit p-[0.8vw] m-[1vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"} type={"text"} value={prompt} onChange={handlePrompt}></input>
-                    <div className={"flex items-center justify-center h-fit m-[1vw] p-[0.8vw] w-fit bg-[#53975d] rounded-[0.5vw] overflow-hidden"}>
+                    <input placeholder={"Enter your interests..."} className={"w-[30vw] h-fit p-[0.8vw] m-[1vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"} type={"text"} value={prompt} onChange={handlePrompt}></input>
+                    <div className={"flex items-center justify-center h-fit m-[1vw] p-[0.8vw] w-[10vw] bg-[#53975d] rounded-[0.5vw] overflow-hidden"}>
                         <button className={"text-white text-[1.3vw] leading-27.6"} onClick={handlePromptEnter}> Submit
                         </button>
                     </div>
@@ -297,7 +297,7 @@ export default function Jobs() {
                     </div>
                 </div>
             </div>
-            <div className="container mx-auto py-5 text-white  flex justify-center mt-[1vw]">
+            <div className="container px-[0vw] py-5 text-white  flex justify-center mt-[1vw]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[5vw]">
                     {/* Map over job listings to create JobBlocks */}
                     {getJobsToRender.map((job) => (
