@@ -116,7 +116,7 @@ export default function Jobs() {
             name ="Shawna D."
             position ="Senior Environmental Analyst"
             location= "Seattle, WA"
-            quote= '"At Verdantia, I have thrived in a culture fostering creativity and collaboration. With supportive leadership and innovative projects, my journey here has been transformative. Proud to work where employees are valued."'
+            quote= '&quot;At Verdantia, I have thrived in a culture fostering creativity and collaboration. With supportive leadership and innovative projects, my journey here has been transformative. Proud to work where employees are valued.&quot;'
             email= "ShawnaD@verdantia.com"
           />
           <TestCard 
@@ -124,7 +124,7 @@ export default function Jobs() {
             name ="Adam W."
             position ="Head of Forestry Operations"
             location= "San Francisco, CA"
-            quote= '"Verdantia offers a dynamic environment where talent thrives. Through continuous learning, I have grown both professionally and personally. Flexible work and a forward-thinking team make every day fulfilling."'
+            quote= '&quot;Verdantia offers a dynamic environment where talent thrives. Through continuous learning, I have grown both professionally and personally. Flexible work and a forward-thinking team make every day fulfilling.&quot;'
             email= "AdamW@verdantia.com"
           />
           <TestCard 
@@ -132,7 +132,7 @@ export default function Jobs() {
             name ="Alisa C."
             position ="Sustainable Design Consultant"
             location= "London, UK"
-            quote= '"Verdantia feels like family, fostering camaraderie and support. Over five years, ensuring customer happiness has been fulfilling. Super grateful to work where employee well-being is valued and contributions recognized."'
+            quote= '&quot;Verdantia feels like family, fostering camaraderie and support. Over five years, ensuring customer happiness has been fulfilling. Super grateful to work where employee well-being is valued and contributions recognized.&quot;'
             email= "AlisaC@verdantia.com"
           />
         </div>
