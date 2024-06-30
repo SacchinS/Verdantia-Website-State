@@ -241,7 +241,7 @@ export default function Jobs() {
     };
 
     const [prompt, setPrompt] = useState<string>("");
-    const handlePrompt = (event) => {
+    const handlePrompt = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setPrompt(event.target.value);
     }
 
@@ -269,7 +269,7 @@ export default function Jobs() {
 
             <div className="container mx-auto">
 
-                <BodyHeading marginTop="8vw" marginBottom="2vw"></BodyHeading>
+                <BodyHeading marginTop="8vw" marginBottom="2vw" children={undefined}></BodyHeading>
 
                 <div className={"flex justify-center"}>
                     <input placeholder={"Enter your interests..."} className={"w-[30vw] h-fit p-[0.8vw] m-[1vw] rounded-[0.5vw] border-[0.106vw] border-solid border-gray-400 font-normal text-gray-700 text-[1.1vw] whitespace-nowrap"} type={"text"} value={prompt} onChange={handlePrompt}></input>
@@ -350,7 +350,7 @@ export default function Jobs() {
                 </div>
             )}
             {showRec && (<JobRecPopUp
-                    sentJob={rec}
+                    sentJob={rec!}
 
                 />
             )}
