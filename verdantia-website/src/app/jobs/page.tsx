@@ -1,5 +1,6 @@
 'use client'
 
+import JobRecPopUp from "@/app/components/jobRecPopUp";
 import BodyHeading from '../components/bodyHeading';
 import LandingContent from '../components/landingContent';
 import RoleFilter from '../components/RoleFilter';
@@ -19,6 +20,7 @@ import JobApplicationPopUp from '../components/jobApplicationPopUp';
 import { useRouter } from 'next/navigation';
 import {Send} from "@/app/components/ChatGPT";
 import * as events from "node:events";
+import SignInPopUp from "@/app/components/signInPopUp";
 
 interface Job {
     id: string;
@@ -243,20 +245,23 @@ export default function Jobs() {
         setPrompt(event.target.value);
     }
 
-    const [rec, setRec] = useState<string | null>(null);
+    const [rec, setRec] = useState<string | null>();
 
     const handlePromptEnter = async () => {
 
         const rec : string | null = await Send(prompt);
+        setRec(rec);
         console.log("Output: ", rec);
         if (rec != null) {
             setPrompt(rec)
         }
+        setShowRec(true)
     }
-
+    const [showRec, setShowRec] = useState<boolean | null>(false);
 
     return (
         <main>
+
             <LandingContent
                 heading="Discover your \nNext Job"
                 subheading="Explore your passions"
@@ -336,7 +341,11 @@ export default function Jobs() {
                 <JobApplicationPopUp onClose={handleClosePopup} onSubmit={handleJobApplicationSubmit} job={selectedJob?.name || ''} />
                 </div>
             )}
+            {showRec && (<JobRecPopUp
+                    sentJob={rec}
 
+                />
+            )}
             <Footer />
         </main>
     );

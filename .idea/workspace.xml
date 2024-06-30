@@ -7,6 +7,7 @@
     <list default="true" id="84c462bd-f45e-44de-a790-2ac62b8d8669" name="Changes" comment="updated file name">
       <change afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/ChatGPT.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/editJobPopUp.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/verdantia-website/src/app/components/jobRecPopUp.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verdantia-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/verdantia-website/package.json" afterDir="false" />
@@ -101,7 +102,7 @@
       <workItem from="1719292519672" duration="6794000" />
       <workItem from="1719712212666" duration="754000" />
       <workItem from="1719713338442" duration="3101000" />
-      <workItem from="1719716798438" duration="1592000" />
+      <workItem from="1719716798438" duration="6190000" />
     </task>
     <task id="LOCAL-00001" summary="updated file name">
       <option name="closed" value="true" />
