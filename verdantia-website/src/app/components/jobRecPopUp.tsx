@@ -48,20 +48,33 @@ const JobRecPopUp: React.FC<JobRecPopUpProps> = ({ sentJob }) => {
     };
 
     return (
-        <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
+        <main>
             {selectedJob && (
-                <JobBlock
-                    key={selectedJob.id}
-                    applicantCount={selectedJob.applicants}
-                    data={selectedJob.date}
-                    jobTitle={selectedJob.name}
-                    location={selectedJob.location}
-                    workMethod={selectedJob.place}
-                    duration={selectedJob.duration}
-                    onClick={() => handleJobBlockClick(selectedJob)} // Add to user's job list
-                />
+                <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed z-20">
+                    {selectedJob && (
+                        <div
+                            className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
+                            <JobDetailBlock
+                                job={selectedJob.name}
+                                date={selectedJob.date}
+                                applicants={selectedJob.applicants}
+                                location={selectedJob.location}
+                                workExperience={selectedJob.experience}
+                                workType={selectedJob.role}
+                                salary={selectedJob.salary}
+                                detDesc={selectedJob.description}
+                                reqDesc={selectedJob.requirements}
+                                onClose={() => setSelectedJob(null)}
+                                listButtonText={'Add to list'}
+
+                                applyButtonText={'Apply'}
+                            />
+                        </div>
+                    )}
+                </div>
             )}
-        </div>
+        </main>
+
     );
 };
 

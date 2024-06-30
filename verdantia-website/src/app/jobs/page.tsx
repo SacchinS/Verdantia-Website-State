@@ -268,8 +268,10 @@ export default function Jobs() {
             />
 
             <div className="container mx-auto">
-                <input type={"text"} value={prompt} onChange={handlePrompt}></input>
-                <button onClick={handlePromptEnter}> click</button>
+                <div>
+                    <input type={"text"} value={prompt} onChange={handlePrompt}></input>
+                    <button onClick={handlePromptEnter}> click</button>
+                </div>
                 <BodyHeading marginTop="8vw" marginBottom="2vw">Jobs at Verdantia</BodyHeading>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 ml-[8vw] mr-[8vw]">
