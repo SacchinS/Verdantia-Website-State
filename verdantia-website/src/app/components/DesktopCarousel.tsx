@@ -39,7 +39,7 @@ import {
             <Carousel className="w-full max-w-[70vw]">
                 <CarouselContent>
                     <CarouselItem className="flex justify-center align-top w-full h-auto items-center">
-                        <div className="border-[0.2vw] rounded-[5vw] w-full relative">
+                        <div className="rounded-[5vw] w-full relative">
                             <img className="z-10 px-[2.5vw] py-[3vw] rounded-[5vw] w-full h-auto object-cover object-center" src={Slide1.src} />
                             <div className="absolute inset-0 flex items-center justify-center p-4">
                                 <div className="text-center bg-black bg-opacity-50 p-[2vw] rounded-[1vw] mx-[10vw] items-center justify-center flex relative" style={{ fontFamily: 'Montserrat', color: 'white', fontSize: '1.5vw', lineHeight: '2.5vw' }}>
@@ -52,7 +52,7 @@ import {
 
 
                     <CarouselItem className="flex justify-center align-top w-full h-auto items-center">
-                        <div className="border-[0.2vw] rounded-[5vw] w-full relative">
+                        <div className="rounded-[5vw] w-full relative">
                             <img className="z-10 px-[2.5vw] py-[3vw] rounded-[5vw] w-full h-auto object-cover object-center" src={Slide2.src} />
                             <div className="absolute inset-0 flex items-center justify-center p-4">
                                 <div className="text-center bg-black bg-opacity-50 p-[2vw] rounded-[1vw] mx-[10vw] items-center justify-center flex relative" style={{ fontFamily: 'Montserrat', color: 'white', fontSize: '1.5vw', lineHeight: '2.5vw' }}>
@@ -63,7 +63,7 @@ import {
                     </CarouselItem>
 
                     <CarouselItem className="flex justify-center align-top w-full h-auto items-center">
-                        <div className="border-[0.2vw] rounded-[5vw] w-full relative">
+                        <div className="rounded-[5vw] w-full relative">
                             <img className="z-10 px-[2.5vw] py-[3vw] rounded-[5vw] w-full h-auto object-cover object-center" src={Slide3.src} />
                             <div className="absolute inset-0 flex items-center justify-center p-4">
                                 <div className="text-center bg-black bg-opacity-50 p-[2vw] rounded-[1vw] mx-[10vw] items-center justify-center flex relative" style={{ fontFamily: 'Montserrat', color: 'white', fontSize: '1.5vw', lineHeight: '2.5vw' }}>
@@ -74,7 +74,7 @@ import {
                     </CarouselItem>
                     
                     <CarouselItem className="flex justify-center align-top w-full h-auto items-center">
-                        <div className="border-[0.2vw] rounded-[5vw] w-full relative">
+                        <div className="rounded-[5vw] w-full relative">
                             <img className="z-10 px-[2.5vw] py-[3vw] rounded-[5vw] w-full h-auto object-cover object-center" src={Slide4.src} />
                             <div className="absolute inset-0 flex items-center justify-center p-4">
                                 <div className="text-center bg-black bg-opacity-50 p-[2vw] rounded-[1vw] mx-[10vw] items-center justify-center flex relative" style={{ fontFamily: 'Montserrat', color: 'white', fontSize: '1.5vw', lineHeight: '2.5vw' }}>
@@ -85,7 +85,7 @@ import {
                     </CarouselItem>
 
                     <CarouselItem className="flex justify-center align-top w-full h-auto items-center">
-                        <div className="border-[0.2vw] rounded-[5vw] w-full relative">
+                        <div className="rounded-[5vw] w-full relative">
                             <img className="z-10 px-[2.5vw] py-[3vw] rounded-[5vw] w-full h-auto object-cover object-center" src={Slide5.src} />
                             <div className="absolute inset-0 flex items-center justify-center p-4">
                                 <div className="text-center bg-black bg-opacity-50 p-[2vw] rounded-[1vw] mx-[10vw] items-center justify-center flex relative" style={{ fontFamily: 'Montserrat', color: 'white', fontSize: '1.5vw', lineHeight: '2.5vw' }}>
