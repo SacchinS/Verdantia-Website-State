@@ -26,6 +26,15 @@ import Slide2 from '../../public/images/Slide2.svg';
 import Slide3 from '../../public/images/Slide3.svg';
 import Slide4 from '../../public/images/Slide4.svg';
 import Slide5 from '../../public/images/Slide5.svg';
+import MaxWidthWrapper from './components/MaxWidthWrapper';
+import MobileNavBar from './components/MobileNavBar';
+import zip from '../../public/images/zip.jpg';
+import download2 from '../../public/images/download2.jpg';
+import OurMissionMobile from './components/OurMissionMobile';
+import MobileCarousel from './components/MobileCarousel';
+import { Sprout } from "lucide-react";
+import MobileDivider from './components/MobileDivider';
+
 
 interface Job {
   id: string;
@@ -244,127 +253,161 @@ export default function Home() {
 
   return (
     <main>
-      <LandingContent
-        heading="Welcome to \nVerdantia"
-        subheading="Where Sustainability meets Innovation"
-        buttonText="Join the Team"
-      />
-
-      <div>
-        <BodyHeading marginTop="6vw" marginBottom="2vw">
-          Featured Jobs
-        </BodyHeading>
-        <Carousel
-          blocks={allJobs.map((job) => ({
-            data: job.date,
-            applicantCount: job.applicants,
-            workMethod: job.place,
-            location: job.location,
-            jobTitle: job.name,
-            duration: job.duration,
-            onClick: () => handleJobBlockClick(job),
-          }))}
+      <div className='hidden sm:block flex'>
+        
+        <LandingContent
+          heading="Welcome to \nVerdantia"
+          subheading="Where Sustainability meets Innovation"
+          buttonText="Join the Team"
         />
-      </div>
-
-      <div>
-        <BodyHeading marginTop="24vw">Our Mission</BodyHeading>
-        <div
-          className="flex items-center ml-[8vw] mr-[8vw]"
-          style={{
-            fontFamily: 'Montserrat',
-            fontWeight: 300,
-            color: '#3E3E3E',
-            fontSize: '1.5vw',
-            lineHeight: '2.25vw',
-          }}
-        >
-          <div className="mr-[10vw]">
-            At Verdantia, our mission is to revolutionize{' '}
-            <strong>environmental sustainability</strong> by seamlessly integrating technology and
-            human impact. We believe in a holistic approach, leveraging{' '}
-            <strong>cutting-edge innovations</strong> alongside direct, hands-on efforts to create a
-            more <strong>sustainable and resilient future</strong> for our planet.
-          </div>
-          <img src={HandsPlanting.src} alt="Hands Planting" className="w-[40vw] h-auto" />
-        </div>
-      </div>
-
-      <ImageDivider src={PotDivider.src} marginTop="6vw"></ImageDivider>
-
-      <div>
-        <BodyHeading marginTop="4vw" marginBottom="3vw">
-          Our Values
-        </BodyHeading>
 
         <div>
-          <ValuesLeftTab
-            title="01 - Environmental Awareness"
-            subheading="We inspire positive change through mindful environmental awareness and education."
-            iconSrc="/images/Values1.svg"
-          />
-
-          <ValuesRightTab
-            title="02 - Collaboration"
-            subheading="We thrive using collaboration, leveraging its power for meaningful change in sustainability."
-            iconSrc="/images/Values2.svg"
-          />
-
-          <ValuesLeftTab
-            title="03 - Leadership"
-            subheading="Guided by visionary leadership, we aim to inspire a sustainable future through innovation and determination."
-            iconSrc="/images/Values3.svg"
-          />
-
-          <ValuesRightTab
-            title="04 - Responsibility"
-            subheading="Responsibility is central to Verdantia, guiding decisions with integrity as well as transparency for sustainable initiatives."
-            iconSrc="/images/Values4.svg"
-            showDivider={false}
+          <BodyHeading marginTop="6vw" marginBottom="2vw">
+            Featured Jobs
+          </BodyHeading>
+          <Carousel
+            blocks={allJobs.map((job) => ({
+              data: job.date,
+              applicantCount: job.applicants,
+              workMethod: job.place,
+              location: job.location,
+              jobTitle: job.name,
+              duration: job.duration,
+              onClick: () => handleJobBlockClick(job),
+            }))}
           />
         </div>
+
+        <div>
+          <BodyHeading marginTop="24vw">Our Mission</BodyHeading>
+          <div
+            className="flex items-center ml-[8vw] mr-[8vw]"
+            style={{
+              fontFamily: 'Montserrat',
+              fontWeight: 300,
+              color: '#3E3E3E',
+              fontSize: '1.5vw',
+              lineHeight: '2.25vw',
+            }}
+          >
+            <div className="mr-[10vw]">
+              At Verdantia, our mission is to revolutionize{' '}
+              <strong>environmental sustainability</strong> by seamlessly integrating technology and
+              human impact. We believe in a holistic approach, leveraging{' '}
+              <strong>cutting-edge innovations</strong> alongside direct, hands-on efforts to create a
+              more <strong>sustainable and resilient future</strong> for our planet.
+            </div>j
+            <img src={HandsPlanting.src} alt="Hands Planting" className="w-[40vw] h-auto" />
+          </div>
+        </div>
+
+        <ImageDivider src={PotDivider.src} marginTop="6vw"></ImageDivider>
+
+        <div>
+          <BodyHeading marginTop="4vw" marginBottom="3vw">
+            Our Values
+          </BodyHeading>
+
+          <div>
+            <ValuesLeftTab
+              title="01 - Environmental Awareness"
+              subheading="We inspire positive change through mindful environmental awareness and education."
+              iconSrc="/images/Values1.svg"
+            />
+
+            <ValuesRightTab
+              title="02 - Collaboration"
+              subheading="We thrive using collaboration, leveraging its power for meaningful change in sustainability."
+              iconSrc="/images/Values2.svg"
+            />
+
+            <ValuesLeftTab
+              title="03 - Leadership"
+              subheading="Guided by visionary leadership, we aim to inspire a sustainable future through innovation and determination."
+              iconSrc="/images/Values3.svg"
+            />
+
+            <ValuesRightTab
+              title="04 - Responsibility"
+              subheading="Responsibility is central to Verdantia, guiding decisions with integrity as well as transparency for sustainable initiatives."
+              iconSrc="/images/Values4.svg"
+              showDivider={false}
+            />
+          </div>
+        </div>
+
+        <ImageDivider src={ForestDivider.src} marginTop="6vw"></ImageDivider>
+
+        <div>
+          <BodyHeading marginTop="4vw" marginBottom="2vw" centerAligned={true}>
+            Our Impacts
+          </BodyHeading>
+          <Slideshow slides={slides} />
+        </div>
+
+        {/* Extra margin so footer doesn't look weird */}
+        <div style={{ marginBottom: '20vw' }}></div>
+
+        {selectedJob && (
+          <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
+            <JobDetailBlock
+              job={selectedJob.name}
+              date={selectedJob.date}
+              applicants={selectedJob.applicants}
+              location={selectedJob.location}
+              workExperience={selectedJob.experience}
+              workType={selectedJob.role}
+              salary={selectedJob.salary}
+              detDesc={selectedJob.description}
+              reqDesc={selectedJob.requirements}
+              onClose={() => setSelectedJob(null)}
+              listButtonText={userJobList.includes(selectedJob.id) ? 'Remove from List' : 'Add to List'}
+              onAddToList={() => addToUserJobList(selectedJob.id)}
+              onApply={() => handleApplyToJob(selectedJob.id)}
+              applyButtonText={userAppliedJobs.includes(selectedJob.id) ? 'Applied' : 'Apply'}
+            />
+          </div>
+        )}
+
+        {showApplicationPopup && selectedJob && (
+          <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
+            <JobApplicationPopUp onClose={handleClosePopup} onSubmit={handleJobApplicationSubmit} job={selectedJob?.name || ''} />
+          </div>
+        )}
+
+        <Footer />
       </div>
+      <div className=''>
+        <MobileNavBar/>
+        <div className='flex flex-col items-center justify-center py-[10vw] gap-[10vw] '>
 
-      <ImageDivider src={ForestDivider.src} marginTop="6vw"></ImageDivider>
+          <div className='w-[75vw] h-[75vw] overflow-hidden relative place-items-center'>
+            <div className='relative w-full h-full '>
+              <img src={download2.src} className=' z-10 rounded-[8vw] w-full h-full flex justify-self-center items-end object-cover object-center'/>
+              <div className='flex absolute pt-[5vw] pr-[5vw] flex-col z-20 top-0 left-0 items-end justify-end gap-[0vw]'>
+                <div className='font-bold text-right' style={{ fontFamily: 'Montserrat', color: '#F3F3F3', fontSize: '7vw', lineHeight: '9vw' }}>
+                  Sustainable Solutions. 
+                </div>
+                <div className='font-bold text-right' style={{ fontFamily: 'Montserrat', color: '#F3F3F3', fontSize: '7vw', lineHeight: '9vw' }}>
+                  Now.
+                </div>
+              </div>
+            </div>
+            
+          </div>  
+          <OurMissionMobile/>
+          <MobileDivider/>
+          <MobileCarousel/>
 
-      <div>
-        <BodyHeading marginTop="4vw" marginBottom="2vw" centerAligned={true}>
-          Our Impacts
-        </BodyHeading>
-        <Slideshow slides={slides} />
+          <div className='w-[75vw] h-[75vw] justify-center items-center overflow-hidden relative'>
+          </div>
+        </div>
+
+        <div className='bg-slate-50'>
+        </div>
+      
+        
       </div>
-
-      {/* Extra margin so footer doesn't look weird */}
-      <div style={{ marginBottom: '20vw' }}></div>
-
-      {selectedJob && (
-        <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
-          <JobDetailBlock
-            job={selectedJob.name}
-            date={selectedJob.date}
-            applicants={selectedJob.applicants}
-            location={selectedJob.location}
-            workExperience={selectedJob.experience}
-            workType={selectedJob.role}
-            salary={selectedJob.salary}
-            detDesc={selectedJob.description}
-            reqDesc={selectedJob.requirements}
-            onClose={() => setSelectedJob(null)}
-            listButtonText={userJobList.includes(selectedJob.id) ? 'Remove from List' : 'Add to List'}
-            onAddToList={() => addToUserJobList(selectedJob.id)}
-            onApply={() => handleApplyToJob(selectedJob.id)}
-            applyButtonText={userAppliedJobs.includes(selectedJob.id) ? 'Applied' : 'Apply'}
-          />
-        </div>
-      )}
-
-      {showApplicationPopup && selectedJob && (
-        <div className="top-0 left-0 w-full h-full flex items-center justify-center fixed bg-black bg-opacity-50 z-20">
-          <JobApplicationPopUp onClose={handleClosePopup} onSubmit={handleJobApplicationSubmit} job={selectedJob?.name || ''} />
-        </div>
-      )}
-
-      <Footer />
     </main>
   );
 }
