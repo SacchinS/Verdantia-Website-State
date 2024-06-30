@@ -53,14 +53,16 @@ const Navbar: React.FC<myProps> = ( {buttonText, route} ) => {
           <NavLink href="/benefits" text="Benefits" />
           <NavLink href="/jobs" text="Jobs" />
           <NavLink href="/portal" text="Portal" />
-          <div onClick={toggleDropdown} className="relative">
-            <img src={user ? "/images/user-bg.png" : "/images/user-nobg.png"} alt="Account" className="h-[1.5vw] w-[1.5vw] cursor-pointer" />
-            {dropdownOpen && (
-              <div className="absolute bg-white rounded-md flex flex-col w-max px-[0.6vw] py-[0.4vh] mt-[0.4vw] right-0">
-                <button onClick={handleSignOut}>{buttonText}</button>
-              </div>
-            )}
-          </div>
+          {user &&
+            <div className="bg-neutral-700 rounded-lg py-[0.25vw] px-[0.8vw] text-white" style={{ fontSize: '0.1vw'}}>
+              <NavLink href="/signIn" text="Sign Out"/>
+            </div>
+          }
+          {!user &&
+            <div className="bg-neutral-700 rounded-lg py-[0.25vw] px-[0.8vw] text-white" style={{ fontSize: '0.1vw'}}>
+              <NavLink href="/signIn" text="Sign In"/>
+            </div>
+          }
         </div>
       </div>
     </div>
@@ -78,7 +80,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, text }) => {
   return (
     <Link href={href}>
       <motion.span
-        className="text-black cursor-pointer"
+        className="cursor-pointer"
         style={{ fontSize: '1.25vw', position: 'relative' }} 
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
@@ -95,7 +97,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, text }) => {
             left: 0,
             width: '100%',
             height: '2px',
-            background: 'gray',
+            background: '#404040',
             originX: 0.5,
           }}
         />
