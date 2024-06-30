@@ -34,10 +34,10 @@ const OurMissionMobile = () =>{
 
         <div> 
             
-            <div className="pl-[13vw] pb-[4vw]" style={{ fontFamily: 'Montserrat', color: '#3e3e3e', fontSize: '7vw', lineHeight: '9vw' }}>
+            <div className="text-center pb-[4vw]" style={{ fontFamily: 'Montserrat', color: '#3e3e3e', fontSize: '7vw', lineHeight: '9vw' }}>
                 Our Mission 
-            </div>
-            <div className="px-[13.5vw] " style={{ fontFamily: 'Montserrat', color: '#3e3e3e', fontSize: '4vw', lineHeight: '5.5vw' }}>
+            </div> 
+            <div className=" text-center px-[13.5vw] " style={{ fontFamily: 'Montserrat', color: '#3e3e3e', fontSize: '4vw', lineHeight: '5.5vw' }}>
               At Verdantia, our mission is to revolutionize{' '}
               <strong>environmental sustainability</strong> by seamlessly integrating technology and
               human impact. We believe in a holistic approach, leveraging{' '}
@@ -46,7 +46,7 @@ const OurMissionMobile = () =>{
             </div>
         </div>
 
-        
+
 
 
     )

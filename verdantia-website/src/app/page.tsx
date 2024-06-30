@@ -31,7 +31,7 @@ import MobileNavBar from './components/MobileNavBar';
 import zip from '../../public/images/zip.jpg';
 import download2 from '../../public/images/download2.jpg';
 import OurMissionMobile from './components/OurMissionMobile';
-import MobileCarousel from './components/carouselesh';
+import MobileCarousel from './components/MobileCarousel';
 import { Sprout } from "lucide-react";
 import MobileDivider from './components/MobileDivider';
 
