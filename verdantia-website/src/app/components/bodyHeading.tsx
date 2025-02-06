@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 interface Props {
-    children: ReactNode;
+    children?: ReactNode;
     marginTop?: string;
     marginBottom?: string;
     centerAligned?: boolean; // Add centerAligned prop
