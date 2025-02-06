@@ -26,14 +26,20 @@ const SignUpPopUp: React.FC = () => {
             setEmail('')
             setPassword('')
             router.push('/portal')
+            
             const user = auth.currentUser;
-            const docRef = await setDoc(doc(db, "users", (user?.uid)?.toString()), {
-                admin: false
-            })
+            if (user?.uid) {
+                const docRef = await setDoc(doc(db, "users", user.uid), {
+                    admin: false
+                });
+            } else {
+                console.error("User ID is undefined");
+            }
         } catch (error) {
             console.error(error)
         }
     }
+    
 
     return (
         <div className="flex  items-center relative bg-white h-1/2 justify-self-center w-3/4 m-[0.5vw]">
