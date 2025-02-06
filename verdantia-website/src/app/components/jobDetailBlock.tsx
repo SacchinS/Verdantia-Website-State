@@ -19,9 +19,9 @@ interface myProps {
     location: string;
     detDesc: string;
     reqDesc: string;
-    onClose: () => void;
-    onAddToList: () => void; // Add a prop to handle adding job to list
-    onApply: () => void;
+    onClose?: () => void;
+    onAddToList?: () => void; // Add a prop to handle adding job to list
+    onApply?: () => void;
     listButtonText: string;
     applyButtonText: string;
 }

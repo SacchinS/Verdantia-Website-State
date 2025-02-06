@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation';
 import { collection, doc, onSnapshot, updateDoc, arrayUnion, setDoc, getDoc, arrayRemove } from 'firebase/firestore';
 
 interface TopRightInfoProps {
-    onAddToList: () => void; // Add a prop to handle adding job to list
-    onApply: () => void;
+    onAddToList?: () => void; // Add a prop to handle adding job to list
+    onApply?: () => void;
     listButtonText: string;
     applyButtonText: string;
 }

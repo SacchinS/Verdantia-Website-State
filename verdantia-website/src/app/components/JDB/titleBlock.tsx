@@ -6,8 +6,8 @@ interface myProps{
     applicants : string
     location : string
     listButtonText: string
-    onAddToList: () => void; // Add a prop to handle adding job to list
-    onApply: () => void;
+    onAddToList?: () => void; // Add a prop to handle adding job to list
+    onApply?: () => void;
     applyButtonText: string
 }
 const TitleBlock: React.FC<myProps> = ({ job, date, applicants, location, onAddToList, onApply, listButtonText, applyButtonText }) => {

@@ -4,8 +4,8 @@ import TopRightInfo from "./topRightInfo"
 interface myProps{
     job : string
     date : string
-    onAddToList: () => void; // Add a prop to handle adding job to list
-    onApply: () => void;
+    onAddToList?: () => void; // Add a prop to handle adding job to list
+    onApply?: () => void;
     listButtonText: string
     applyButtonText: string
 }
